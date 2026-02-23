@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-16"?>
+<!--
+  Windows Task Scheduler XML — CEO Monday Briefing
+  Triggers every Monday at 8AM and runs the /ceo-briefing skill via Claude Code CLI.
+
+  Import with:
+    schtasks /create /xml "scheduler\ceo_briefing_windows.xml" /tn "AIEmployee_CEOBriefing" /f
+
+  Delete with:
+    schtasks /delete /tn "AIEmployee_CEOBriefing" /f
+
+  Run manually:
+    schtasks /run /tn "AIEmployee_CEOBriefing"
+
+  IMPORTANT: Edit <WorkingDirectory> below to match your project path.
+  IMPORTANT: Ensure 'claude' CLI is on your PATH (or use full path to claude.exe).
+
+  Pre-requisite: Run /weekly-audit on Sunday night before this fires.
+  The Sunday audit can be scheduled as a separate task using a similar XML
+  with a CalendarTrigger for Sunday at 11PM and /weekly-audit as the argument.
+-->
+<Task version="1.4" xmlns="http://schemas.microsoft.com/windows/2004/02/mit/task">
+  <RegistrationInfo>
+    <Description>AI Employee — generates Monday CEO Briefing at 8AM from weekly audit data. Gold Tier.</Description>
+    <Author>AI Employee</Author>
+    <Version>1.0.0</Version>
+  </RegistrationInfo>
+
+  <Triggers>
+    <!-- Every Monday at 8:00 AM -->
+    <CalendarTrigger>
+      <Enabled>true</Enabled>
+      <StartBoundary>2026-02-23T08:00:00</StartBoundary>
+      <ScheduleByWeek>
+        <WeeksInterval>1</WeeksInterval>
+        <DaysOfWeek>
+          <Monday />
+        </DaysOfWeek>
+      </ScheduleByWeek>
+    </CalendarTrigger>
+  </Triggers>
+
+  <Principals>
+    <Principal id="Author">
+      <LogonType>InteractiveToken</LogonType>
+      <RunLevel>LeastPrivilege</RunLevel>
+    </Principal>
+  </Principals>
+
+  <Settings>
+    <MultipleInstancesPolicy>IgnoreNew</MultipleInstancesPolicy>
+    <DisallowStartIfOnBatteries>false</DisallowStartIfOnBatteries>
+    <StopIfGoingOnBatteries>false</StopIfGoingOnBatteries>
+    <AllowHardTerminate>true</AllowHardTerminate>
+    <StartWhenAvailable>true</StartWhenAvailable>
+    <RunOnlyIfNetworkAvailable>false</RunOnlyIfNetworkAvailable>
+    <ExecutionTimeLimit>PT30M</ExecutionTimeLimit>
+    <RestartOnFailure>
+      <Interval>PT5M</Interval>
+      <Count>2</Count>
+    </RestartOnFailure>
+    <Enabled>true</Enabled>
+  </Settings>
+
+  <Actions Context="Author">
+    <Exec>
+      <!-- Claude Code CLI — must be on PATH or use full path -->
+      <Command>claude</Command>
+      <!-- Run /ceo-briefing skill non-interactively -->
+      <Arguments>--no-browser /ceo-briefing</Arguments>
+      <!-- EDIT THIS: full path to your project root -->
+      <WorkingDirectory>C:\Users\YourName\ai-employee-bronze</WorkingDirectory>
+    </Exec>
+  </Actions>
+</Task>

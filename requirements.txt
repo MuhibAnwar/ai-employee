@@ -1,0 +1,20 @@
+# AI Employee Silver Tier — Python Dependencies
+# Install with: pip install -r requirements.txt
+
+# File system watcher (required for FileSystemWatcher)
+watchdog>=4.0.0
+
+# Gmail Watcher (Silver Tier)
+google-auth>=2.0.0
+google-auth-oauthlib>=1.0.0
+google-auth-httplib2>=0.2.0
+google-api-python-client>=2.0.0
+
+# LinkedIn Watcher — browser automation (Silver Tier)
+playwright>=1.40.0
+
+# Scheduling / orchestration
+schedule>=1.2.0
+
+# Optional: Environment variable loading
+python-dotenv>=1.0.0

@@ -1,0 +1,340 @@
+[
+  {
+    "timestamp": "2026-02-21T12:00:00Z",
+    "action_type": "triage_classified",
+    "actor": "claude_code",
+    "source_file": "vault/Needs_Action/FILE_20260219T000000_test_task.md",
+    "classification": "INFO_ONLY",
+    "result": "success",
+    "notes": "Simple greeting note. No action required. Moved to vault/Done/."
+  },
+  {
+    "timestamp": "2026-02-21T12:00:01Z",
+    "action_type": "file_moved",
+    "actor": "claude_code",
+    "source_file": "vault/Needs_Action/FILE_20260219T000000_test_task.md",
+    "destination": "vault/Done/FILE_20260219T000000_test_task.md",
+    "result": "success",
+    "notes": "INFO_ONLY item moved to Done after triage."
+  },
+  {
+    "timestamp": "2026-02-21T12:00:02Z",
+    "action_type": "triage_classified",
+    "actor": "claude_code",
+    "source_file": "vault/Needs_Action/TEST_EMAIL_001.md",
+    "classification": "NEEDS_PLAN",
+    "result": "success",
+    "notes": "HIGH priority email item. Multi-step pipeline required: draft reply → approval → send via Email MCP."
+  },
+  {
+    "timestamp": "2026-02-21T12:00:03Z",
+    "action_type": "plan_created",
+    "actor": "claude_code",
+    "source_file": "vault/Needs_Action/TEST_EMAIL_001.md",
+    "plan_file": "vault/Plans/PLAN_20260221T120000_silver_tier_email_verification.md",
+    "result": "success",
+    "notes": "Plan created for Silver Tier email verification pipeline. Awaiting human approval to proceed."
+  },
+  {
+    "timestamp": "2026-02-21T12:01:00Z",
+    "action_type": "approved_action_executed",
+    "actor": "claude_code",
+    "source_file": "vault/Approved/PLAN_20260221T120000_silver_tier_email_verification.md",
+    "action": "draft_email",
+    "mcp_tool": "mcp__email__draft_email",
+    "result": "dry_run_attempted",
+    "notes": "Email MCP called with draft_email(to=test@example.com, subject='Re: Test Silver Tier Verification'). MCP connection confirmed live. OAuth credentials not configured in .env (expected in test environment). DRY_RUN=true per Company_Handbook Rule 4."
+  },
+  {
+    "timestamp": "2026-02-21T12:01:01Z",
+    "action_type": "file_moved",
+    "actor": "claude_code",
+    "source_file": "vault/Approved/PLAN_20260221T120000_silver_tier_email_verification.md",
+    "destination": "vault/Done/PLAN_20260221T120000_silver_tier_email_verification.md",
+    "result": "success",
+    "notes": "Approved plan archived to Done after execution attempt."
+  },
+  {
+    "timestamp": "2026-02-21T12:01:02Z",
+    "action_type": "file_moved",
+    "actor": "claude_code",
+    "source_file": "vault/Needs_Action/TEST_EMAIL_001.md",
+    "destination": "vault/Done/TEST_EMAIL_001.md",
+    "result": "success",
+    "notes": "Source email item moved to Done. Pipeline complete."
+  },
+  {
+    "timestamp": "2026-02-21T12:02:30Z",
+    "action_type": "dashboard_updated",
+    "actor": "claude_code",
+    "source_file": "vault/Dashboard.md",
+    "result": "success",
+    "notes": "inbox=1, needs_action=0, pending=0, plans=1, approved=0, done=3. Tier updated to Silver."
+  },
+  {
+    "timestamp": "2026-02-21T12:10:30Z",
+    "action_type": "ralph_wiggum_started",
+    "actor": "claude_code",
+    "source_file": "vault/Plans/ACTIVE_TASK.md",
+    "result": "success",
+    "notes": "Ralph Wiggum loop started. Task: 'Process all files in Needs_Action and move to Done'. max_iterations=5"
+  },
+  {
+    "timestamp": "2026-02-21T12:10:31Z",
+    "action_type": "triage_classified",
+    "actor": "claude_code",
+    "source_file": "vault/Needs_Action/RALPH_TEST_001.md",
+    "classification": "SAFE_LOCAL",
+    "result": "success",
+    "notes": "Test item for Ralph Wiggum loop verification. No external action needed."
+  },
+  {
+    "timestamp": "2026-02-21T12:10:32Z",
+    "action_type": "plan_created",
+    "actor": "claude_code",
+    "source_file": "vault/Needs_Action/RALPH_TEST_001.md",
+    "plan_file": "vault/Plans/PLAN_20260221T121000_ralph_test.md",
+    "result": "success",
+    "notes": "Plan created for Ralph Wiggum loop test. Will execute immediately as SAFE_LOCAL."
+  },
+  {
+    "timestamp": "2026-02-21T18:27:00.036625+00:00",
+    "action_type": "ralph_wiggum_iteration",
+    "actor": "stop_hook",
+    "iteration": 1,
+    "max_iterations": 5,
+    "task": "Process all files in Needs_Action and move to Done",
+    "allowed_stop": true,
+    "notes": "All PLAN_*.md files are in vault/Done/ — task complete"
+  },
+  {
+    "timestamp": "2026-02-21T18:41:18.814803+00:00",
+    "action_type": "orchestrator_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "Gold Tier orchestrator started | vault=D:\\aa-3\\hi\\ai-employee-bronze\\vault | dry_run=True"
+  },
+  {
+    "timestamp": "2026-02-21T18:41:18.866409+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "FileSystemWatcher started (PID=10880, restart=#1, circuit=CLOSED)",
+    "watcher": "FileSystemWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-21T18:41:18.999455+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "GmailWatcher started (PID=17360, restart=#1, circuit=CLOSED)",
+    "watcher": "GmailWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-21T18:41:19.130110+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "LinkedInWatcher started (PID=6056, restart=#1, circuit=CLOSED)",
+    "watcher": "LinkedInWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-21T18:41:24.182978+00:00",
+    "action_type": "watcher_crashed",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "error",
+    "notes": "FileSystemWatcher exited (code=2) | circuit=CLOSED",
+    "watcher": "FileSystemWatcher",
+    "exit_code": 2,
+    "circuit_state": "CLOSED",
+    "crash_count": 1,
+    "restart_number": 1,
+    "traceback": "usage: filesystem_watcher.py [-h] [--vault VAULT]\nfilesystem_watcher.py: error: unrecognized arguments: --dry-run"
+  },
+  {
+    "timestamp": "2026-02-21T18:41:24.189870+00:00",
+    "action_type": "watcher_crashed",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "error",
+    "notes": "LinkedInWatcher exited (code=0) | circuit=CLOSED",
+    "watcher": "LinkedInWatcher",
+    "exit_code": 0,
+    "circuit_state": "CLOSED",
+    "crash_count": 1,
+    "restart_number": 1,
+    "traceback": "2026-02-21T23:41:22 [INFO] LinkedInWatcher: [DRY_RUN] LinkedInWatcher started in dry-run mode. No browser will be launched.\n2026-02-21T23:41:22 [INFO] LinkedInWatcher: [DRY_RUN] Skipping Playwright browser — returning empty list.\n2026-02-21T23:41:22 [INFO] LinkedInWatcher: [DRY_RUN] Exiting after one cycle."
+  },
+  {
+    "timestamp": "2026-02-21T18:41:29.268518+00:00",
+    "action_type": "watcher_crashed",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "error",
+    "notes": "GmailWatcher exited (code=1) | circuit=CLOSED",
+    "watcher": "GmailWatcher",
+    "exit_code": 1,
+    "circuit_state": "CLOSED",
+    "crash_count": 1,
+    "restart_number": 1,
+    "traceback": "Traceback (most recent call last):\n  File \"D:\\aa-3\\hi\\ai-employee-bronze\\watchers\\gmail_watcher.py\", line 376, in <module>\n    main()\n    ~~~~^^\n  File \"D:\\aa-3\\hi\\ai-employee-bronze\\watchers\\gmail_watcher.py\", line 334, in main\n    raise RuntimeError(\n    ...<2 lines>...\n    )\nRuntimeError: Circuit breaker test — simulated Gmail startup failure. Remove this line from watchers/gmail_watcher.py after testing."
+  },
+  {
+    "timestamp": "2026-02-21T18:41:34.345978+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "FileSystemWatcher started (PID=16696, restart=#2, circuit=CLOSED)",
+    "watcher": "FileSystemWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-21T18:41:34.352609+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "LinkedInWatcher started (PID=15632, restart=#2, circuit=CLOSED)",
+    "watcher": "LinkedInWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-21T18:41:39.390373+00:00",
+    "action_type": "watcher_crashed",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "error",
+    "notes": "FileSystemWatcher exited (code=2) | circuit=CLOSED",
+    "watcher": "FileSystemWatcher",
+    "exit_code": 2,
+    "circuit_state": "CLOSED",
+    "crash_count": 2,
+    "restart_number": 2,
+    "traceback": "usage: filesystem_watcher.py [-h] [--vault VAULT]\nfilesystem_watcher.py: error: unrecognized arguments: --dry-run"
+  },
+  {
+    "timestamp": "2026-02-21T18:41:39.433430+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "GmailWatcher started (PID=16140, restart=#2, circuit=CLOSED)",
+    "watcher": "GmailWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-21T18:41:39.499325+00:00",
+    "action_type": "watcher_crashed",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "error",
+    "notes": "LinkedInWatcher exited (code=0) | circuit=CLOSED",
+    "watcher": "LinkedInWatcher",
+    "exit_code": 0,
+    "circuit_state": "CLOSED",
+    "crash_count": 2,
+    "restart_number": 2,
+    "traceback": "2026-02-21T23:41:35 [INFO] LinkedInWatcher: [DRY_RUN] LinkedInWatcher started in dry-run mode. No browser will be launched.\n2026-02-21T23:41:35 [INFO] LinkedInWatcher: [DRY_RUN] Skipping Playwright browser — returning empty list.\n2026-02-21T23:41:35 [INFO] LinkedInWatcher: [DRY_RUN] Exiting after one cycle."
+  },
+  {
+    "timestamp": "2026-02-21T18:41:49.564077+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "FileSystemWatcher started (PID=13016, restart=#3, circuit=CLOSED)",
+    "watcher": "FileSystemWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-21T18:41:49.566713+00:00",
+    "action_type": "watcher_crashed",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "error",
+    "notes": "GmailWatcher exited (code=1) | circuit=CLOSED",
+    "watcher": "GmailWatcher",
+    "exit_code": 1,
+    "circuit_state": "CLOSED",
+    "crash_count": 2,
+    "restart_number": 2,
+    "traceback": "Traceback (most recent call last):\n  File \"D:\\aa-3\\hi\\ai-employee-bronze\\watchers\\gmail_watcher.py\", line 376, in <module>\n    main()\n    ~~~~^^\n  File \"D:\\aa-3\\hi\\ai-employee-bronze\\watchers\\gmail_watcher.py\", line 334, in main\n    raise RuntimeError(\n    ...<2 lines>...\n    )\nRuntimeError: Circuit breaker test — simulated Gmail startup failure. Remove this line from watchers/gmail_watcher.py after testing."
+  },
+  {
+    "timestamp": "2026-02-21T18:41:49.596120+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "LinkedInWatcher started (PID=19120, restart=#3, circuit=CLOSED)",
+    "watcher": "LinkedInWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-21T18:41:54.624897+00:00",
+    "action_type": "watcher_crashed",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "error",
+    "notes": "FileSystemWatcher exited (code=2) | circuit=OPEN",
+    "watcher": "FileSystemWatcher",
+    "exit_code": 2,
+    "circuit_state": "OPEN",
+    "crash_count": 3,
+    "restart_number": 3,
+    "traceback": "usage: filesystem_watcher.py [-h] [--vault VAULT]\nfilesystem_watcher.py: error: unrecognized arguments: --dry-run"
+  },
+  {
+    "timestamp": "2026-02-21T18:41:54.631345+00:00",
+    "action_type": "watcher_circuit_open",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "error",
+    "notes": "FileSystemWatcher: circuit OPEN — alert created at ALERT_FileSystemWatcher_DOWN.md",
+    "watcher": "FileSystemWatcher",
+    "alert_file": "ALERT_FileSystemWatcher_DOWN.md"
+  },
+  {
+    "timestamp": "2026-02-21T18:41:54.678574+00:00",
+    "action_type": "watcher_crashed",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "error",
+    "notes": "LinkedInWatcher exited (code=0) | circuit=OPEN",
+    "watcher": "LinkedInWatcher",
+    "exit_code": 0,
+    "circuit_state": "OPEN",
+    "crash_count": 3,
+    "restart_number": 3,
+    "traceback": "2026-02-21T23:41:50 [INFO] LinkedInWatcher: [DRY_RUN] LinkedInWatcher started in dry-run mode. No browser will be launched.\n2026-02-21T23:41:50 [INFO] LinkedInWatcher: [DRY_RUN] Skipping Playwright browser — returning empty list.\n2026-02-21T23:41:50 [INFO] LinkedInWatcher: [DRY_RUN] Exiting after one cycle."
+  },
+  {
+    "timestamp": "2026-02-21T18:41:54.714626+00:00",
+    "action_type": "watcher_circuit_open",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "error",
+    "notes": "LinkedInWatcher: circuit OPEN — alert created at ALERT_LinkedInWatcher_DOWN.md",
+    "watcher": "LinkedInWatcher",
+    "alert_file": "ALERT_LinkedInWatcher_DOWN.md"
+  },
+  {
+    "timestamp": "2026-02-21T18:41:59.773437+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "GmailWatcher started (PID=4560, restart=#3, circuit=CLOSED)",
+    "watcher": "GmailWatcher",
+    "circuit_state": "CLOSED"
+  }
+]

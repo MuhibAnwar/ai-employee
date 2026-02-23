@@ -1,0 +1,48 @@
+# ── Secrets & Credentials ─────────────────────────────
+.env
+secrets/
+*.json.secret
+*_credentials.json
+*_token.json
+whatsapp_session/
+
+# ── Python ────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.pyo
+.venv/
+venv/
+env/
+*.egg-info/
+dist/
+build/
+.pytest_cache/
+.mypy_cache/
+
+# ── Node.js (for MCP servers) ─────────────────────────
+node_modules/
+npm-debug.log*
+
+# ── Obsidian ──────────────────────────────────────────
+vault/.obsidian/workspace.json
+vault/.obsidian/workspace-mobile.json
+vault/.trash/
+
+# ── OS ────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ── Logs (keep structure, ignore content) ─────────────
+# Uncomment the next line if you don't want to commit logs:
+# vault/Logs/*.json
+
+# ── Cloud deployment (auto-generated, contain absolute paths) ─
+deployment/ecosystem.config.cjs
+vault/Logs/pm2-out.log
+vault/Logs/pm2-err.log
+
+# ── Temporary files ───────────────────────────────────
+*.tmp
+*.part
+*.crdownload

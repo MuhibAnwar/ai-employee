@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-16"?>
+<!--
+  Windows Task Scheduler XML for AI Employee Orchestrator
+  Triggers at user logon and restarts on failure.
+
+  Import with:
+    schtasks /create /xml "scheduler\schedule_windows.xml" /tn "AIEmployee" /f
+
+  Delete with:
+    schtasks /delete /tn "AIEmployee" /f
+
+  Run manually:
+    schtasks /run /tn "AIEmployee"
+
+  View status:
+    schtasks /query /tn "AIEmployee" /fo LIST /v
+
+  IMPORTANT: Edit <WorkingDirectory> below to match your project path.
+-->
+<Task version="1.4" xmlns="http://schemas.microsoft.com/windows/2004/02/mit/task">
+  <RegistrationInfo>
+    <Description>AI Employee — runs all watchers (filesystem, Gmail, LinkedIn, social) at login. Gold Tier.</Description>
+    <Author>AI Employee</Author>
+    <Version>2.0.0</Version>
+  </RegistrationInfo>
+
+  <Triggers>
+    <!-- Run at every user logon -->
+    <LogonTrigger>
+      <Enabled>true</Enabled>
+      <Delay>PT30S</Delay>
+    </LogonTrigger>
+
+    <!--
+      Monday 8AM — CEO Briefing
+      Runs the orchestrator which detects Monday morning and invokes the ceo-briefing skill.
+      For a dedicated CEO Briefing task, see: scheduler/ceo_briefing_windows.xml
+    -->
+    <CalendarTrigger>
+      <Enabled>true</Enabled>
+      <StartBoundary>2026-02-23T08:00:00</StartBoundary>
+      <ScheduleByWeek>
+        <WeeksInterval>1</WeeksInterval>
+        <DaysOfWeek>
+          <Monday />
+        </DaysOfWeek>
+      </ScheduleByWeek>
+    </CalendarTrigger>
+  </Triggers>
+
+  <Principals>
+    <Principal id="Author">
+      <!-- Run as the currently logged-in user (interactive session) -->
+      <LogonType>InteractiveToken</LogonType>
+      <RunLevel>LeastPrivilege</RunLevel>
+    </Principal>
+  </Principals>
+
+  <Settings>
+    <MultipleInstancesPolicy>IgnoreNew</MultipleInstancesPolicy>
+    <DisallowStartIfOnBatteries>false</DisallowStartIfOnBatteries>
+    <StopIfGoingOnBatteries>false</StopIfGoingOnBatteries>
+    <AllowHardTerminate>true</AllowHardTerminate>
+    <StartWhenAvailable>true</StartWhenAvailable>
+    <RunOnlyIfNetworkAvailable>false</RunOnlyIfNetworkAvailable>
+    <ExecutionTimeLimit>PT0S</ExecutionTimeLimit>
+    <!-- Restart on failure up to 3 times, 1 minute apart -->
+    <RestartOnFailure>
+      <Interval>PT1M</Interval>
+      <Count>3</Count>
+    </RestartOnFailure>
+    <Enabled>true</Enabled>
+  </Settings>
+
+  <Actions Context="Author">
+    <Exec>
+      <!-- EDIT THIS: full path to python.exe -->
+      <Command>python</Command>
+      <!-- EDIT THIS: full path to orchestrator.py -->
+      <Arguments>scheduler\orchestrator.py --vault .\vault</Arguments>
+      <!-- EDIT THIS: full path to your project root -->
+      <WorkingDirectory>C:\Users\YourName\ai-employee-bronze</WorkingDirectory>
+    </Exec>
+  </Actions>
+</Task>

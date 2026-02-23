@@ -1,0 +1,20 @@
+{
+  "name": "email-mcp",
+  "version": "1.0.0",
+  "description": "MCP server for sending and drafting emails via Gmail API — AI Employee Silver Tier",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "DRY_RUN=true node index.js"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.0",
+    "googleapis": "^140.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "keywords": ["mcp", "gmail", "email", "ai-employee"],
+  "license": "MIT"
+}
