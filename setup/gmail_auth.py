@@ -27,7 +27,7 @@ except ImportError:
     sys.exit(1)
 
 # ── Paths ─────────────────────────────────────────────────────────────────────
-PROJECT_ROOT = Path(__file__).parent.parent
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
 CREDENTIALS_FILE = PROJECT_ROOT / "secrets" / "gmail_credentials.json"
 TOKEN_FILE       = PROJECT_ROOT / "secrets" / "gmail_token.json"
 
@@ -35,7 +35,6 @@ TOKEN_FILE       = PROJECT_ROOT / "secrets" / "gmail_token.json"
 # This is the broadest Gmail scope — use it so both the watcher and MCP server
 # share one token without scope mismatch errors.
 SCOPES = ["https://mail.google.com/"]
-
 # ── Pre-flight ────────────────────────────────────────────────────────────────
 if not CREDENTIALS_FILE.exists():
     print(f"ERROR: Credentials file not found:")

@@ -1,54 +1,45 @@
 """
 linkedin_watcher.py - LinkedIn Notifications Watcher (Silver Tier)
 
-Uses Playwright to visit linkedin.com/notifications, loading a saved session
-from a storage-state JSON file. Extracts notification text and creates
-structured .md action files in vault/Needs_Action/ for relevant items.
+Uses linkedin-api library to check conversations/messages.
+Falls back to WAITING mode if credentials are missing or library unavailable.
 
 Usage:
     python watchers/linkedin_watcher.py --vault ./vault
     python watchers/linkedin_watcher.py --vault ./vault --dry-run
 
 Setup:
-    1. Install Playwright browsers: python -m playwright install chromium
-    2. Capture session: python -m playwright open --save-storage=secrets/linkedin_storage.json https://www.linkedin.com
-    3. Set LINKEDIN_SESSION_PATH=.../secrets/linkedin_storage.json in .env
-
-Keyword filtering:
-    Notifications containing these keywords create action files:
-    - Business intent: pricing, proposal, project, contract, budget
-    - Urgency signals: urgent, asap, deadline, action required
-    - Relationship: interview, partnership, collaboration, opportunity
-    All others are logged but silently discarded.
+    Set LINKEDIN_USERNAME and LINKEDIN_PASSWORD in .env
 
 Requirements:
-    pip install playwright python-dotenv
-    python -m playwright install chromium
+    pip install linkedin-api python-dotenv
 """
 
 import argparse
-import json
 import os
 import sys
 import time
+from concurrent.futures import ThreadPoolExecutor, TimeoutError as FuturesTimeoutError
 from pathlib import Path
 from datetime import datetime, timezone
 
 sys.path.insert(0, str(Path(__file__).parent))
 
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
+
 from base_watcher import BaseWatcher
 
 try:
     from dotenv import load_dotenv
-    load_dotenv()
+    load_dotenv(PROJECT_ROOT / ".env")
 except ImportError:
     pass
 
 try:
-    from playwright.sync_api import sync_playwright, TimeoutError as PlaywrightTimeout
-    PLAYWRIGHT_AVAILABLE = True
+    from linkedin_api import Linkedin
+    LINKEDIN_API_AVAILABLE = True
 except ImportError:
-    PLAYWRIGHT_AVAILABLE = False
+    LINKEDIN_API_AVAILABLE = False
 
 
 # Keywords that trigger an action file
@@ -59,13 +50,12 @@ ACTION_KEYWORDS = {
     "invoice", "payment", "meeting request", "follow up",
 }
 
-# File to track seen notification hashes (avoid duplicates)
-SEEN_FILE = Path("./secrets/linkedin_seen.txt")
+SEEN_FILE = PROJECT_ROOT / "secrets" / "linkedin_seen.txt"
 
 
 class LinkedInWatcher(BaseWatcher):
     """
-    Watches LinkedIn notifications using Playwright browser automation.
+    Watches LinkedIn conversations using linkedin-api (no browser required).
 
     Silver Tier Requirement:
       "Two+ watcher scripts (Gmail + LinkedIn)"
@@ -74,23 +64,12 @@ class LinkedInWatcher(BaseWatcher):
     def __init__(self, vault_path: str, dry_run: bool = False, check_interval: int = 300):
         super().__init__(vault_path, check_interval=check_interval)
         self.dry_run = dry_run
-        self.session_path = Path(
-            os.getenv("LINKEDIN_SESSION_PATH", "./secrets/linkedin_storage.json")
-        )
+        self.username = os.getenv("LINKEDIN_USERNAME", "")
+        self.password = os.getenv("LINKEDIN_PASSWORD", "")
+        self._client = None
         SEEN_FILE.parent.mkdir(parents=True, exist_ok=True)
 
-        if not self.dry_run and not self.session_path.exists():
-            self.logger.warning(
-                f"LinkedIn session file not found: {self.session_path}\n"
-                "Capture it with:\n"
-                "  python -m playwright open "
-                "--save-storage=secrets/linkedin_storage.json "
-                "https://www.linkedin.com"
-            )
-
-    # ─────────────────────────────────────────────────────────────────────────
-    # Seen notification tracking
-    # ─────────────────────────────────────────────────────────────────────────
+    # ── Deduplication ─────────────────────────────────────────────────────────
 
     def _load_seen(self) -> set:
         if SEEN_FILE.exists():
@@ -103,125 +82,132 @@ class LinkedInWatcher(BaseWatcher):
 
     @staticmethod
     def _notification_key(text: str) -> str:
-        """Stable deduplication key — first 80 chars, lowercased."""
         return text.strip().lower()[:80]
 
-    # ─────────────────────────────────────────────────────────────────────────
-    # BaseWatcher interface
-    # ─────────────────────────────────────────────────────────────────────────
+    # ── LinkedIn client (lazy init) ────────────────────────────────────────────
+
+    def _get_client(self):
+        """Return a cached LinkedIn client, creating it on first call.
+
+        Linkedin.__init__ calls authenticate() immediately, which makes
+        blocking HTTP requests with no timeout. We wrap it in a thread
+        so we can enforce a deadline on Windows (signal.alarm not available).
+        """
+        if self._client is None:
+            self.logger.info("Authenticating with LinkedIn API...")
+            with ThreadPoolExecutor(max_workers=1) as ex:
+                future = ex.submit(Linkedin, self.username, self.password)
+                try:
+                    self._client = future.result(timeout=30)
+                except FuturesTimeoutError:
+                    raise RuntimeError(
+                        "LinkedIn authentication timed out after 30s — "
+                        "check network or LinkedIn credentials"
+                    )
+            self.logger.info("LinkedIn API authenticated successfully.")
+        return self._client
+
+    # ── BaseWatcher interface ─────────────────────────────────────────────────
 
     def check_for_updates(self) -> list:
         """
-        Open LinkedIn notifications page and return new relevant items.
-        Each item is a dict: {text, url, timestamp}.
+        Fetch LinkedIn conversations via linkedin-api and return new relevant items.
         """
         if self.dry_run:
-            self.logger.info("[DRY_RUN] Skipping Playwright browser — returning empty list.")
+            self.logger.info("[DRY_RUN] Skipping LinkedIn API call — returning empty list.")
             return []
 
-        if not PLAYWRIGHT_AVAILABLE:
+        if not LINKEDIN_API_AVAILABLE:
             raise RuntimeError(
-                "Playwright is not installed.\n"
-                "Run: pip install playwright && python -m playwright install chromium"
+                "linkedin-api is not installed.\n"
+                "Run: pip install linkedin-api"
             )
+
+        if not self.username or not self.password:
+            self.logger.warning(
+                "[WAITING] LINKEDIN_USERNAME or LINKEDIN_PASSWORD not set in .env."
+            )
+            return []
 
         seen = self._load_seen()
         new_items = []
 
-        with sync_playwright() as pw:
-            browser = pw.chromium.launch(headless=True, args=["--no-sandbox"])
-            context = browser.new_context(storage_state=str(self.session_path))
-            page = context.new_page()
-
-            try:
-                page.goto("https://www.linkedin.com/notifications/", timeout=30_000)
-                page.wait_for_load_state("domcontentloaded", timeout=20_000)
-
-                # Check if we're still logged in
-                if "login" in page.url or "authwall" in page.url:
-                    self.logger.warning(
-                        "LinkedIn session expired. Re-capture with:\n"
-                        "  python -m playwright open "
-                        "--save-storage=secrets/linkedin_storage.json "
-                        "https://www.linkedin.com"
-                    )
-                    context.close()
-                    browser.close()
-                    return []
-
-                # Wait for notification list to render
+        try:
+            api = self._get_client()
+            self.logger.info("Fetching LinkedIn conversations...")
+            with ThreadPoolExecutor(max_workers=1) as ex:
+                future = ex.submit(api.get_conversations)
                 try:
-                    page.wait_for_selector(
-                        "li.nt-card-list__item, [data-test-notification-card]",
-                        timeout=10_000,
+                    convos_data = future.result(timeout=30)
+                except FuturesTimeoutError:
+                    raise RuntimeError(
+                        "get_conversations() timed out after 30s"
                     )
-                except PlaywrightTimeout:
-                    self.logger.warning("Notification list did not load in time.")
-                    browser.close()
-                    return []
+            elements = convos_data.get("elements", []) if isinstance(convos_data, dict) else []
 
-                # Extract notification cards
-                cards = page.query_selector_all(
-                    "li.nt-card-list__item, [data-test-notification-card]"
-                )
+            for convo in elements[:30]:
+                try:
+                    # Extract the most recent event body from the conversation
+                    events = convo.get("events", [])
+                    if not events:
+                        continue
 
-                for card in cards[:30]:  # limit to 30 most recent
-                    try:
-                        text = card.inner_text().strip()
-                        if not text:
-                            continue
+                    latest_event = events[0]
+                    event_content = latest_event.get("eventContent", {})
+                    msg_event = event_content.get(
+                        "com.linkedin.voyager.messaging.event.MessageEvent", {}
+                    )
+                    body = msg_event.get("body", "").strip()
+                    if not body:
+                        continue
 
-                        key = self._notification_key(text)
-                        if key in seen:
-                            continue
+                    key = self._notification_key(body)
+                    if key in seen:
+                        continue
 
-                        # Only create action files for relevant notifications
-                        text_lower = text.lower()
-                        if not any(kw in text_lower for kw in ACTION_KEYWORDS):
-                            self._mark_seen(key)
-                            continue
-
-                        # Try to extract a link
-                        link_el = card.query_selector("a[href]")
-                        url = link_el.get_attribute("href") if link_el else None
-                        if url and url.startswith("/"):
-                            url = "https://www.linkedin.com" + url
-
-                        new_items.append(
-                            {
-                                "text": text[:500],
-                                "url": url or "https://www.linkedin.com/notifications/",
-                                "key": key,
-                                "detected_at": datetime.now(timezone.utc).isoformat(),
-                            }
-                        )
+                    text_lower = body.lower()
+                    if not any(kw in text_lower for kw in ACTION_KEYWORDS):
                         self._mark_seen(key)
+                        continue
 
-                    except Exception as e:
-                        self.logger.debug(f"Error parsing notification card: {e}")
+                    # Try to build a URL from the conversation URN
+                    urn = convo.get("entityUrn", "")
+                    convo_id = urn.split(":")[-1] if urn else ""
+                    url = (
+                        f"https://www.linkedin.com/messaging/thread/{convo_id}/"
+                        if convo_id
+                        else "https://www.linkedin.com/messaging/"
+                    )
 
-            except Exception as e:
-                self.logger.error(f"Error during LinkedIn page scrape: {e}")
+                    new_items.append({
+                        "text": body[:500],
+                        "url": url,
+                        "key": key,
+                        "detected_at": datetime.now(timezone.utc).isoformat(),
+                    })
+                    self._mark_seen(key)
 
-            finally:
-                context.close()
-                browser.close()
+                except Exception as e:
+                    self.logger.debug(f"Error parsing conversation: {e}")
+
+        except Exception as e:
+            self.logger.error(f"LinkedIn API error: {e}")
+            # Reset client so next cycle re-authenticates
+            self._client = None
 
         if new_items:
-            self.logger.info(f"Found {len(new_items)} relevant LinkedIn notification(s).")
+            self.logger.info(f"Found {len(new_items)} relevant LinkedIn message(s).")
         else:
-            self.logger.debug("No new relevant LinkedIn notifications.")
+            self.logger.info("No new relevant LinkedIn messages.")
 
         return new_items
 
     def create_action_file(self, item: dict) -> Path:
-        """Create a structured Needs_Action .md file for a LinkedIn notification."""
+        """Create a structured Needs_Action .md file for a LinkedIn message."""
         now = datetime.now(timezone.utc)
         timestamp_str = now.strftime("%Y%m%dT%H%M%S")
-
         priority = self._classify_priority(item["text"])
 
-        # Safe filename from first 40 chars of notification text
         safe_text = "".join(
             c if c.isalnum() or c in "-_" else "_"
             for c in item["text"][:40]
@@ -237,11 +223,11 @@ watcher: LinkedInWatcher
 detected_at: {item['detected_at']}
 ---
 
-# Action Required: LinkedIn Notification
+# Action Required: LinkedIn Message
 
-A relevant LinkedIn notification was detected that may require a response.
+A relevant LinkedIn message was detected that may require a response.
 
-## Notification
+## Message
 
 > {item['text']}
 
@@ -255,7 +241,7 @@ A relevant LinkedIn notification was detected that may require a response.
 
 ## Suggested Actions
 
-- [ ] Visit the LinkedIn notification link to read the full message
+- [ ] Visit the LinkedIn conversation link to read the full message
 - [ ] Determine if a reply is needed
 - [ ] If posting a LinkedIn update would help → run `/post-linkedin`
 - [ ] If a direct message response is needed → create file in `vault/Pending_Approval/`
@@ -281,12 +267,10 @@ _Add reasoning here after reviewing._
         return action_file
 
     def _classify_priority(self, text: str) -> str:
-        """Classify priority based on notification text keywords."""
         lower = text.lower()
         urgent = {"urgent", "asap", "deadline", "action required", "overdue"}
         high = {"proposal", "contract", "budget", "pricing", "invoice", "payment",
                 "interview", "partnership"}
-
         if any(kw in lower for kw in urgent):
             return "urgent"
         if any(kw in lower for kw in high):
@@ -294,17 +278,44 @@ _Add reasoning here after reviewing._
         return "normal"
 
     def run(self):
-        """Override run to add dry-run single-cycle support."""
+        """Main loop with WAITING mode when credentials are absent."""
         if self.dry_run:
             self.logger.info(
                 "[DRY_RUN] LinkedInWatcher started in dry-run mode. "
-                "No browser will be launched."
+                "No API calls will be made."
             )
-        else:
-            self.logger.info(
-                f"Starting LinkedInWatcher "
-                f"(interval={self.check_interval}s, vault={self.vault_path})"
+            items = self.check_for_updates()
+            self.logger.info("[DRY_RUN] Exiting after one cycle.")
+            return
+
+        if not LINKEDIN_API_AVAILABLE:
+            self.logger.error(
+                "linkedin-api not installed. Run: pip install linkedin-api\n"
+                "LinkedInWatcher cannot start."
             )
+            return
+
+        if not self.username or not self.password:
+            self.logger.warning(
+                "[WAITING] LINKEDIN_USERNAME / LINKEDIN_PASSWORD not set in .env. "
+                "Sleeping until credentials are provided."
+            )
+            while not (
+                os.getenv("LINKEDIN_USERNAME") and os.getenv("LINKEDIN_PASSWORD")
+            ):
+                try:
+                    time.sleep(60)
+                except KeyboardInterrupt:
+                    self.logger.info("LinkedInWatcher stopped by user.")
+                    return
+            self.username = os.getenv("LINKEDIN_USERNAME", "")
+            self.password = os.getenv("LINKEDIN_PASSWORD", "")
+            self.logger.info("Credentials found. Starting LinkedInWatcher.")
+
+        self.logger.info(
+            f"Starting LinkedInWatcher "
+            f"(interval={self.check_interval}s, vault={self.vault_path})"
+        )
 
         while True:
             try:
@@ -318,23 +329,19 @@ _Add reasoning here after reviewing._
                         self.log_action(
                             "create_action_file", item.get("url", "?"), "error", str(e)
                         )
+                time.sleep(self.check_interval)
             except KeyboardInterrupt:
                 self.logger.info("LinkedInWatcher stopped by user.")
                 break
             except Exception as e:
                 self.logger.error(f"Unexpected error in main loop: {e}")
                 self.log_action("watcher_loop", "linkedin_main", "error", str(e))
-
-            if self.dry_run:
-                self.logger.info("[DRY_RUN] Exiting after one cycle.")
-                break
-
-            time.sleep(self.check_interval)
+                time.sleep(self.check_interval)
 
 
 def main():
     parser = argparse.ArgumentParser(
-        description="LinkedIn Notifications Watcher for AI Employee (Silver Tier)"
+        description="LinkedIn Messages Watcher for AI Employee (Silver Tier)"
     )
     parser.add_argument(
         "--vault",
@@ -345,7 +352,7 @@ def main():
         "--dry-run",
         action="store_true",
         default=os.getenv("DRY_RUN", "false").lower() == "true",
-        help="Log intent without launching browser",
+        help="Log intent without making API calls",
     )
     parser.add_argument(
         "--interval",

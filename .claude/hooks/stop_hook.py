@@ -117,6 +117,8 @@ def archive_active_task() -> None:
     """Move ACTIVE_TASK.md to vault/Done/ when the loop completes."""
     if ACTIVE_TASK_FILE.exists() and DONE_DIR.exists():
         dest = DONE_DIR / "ACTIVE_TASK_COMPLETED.md"
+        if dest.exists():
+            dest.unlink()
         ACTIVE_TASK_FILE.rename(dest)
 
 # ─────────────────────────────────────────────────────────────────────────────

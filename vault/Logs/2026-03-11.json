@@ -1,0 +1,415 @@
+[
+  {
+    "timestamp": "2026-03-10T19:00:03.369926+00:00",
+    "action_type": "daily_summary",
+    "actor": "orchestrator",
+    "date": "2026-03-11",
+    "crash_counts": {
+      "FileSystemWatcher": 0,
+      "GmailWatcher": 0,
+      "LinkedInWatcher": 0,
+      "FacebookWatcher": 0,
+      "InstagramWatcher": 0,
+      "TwitterWatcher": 0
+    },
+    "total_crashes": 0,
+    "circuit_states": {
+      "FileSystemWatcher": "CLOSED",
+      "GmailWatcher": "CLOSED",
+      "LinkedInWatcher": "CLOSED",
+      "FacebookWatcher": "CLOSED",
+      "InstagramWatcher": "CLOSED",
+      "TwitterWatcher": "CLOSED"
+    },
+    "result": "success",
+    "notes": "Daily summary for 2026-03-11"
+  },
+  {
+    "timestamp": "2026-03-10T19:00:58.965747+00:00",
+    "action_type": "watcher_loop",
+    "actor": "GmailWatcher",
+    "source_file": "gmail_main",
+    "result": "error",
+    "notes": "[WinError 10054] An existing connection was forcibly closed by the remote host"
+  },
+  {
+    "timestamp": "2026-03-11T12:13:38.406146+00:00",
+    "action_type": "orchestrator_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "Gold Tier orchestrator started | vault=D:\\aa-3\\hi\\ai-employee-bronze\\vault | dry_run=False"
+  },
+  {
+    "timestamp": "2026-03-11T12:13:43.135743+00:00",
+    "action_type": "preflight_failed",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "error",
+    "notes": "GmailWatcher failed preflight dry-run: exit=3221225786\n",
+    "watcher": "GmailWatcher"
+  },
+  {
+    "timestamp": "2026-03-11T12:13:43.161696+00:00",
+    "action_type": "watcher_circuit_open",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "error",
+    "notes": "GmailWatcher: circuit OPEN — alert created at ALERT_GmailWatcher_DOWN.md",
+    "watcher": "GmailWatcher",
+    "alert_file": "ALERT_GmailWatcher_DOWN.md"
+  },
+  {
+    "timestamp": "2026-03-11T12:13:44.558468+00:00",
+    "action_type": "preflight_failed",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "error",
+    "notes": "LinkedInWatcher failed preflight dry-run: exit=3221225786\n",
+    "watcher": "LinkedInWatcher"
+  },
+  {
+    "timestamp": "2026-03-11T12:13:44.577559+00:00",
+    "action_type": "watcher_circuit_open",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "error",
+    "notes": "LinkedInWatcher: circuit OPEN — alert created at ALERT_LinkedInWatcher_DOWN.md",
+    "watcher": "LinkedInWatcher",
+    "alert_file": "ALERT_LinkedInWatcher_DOWN.md"
+  },
+  {
+    "timestamp": "2026-03-11T12:13:54.035564+00:00",
+    "action_type": "preflight_failed",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "error",
+    "notes": "InstagramWatcher failed preflight dry-run: exit=1\n                             \"\"\")\n  File \"C:\\Users\\au\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\Cryptodome\\Util\\_raw_api.py\", line 315, in load_pycryptodome_raw_lib\n    raise OSError(\"Cannot load native module '%s': %s\" % (name, \", \".join(attempts)))\nOSError: Cannot load native module 'Cryptodome.Util._cpuid_c': Not found '_cpuid_c.cp313-win_amd64.pyd', Cannot load '_cpuid_c",
+    "watcher": "InstagramWatcher"
+  },
+  {
+    "timestamp": "2026-03-11T12:13:54.055000+00:00",
+    "action_type": "watcher_circuit_open",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "error",
+    "notes": "InstagramWatcher: circuit OPEN — alert created at ALERT_InstagramWatcher_DOWN.md",
+    "watcher": "InstagramWatcher",
+    "alert_file": "ALERT_InstagramWatcher_DOWN.md"
+  },
+  {
+    "timestamp": "2026-03-11T12:13:56.133334+00:00",
+    "action_type": "preflight_failed",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "error",
+    "notes": "TwitterWatcher failed preflight dry-run: exit=3221225786\nFailed checking if argv[0] is an import path entry\nTraceback (most recent call last):\n  File \"<frozen zipimport>\", line 96, in __init__\n  File \"<frozen zipimport>\", line 368, in _read_directory\nMemoryError",
+    "watcher": "TwitterWatcher"
+  },
+  {
+    "timestamp": "2026-03-11T12:13:56.168746+00:00",
+    "action_type": "watcher_circuit_open",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "error",
+    "notes": "TwitterWatcher: circuit OPEN — alert created at ALERT_TwitterWatcher_DOWN.md",
+    "watcher": "TwitterWatcher",
+    "alert_file": "ALERT_TwitterWatcher_DOWN.md"
+  },
+  {
+    "timestamp": "2026-03-11T12:13:56.208665+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "FileSystemWatcher started (PID=8120, restart=#1, circuit=CLOSED)",
+    "watcher": "FileSystemWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-03-11T12:13:56.273572+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "FacebookWatcher started (PID=10028, restart=#1, circuit=CLOSED)",
+    "watcher": "FacebookWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-03-11T12:23:47.062601+00:00",
+    "action_type": "circuit_half_open",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "GmailWatcher: entering HALF_OPEN after 600s",
+    "watcher": "GmailWatcher"
+  },
+  {
+    "timestamp": "2026-03-11T12:23:47.131420+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "GmailWatcher started (PID=15736, restart=#1, circuit=HALF_OPEN)",
+    "watcher": "GmailWatcher",
+    "circuit_state": "HALF_OPEN"
+  },
+  {
+    "timestamp": "2026-03-11T12:23:47.179645+00:00",
+    "action_type": "circuit_half_open",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "LinkedInWatcher: entering HALF_OPEN after 600s",
+    "watcher": "LinkedInWatcher"
+  },
+  {
+    "timestamp": "2026-03-11T12:23:47.224933+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "LinkedInWatcher started (PID=8880, restart=#1, circuit=HALF_OPEN)",
+    "watcher": "LinkedInWatcher",
+    "circuit_state": "HALF_OPEN"
+  },
+  {
+    "timestamp": "2026-03-11T12:23:58.136974+00:00",
+    "action_type": "circuit_half_open",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "InstagramWatcher: entering HALF_OPEN after 600s",
+    "watcher": "InstagramWatcher"
+  },
+  {
+    "timestamp": "2026-03-11T12:23:58.668939+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "InstagramWatcher started (PID=9128, restart=#1, circuit=HALF_OPEN)",
+    "watcher": "InstagramWatcher",
+    "circuit_state": "HALF_OPEN"
+  },
+  {
+    "timestamp": "2026-03-11T12:23:58.850398+00:00",
+    "action_type": "circuit_half_open",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "TwitterWatcher: entering HALF_OPEN after 600s",
+    "watcher": "TwitterWatcher"
+  },
+  {
+    "timestamp": "2026-03-11T12:23:59.102565+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "TwitterWatcher started (PID=11176, restart=#1, circuit=HALF_OPEN)",
+    "watcher": "TwitterWatcher",
+    "circuit_state": "HALF_OPEN"
+  },
+  {
+    "timestamp": "2026-03-11T12:24:49.418777+00:00",
+    "action_type": "circuit_closed",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "GmailWatcher: HALF_OPEN test passed — circuit CLOSED",
+    "watcher": "GmailWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-03-11T12:24:49.447162+00:00",
+    "action_type": "circuit_closed",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "LinkedInWatcher: HALF_OPEN test passed — circuit CLOSED",
+    "watcher": "LinkedInWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-03-11T12:24:59.464752+00:00",
+    "action_type": "circuit_closed",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "InstagramWatcher: HALF_OPEN test passed — circuit CLOSED",
+    "watcher": "InstagramWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-03-11T12:24:59.481464+00:00",
+    "action_type": "circuit_closed",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "TwitterWatcher: HALF_OPEN test passed — circuit CLOSED",
+    "watcher": "TwitterWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-03-11T12:46:25.046862+00:00",
+    "action_type": "watcher_loop",
+    "actor": "GmailWatcher",
+    "source_file": "gmail_main",
+    "result": "error",
+    "notes": "[WinError 10054] An existing connection was forcibly closed by the remote host"
+  },
+  {
+    "timestamp": "2026-03-11T13:21:33.020926+00:00",
+    "action_type": "watcher_crashed",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "error",
+    "notes": "FileSystemWatcher exited (code=1073807364) | circuit=CLOSED",
+    "watcher": "FileSystemWatcher",
+    "exit_code": 1073807364,
+    "circuit_state": "CLOSED",
+    "crash_count": 1,
+    "restart_number": 1,
+    "traceback": "2026-03-11T17:13:57 [INFO] FileSystemWatcher: Monitoring drop folder: D:\\aa-3\\hi\\ai-employee-bronze\\vault\\Inbox\n2026-03-11T17:13:57 [INFO] FileSystemWatcher: Action files will be created in: D:\\aa-3\\hi\\ai-employee-bronze\\vault\\Needs_Action\n2026-03-11T17:13:57 [INFO] FileSystemWatcher: Press Ctrl+C to stop."
+  },
+  {
+    "timestamp": "2026-03-11T13:21:33.223320+00:00",
+    "action_type": "watcher_crashed",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "error",
+    "notes": "GmailWatcher exited (code=1073807364) | circuit=CLOSED",
+    "watcher": "GmailWatcher",
+    "exit_code": 1073807364,
+    "circuit_state": "CLOSED",
+    "crash_count": 1,
+    "restart_number": 1,
+    "traceback": "2026-03-11T17:23:55 [INFO] GmailWatcher: Starting GmailWatcher (interval=120s, vault=D:\\aa-3\\hi\\ai-employee-bronze\\vault)\n2026-03-11T17:24:00 [INFO] GmailWatcher: Gmail token saved to D:\\aa-3\\hi\\ai-employee-bronze\\secrets\\gmail_token.json\n2026-03-11T17:24:00 [INFO] googleapiclient.discovery_cache: file_cache is only supported with oauth2client<4.0.0\n2026-03-11T17:24:00 [INFO] GmailWatcher: Gmail API authenticated successfully.\n2026-03-11T17:46:25 [ERROR] GmailWatcher: Unexpected error in main loop: [WinError 10054] An existing connection was forcibly closed by the remote host"
+  },
+  {
+    "timestamp": "2026-03-11T13:21:33.297195+00:00",
+    "action_type": "watcher_crashed",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "error",
+    "notes": "LinkedInWatcher exited (code=1073807364) | circuit=CLOSED",
+    "watcher": "LinkedInWatcher",
+    "exit_code": 1073807364,
+    "circuit_state": "CLOSED",
+    "crash_count": 1,
+    "restart_number": 1,
+    "traceback": "dInWatcher: LinkedIn API authenticated successfully.\n2026-03-11T17:54:30 [INFO] LinkedInWatcher: Fetching LinkedIn conversations...\n2026-03-11T17:54:37 [INFO] LinkedInWatcher: No new relevant LinkedIn messages.\n2026-03-11T17:59:37 [INFO] LinkedInWatcher: Fetching LinkedIn conversations...\n2026-03-11T17:59:41 [INFO] LinkedInWatcher: No new relevant LinkedIn messages.\n2026-03-11T18:04:41 [INFO] LinkedInWatcher: Fetching LinkedIn conversations...\n2026-03-11T18:04:45 [INFO] LinkedInWatcher: No new relevant LinkedIn messages.\n2026-03-11T18:09:45 [INFO] LinkedInWatcher: Fetching LinkedIn conversations...\n2026-03-11T18:09:49 [INFO] LinkedInWatcher: No new relevant LinkedIn messages.\n2026-03-11T18:14:49 [INFO] LinkedInWatcher: Fetching LinkedIn conversations...\n2026-03-11T18:14:52 [INFO] LinkedInWatcher: No new relevant LinkedIn messages.\n2026-03-11T18:19:52 [INFO] LinkedInWatcher: Fetching LinkedIn conversations...\n2026-03-11T18:19:56 [INFO] LinkedInWatcher: No new relevant LinkedIn messages."
+  },
+  {
+    "timestamp": "2026-03-11T13:21:33.313559+00:00",
+    "action_type": "watcher_crashed",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "error",
+    "notes": "FacebookWatcher exited (code=1073807364) | circuit=CLOSED",
+    "watcher": "FacebookWatcher",
+    "exit_code": 1073807364,
+    "circuit_state": "CLOSED",
+    "crash_count": 1,
+    "restart_number": 1,
+    "traceback": "2026-03-11T17:13:59 [INFO] FacebookWatcher: Starting FacebookWatcher (interval=300s)\n2026-03-11T17:49:28 [ERROR] FacebookWatcher: Facebook request error: HTTPSConnectionPool(host='mbasic.facebook.com', port=443): Read timed out. (read timeout=20)"
+  },
+  {
+    "timestamp": "2026-03-11T13:21:33.329461+00:00",
+    "action_type": "watcher_crashed",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "error",
+    "notes": "InstagramWatcher exited (code=1073807364) | circuit=CLOSED",
+    "watcher": "InstagramWatcher",
+    "exit_code": 1073807364,
+    "circuit_state": "CLOSED",
+    "crash_count": 1,
+    "restart_number": 1,
+    "traceback": "2026-03-11T17:24:07 [INFO] InstagramWatcher: Starting InstagramWatcher (interval=300s)\n2026-03-11T17:24:07 [ERROR] InstagramWatcher: Instagram API error: 'Client' object has no attribute 'news_inbox'\n2026-03-11T17:49:08 [ERROR] InstagramWatcher: Instagram API error: 'Client' object has no attribute 'news_inbox'\n2026-03-11T17:54:08 [ERROR] InstagramWatcher: Instagram API error: 'Client' object has no attribute 'news_inbox'\n2026-03-11T17:59:08 [ERROR] InstagramWatcher: Instagram API error: 'Client' object has no attribute 'news_inbox'\n2026-03-11T18:04:08 [ERROR] InstagramWatcher: Instagram API error: 'Client' object has no attribute 'news_inbox'\n2026-03-11T18:09:08 [ERROR] InstagramWatcher: Instagram API error: 'Client' object has no attribute 'news_inbox'\n2026-03-11T18:14:08 [ERROR] InstagramWatcher: Instagram API error: 'Client' object has no attribute 'news_inbox'\n2026-03-11T18:19:08 [ERROR] InstagramWatcher: Instagram API error: 'Client' object has no attribute 'news_inbox'"
+  },
+  {
+    "timestamp": "2026-03-11T13:21:33.346235+00:00",
+    "action_type": "watcher_crashed",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "error",
+    "notes": "TwitterWatcher exited (code=1073807364) | circuit=CLOSED",
+    "watcher": "TwitterWatcher",
+    "exit_code": 1073807364,
+    "circuit_state": "CLOSED",
+    "crash_count": 1,
+    "restart_number": 1,
+    "traceback": "2026-03-11T17:24:03 [INFO] TwitterWatcher: Starting TwitterWatcher (interval=300s)\n2026-03-11T17:24:03 [WARNING] TwitterWatcher: [WAITING] Twitter API credentials not set in .env. Set TWITTER_API_KEY, TWITTER_API_SECRET, TWITTER_ACCESS_TOKEN, TWITTER_ACCESS_SECRET. Sleeping until credentials are available."
+  },
+  {
+    "timestamp": "2026-03-11T18:59:34.102288+00:00",
+    "action_type": "orchestrator_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "Gold Tier orchestrator started | vault=D:\\aa-3\\hi\\ai-employee-bronze\\vault | dry_run=False"
+  },
+  {
+    "timestamp": "2026-03-11T18:59:46.093173+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "FileSystemWatcher started (PID=1924, restart=#1, circuit=CLOSED)",
+    "watcher": "FileSystemWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-03-11T18:59:46.133948+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "GmailWatcher started (PID=2384, restart=#1, circuit=CLOSED)",
+    "watcher": "GmailWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-03-11T18:59:46.174695+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "LinkedInWatcher started (PID=2184, restart=#1, circuit=CLOSED)",
+    "watcher": "LinkedInWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-03-11T18:59:46.228183+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "FacebookWatcher started (PID=6196, restart=#1, circuit=CLOSED)",
+    "watcher": "FacebookWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-03-11T18:59:46.290540+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "InstagramWatcher started (PID=4104, restart=#1, circuit=CLOSED)",
+    "watcher": "InstagramWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-03-11T18:59:46.389892+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "TwitterWatcher started (PID=4972, restart=#1, circuit=CLOSED)",
+    "watcher": "TwitterWatcher",
+    "circuit_state": "CLOSED"
+  }
+]

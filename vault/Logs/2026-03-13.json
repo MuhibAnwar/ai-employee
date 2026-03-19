@@ -1,0 +1,35 @@
+[
+  {
+    "timestamp": "2026-03-12T19:00:02.079113+00:00",
+    "action_type": "daily_summary",
+    "actor": "orchestrator",
+    "date": "2026-03-13",
+    "crash_counts": {
+      "FileSystemWatcher": 0,
+      "GmailWatcher": 0,
+      "LinkedInWatcher": 0,
+      "FacebookWatcher": 0,
+      "InstagramWatcher": 0,
+      "TwitterWatcher": 0
+    },
+    "total_crashes": 0,
+    "circuit_states": {
+      "FileSystemWatcher": "CLOSED",
+      "GmailWatcher": "CLOSED",
+      "LinkedInWatcher": "CLOSED",
+      "FacebookWatcher": "CLOSED",
+      "InstagramWatcher": "CLOSED",
+      "TwitterWatcher": "CLOSED"
+    },
+    "result": "success",
+    "notes": "Daily summary for 2026-03-13"
+  },
+  {
+    "timestamp": "2026-03-12T21:30:15.491894+00:00",
+    "action_type": "watcher_loop",
+    "actor": "GmailWatcher",
+    "source_file": "gmail_main",
+    "result": "error",
+    "notes": "[WinError 10054] An existing connection was forcibly closed by the remote host"
+  }
+]

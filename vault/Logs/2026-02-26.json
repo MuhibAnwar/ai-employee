@@ -1,0 +1,3008 @@
+[
+  {
+    "timestamp": "2026-02-26T16:59:39.958776+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "FileSystemWatcher started (PID=15116, restart=#148, circuit=CLOSED)",
+    "watcher": "FileSystemWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T16:59:39.973552+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "LinkedInWatcher started (PID=17704, restart=#148, circuit=CLOSED)",
+    "watcher": "LinkedInWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T16:59:40.006469+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "FacebookWatcher started (PID=392, restart=#148, circuit=CLOSED)",
+    "watcher": "FacebookWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T16:59:40.031622+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "InstagramWatcher started (PID=15784, restart=#148, circuit=CLOSED)",
+    "watcher": "InstagramWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T16:59:40.057295+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "TwitterWatcher started (PID=6024, restart=#148, circuit=CLOSED)",
+    "watcher": "TwitterWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T16:59:45.110872+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "GmailWatcher started (PID=15872, restart=#148, circuit=CLOSED)",
+    "watcher": "GmailWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T16:59:55.140575+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "FileSystemWatcher started (PID=17288, restart=#149, circuit=CLOSED)",
+    "watcher": "FileSystemWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T16:59:55.163227+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "LinkedInWatcher started (PID=5940, restart=#149, circuit=CLOSED)",
+    "watcher": "LinkedInWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T16:59:55.236380+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "FacebookWatcher started (PID=18424, restart=#149, circuit=CLOSED)",
+    "watcher": "FacebookWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T16:59:55.268920+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "InstagramWatcher started (PID=7228, restart=#149, circuit=CLOSED)",
+    "watcher": "InstagramWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T16:59:55.298492+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "TwitterWatcher started (PID=12868, restart=#149, circuit=CLOSED)",
+    "watcher": "TwitterWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:00:00.329596+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "GmailWatcher started (PID=16124, restart=#149, circuit=CLOSED)",
+    "watcher": "GmailWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:00:10.377448+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "FileSystemWatcher started (PID=2356, restart=#150, circuit=CLOSED)",
+    "watcher": "FileSystemWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:00:10.386752+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "LinkedInWatcher started (PID=3752, restart=#150, circuit=CLOSED)",
+    "watcher": "LinkedInWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:00:10.430505+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "FacebookWatcher started (PID=5128, restart=#150, circuit=CLOSED)",
+    "watcher": "FacebookWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:00:10.464747+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "InstagramWatcher started (PID=8564, restart=#150, circuit=CLOSED)",
+    "watcher": "InstagramWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:00:10.635170+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "TwitterWatcher started (PID=16792, restart=#150, circuit=CLOSED)",
+    "watcher": "TwitterWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:00:16.986980+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "GmailWatcher started (PID=4556, restart=#150, circuit=CLOSED)",
+    "watcher": "GmailWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:00:27.014862+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "FileSystemWatcher started (PID=15464, restart=#151, circuit=CLOSED)",
+    "watcher": "FileSystemWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:00:27.027412+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "LinkedInWatcher started (PID=11368, restart=#151, circuit=CLOSED)",
+    "watcher": "LinkedInWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:00:27.057803+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "FacebookWatcher started (PID=17456, restart=#151, circuit=CLOSED)",
+    "watcher": "FacebookWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:00:27.082516+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "InstagramWatcher started (PID=16420, restart=#151, circuit=CLOSED)",
+    "watcher": "InstagramWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:00:27.112717+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "TwitterWatcher started (PID=16312, restart=#151, circuit=CLOSED)",
+    "watcher": "TwitterWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:00:32.166340+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "GmailWatcher started (PID=1404, restart=#151, circuit=CLOSED)",
+    "watcher": "GmailWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:00:42.202200+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "FileSystemWatcher started (PID=19044, restart=#152, circuit=CLOSED)",
+    "watcher": "FileSystemWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:00:42.218448+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "LinkedInWatcher started (PID=14556, restart=#152, circuit=CLOSED)",
+    "watcher": "LinkedInWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:00:42.259694+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "FacebookWatcher started (PID=11412, restart=#152, circuit=CLOSED)",
+    "watcher": "FacebookWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:00:42.285132+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "InstagramWatcher started (PID=8676, restart=#152, circuit=CLOSED)",
+    "watcher": "InstagramWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:00:42.309156+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "TwitterWatcher started (PID=17004, restart=#152, circuit=CLOSED)",
+    "watcher": "TwitterWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:00:47.344600+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "GmailWatcher started (PID=15324, restart=#152, circuit=CLOSED)",
+    "watcher": "GmailWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:00:57.392914+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "FileSystemWatcher started (PID=9032, restart=#153, circuit=CLOSED)",
+    "watcher": "FileSystemWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:00:57.415373+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "LinkedInWatcher started (PID=3140, restart=#153, circuit=CLOSED)",
+    "watcher": "LinkedInWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:00:57.467363+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "FacebookWatcher started (PID=1908, restart=#153, circuit=CLOSED)",
+    "watcher": "FacebookWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:00:57.496949+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "InstagramWatcher started (PID=18032, restart=#153, circuit=CLOSED)",
+    "watcher": "InstagramWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:00:57.524736+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "TwitterWatcher started (PID=16128, restart=#153, circuit=CLOSED)",
+    "watcher": "TwitterWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:01:02.561191+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "GmailWatcher started (PID=13184, restart=#153, circuit=CLOSED)",
+    "watcher": "GmailWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:01:12.614987+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "FileSystemWatcher started (PID=3684, restart=#154, circuit=CLOSED)",
+    "watcher": "FileSystemWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:01:12.636683+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "LinkedInWatcher started (PID=7644, restart=#154, circuit=CLOSED)",
+    "watcher": "LinkedInWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:01:12.692575+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "FacebookWatcher started (PID=6972, restart=#154, circuit=CLOSED)",
+    "watcher": "FacebookWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:01:12.721626+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "InstagramWatcher started (PID=15684, restart=#154, circuit=CLOSED)",
+    "watcher": "InstagramWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:01:12.745505+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "TwitterWatcher started (PID=4424, restart=#154, circuit=CLOSED)",
+    "watcher": "TwitterWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T02:10:00Z",
+    "action_type": "approved_action_executed",
+    "actor": "claude_code",
+    "source_file": "vault/Approved/APPROVAL_20260226T020001_send_email_muhiblevels.md",
+    "result": "success",
+    "notes": "send_email | Sent to muhiblevels@gmail.com | message_id: 19c9ae333266424c | Moved to vault/Done/"
+  },
+  {
+    "timestamp": "2026-02-26T02:11:00Z",
+    "action_type": "dashboard_updated",
+    "actor": "claude_code",
+    "source_file": "vault/Dashboard.md",
+    "result": "success",
+    "notes": "inbox=2, needs_action=1, pending=0, done=19, watchers=6"
+  },
+  {
+    "timestamp": "2026-02-26T17:01:17.783393+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "GmailWatcher started (PID=1516, restart=#154, circuit=CLOSED)",
+    "watcher": "GmailWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:01:27.806680+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "FileSystemWatcher started (PID=14980, restart=#155, circuit=CLOSED)",
+    "watcher": "FileSystemWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:01:27.833255+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "LinkedInWatcher started (PID=10044, restart=#155, circuit=CLOSED)",
+    "watcher": "LinkedInWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:01:27.895934+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "FacebookWatcher started (PID=3348, restart=#155, circuit=CLOSED)",
+    "watcher": "FacebookWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:01:27.932545+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "InstagramWatcher started (PID=16256, restart=#155, circuit=CLOSED)",
+    "watcher": "InstagramWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:01:27.960802+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "TwitterWatcher started (PID=13936, restart=#155, circuit=CLOSED)",
+    "watcher": "TwitterWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:01:33.054197+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "GmailWatcher started (PID=17600, restart=#155, circuit=CLOSED)",
+    "watcher": "GmailWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:01:43.108154+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "FileSystemWatcher started (PID=17632, restart=#156, circuit=CLOSED)",
+    "watcher": "FileSystemWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:01:43.127561+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "LinkedInWatcher started (PID=18276, restart=#156, circuit=CLOSED)",
+    "watcher": "LinkedInWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:01:43.183410+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "FacebookWatcher started (PID=17784, restart=#156, circuit=CLOSED)",
+    "watcher": "FacebookWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:01:43.214585+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "InstagramWatcher started (PID=17752, restart=#156, circuit=CLOSED)",
+    "watcher": "InstagramWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:01:43.284147+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "TwitterWatcher started (PID=19164, restart=#156, circuit=CLOSED)",
+    "watcher": "TwitterWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:01:48.313324+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "GmailWatcher started (PID=18792, restart=#156, circuit=CLOSED)",
+    "watcher": "GmailWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:01:58.341853+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "FileSystemWatcher started (PID=7540, restart=#157, circuit=CLOSED)",
+    "watcher": "FileSystemWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:01:58.368897+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "LinkedInWatcher started (PID=10216, restart=#157, circuit=CLOSED)",
+    "watcher": "LinkedInWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:01:58.439619+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "FacebookWatcher started (PID=16120, restart=#157, circuit=CLOSED)",
+    "watcher": "FacebookWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:01:58.465089+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "InstagramWatcher started (PID=276, restart=#157, circuit=CLOSED)",
+    "watcher": "InstagramWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:01:58.502618+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "TwitterWatcher started (PID=14800, restart=#157, circuit=CLOSED)",
+    "watcher": "TwitterWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:02:03.547500+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "GmailWatcher started (PID=13184, restart=#157, circuit=CLOSED)",
+    "watcher": "GmailWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:02:13.564652+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "FileSystemWatcher started (PID=18448, restart=#158, circuit=CLOSED)",
+    "watcher": "FileSystemWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:02:13.591214+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "LinkedInWatcher started (PID=6240, restart=#158, circuit=CLOSED)",
+    "watcher": "LinkedInWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:02:13.671021+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "FacebookWatcher started (PID=17372, restart=#158, circuit=CLOSED)",
+    "watcher": "FacebookWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:02:13.698058+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "InstagramWatcher started (PID=1996, restart=#158, circuit=CLOSED)",
+    "watcher": "InstagramWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:02:13.726173+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "TwitterWatcher started (PID=2832, restart=#158, circuit=CLOSED)",
+    "watcher": "TwitterWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:02:18.759040+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "GmailWatcher started (PID=8500, restart=#158, circuit=CLOSED)",
+    "watcher": "GmailWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:02:28.802306+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "FileSystemWatcher started (PID=17976, restart=#159, circuit=CLOSED)",
+    "watcher": "FileSystemWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:02:28.825913+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "LinkedInWatcher started (PID=14040, restart=#159, circuit=CLOSED)",
+    "watcher": "LinkedInWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:02:28.890364+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "FacebookWatcher started (PID=16772, restart=#159, circuit=CLOSED)",
+    "watcher": "FacebookWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:02:28.921412+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "InstagramWatcher started (PID=11828, restart=#159, circuit=CLOSED)",
+    "watcher": "InstagramWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:02:28.954762+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "TwitterWatcher started (PID=16288, restart=#159, circuit=CLOSED)",
+    "watcher": "TwitterWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:02:34.021468+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "GmailWatcher started (PID=18408, restart=#159, circuit=CLOSED)",
+    "watcher": "GmailWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:02:44.242204+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "FileSystemWatcher started (PID=1492, restart=#160, circuit=CLOSED)",
+    "watcher": "FileSystemWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:02:44.268702+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "LinkedInWatcher started (PID=3156, restart=#160, circuit=CLOSED)",
+    "watcher": "LinkedInWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:02:44.315610+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "FacebookWatcher started (PID=10532, restart=#160, circuit=CLOSED)",
+    "watcher": "FacebookWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:02:44.346227+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "InstagramWatcher started (PID=1268, restart=#160, circuit=CLOSED)",
+    "watcher": "InstagramWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:02:44.377198+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "TwitterWatcher started (PID=17640, restart=#160, circuit=CLOSED)",
+    "watcher": "TwitterWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:02:49.478259+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "GmailWatcher started (PID=32, restart=#160, circuit=CLOSED)",
+    "watcher": "GmailWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:02:59.510584+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "FileSystemWatcher started (PID=7160, restart=#161, circuit=CLOSED)",
+    "watcher": "FileSystemWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:02:59.516826+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "LinkedInWatcher started (PID=7768, restart=#161, circuit=CLOSED)",
+    "watcher": "LinkedInWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:02:59.550951+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "FacebookWatcher started (PID=10504, restart=#161, circuit=CLOSED)",
+    "watcher": "FacebookWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:02:59.577698+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "InstagramWatcher started (PID=4320, restart=#161, circuit=CLOSED)",
+    "watcher": "InstagramWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:02:59.627392+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "TwitterWatcher started (PID=18448, restart=#161, circuit=CLOSED)",
+    "watcher": "TwitterWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:03:04.662637+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "GmailWatcher started (PID=18152, restart=#161, circuit=CLOSED)",
+    "watcher": "GmailWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:03:14.698218+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "FileSystemWatcher started (PID=1156, restart=#162, circuit=CLOSED)",
+    "watcher": "FileSystemWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:03:14.728762+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "LinkedInWatcher started (PID=7296, restart=#162, circuit=CLOSED)",
+    "watcher": "LinkedInWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:03:14.793063+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "FacebookWatcher started (PID=19116, restart=#162, circuit=CLOSED)",
+    "watcher": "FacebookWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:03:14.825772+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "InstagramWatcher started (PID=9636, restart=#162, circuit=CLOSED)",
+    "watcher": "InstagramWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:03:14.850383+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "TwitterWatcher started (PID=11512, restart=#162, circuit=CLOSED)",
+    "watcher": "TwitterWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:03:19.886619+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "GmailWatcher started (PID=8684, restart=#162, circuit=CLOSED)",
+    "watcher": "GmailWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:03:29.920967+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "FileSystemWatcher started (PID=18108, restart=#163, circuit=CLOSED)",
+    "watcher": "FileSystemWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:03:29.932823+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "LinkedInWatcher started (PID=14244, restart=#163, circuit=CLOSED)",
+    "watcher": "LinkedInWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:03:29.977280+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "FacebookWatcher started (PID=13472, restart=#163, circuit=CLOSED)",
+    "watcher": "FacebookWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:03:30.023600+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "InstagramWatcher started (PID=7648, restart=#163, circuit=CLOSED)",
+    "watcher": "InstagramWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:03:30.048146+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "TwitterWatcher started (PID=12400, restart=#163, circuit=CLOSED)",
+    "watcher": "TwitterWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:03:35.078633+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "GmailWatcher started (PID=4488, restart=#163, circuit=CLOSED)",
+    "watcher": "GmailWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:03:45.096277+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "FileSystemWatcher started (PID=432, restart=#164, circuit=CLOSED)",
+    "watcher": "FileSystemWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:03:45.104786+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "LinkedInWatcher started (PID=9004, restart=#164, circuit=CLOSED)",
+    "watcher": "LinkedInWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:03:45.205533+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "FacebookWatcher started (PID=10148, restart=#164, circuit=CLOSED)",
+    "watcher": "FacebookWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:03:45.244700+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "InstagramWatcher started (PID=12892, restart=#164, circuit=CLOSED)",
+    "watcher": "InstagramWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:03:45.330351+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "TwitterWatcher started (PID=1628, restart=#164, circuit=CLOSED)",
+    "watcher": "TwitterWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:03:50.360750+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "GmailWatcher started (PID=8560, restart=#164, circuit=CLOSED)",
+    "watcher": "GmailWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:04:00.391507+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "FileSystemWatcher started (PID=10044, restart=#165, circuit=CLOSED)",
+    "watcher": "FileSystemWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:04:00.418224+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "LinkedInWatcher started (PID=2548, restart=#165, circuit=CLOSED)",
+    "watcher": "LinkedInWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:04:00.458717+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "FacebookWatcher started (PID=7644, restart=#165, circuit=CLOSED)",
+    "watcher": "FacebookWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:04:00.490914+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "InstagramWatcher started (PID=6496, restart=#165, circuit=CLOSED)",
+    "watcher": "InstagramWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:04:00.521107+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "TwitterWatcher started (PID=12784, restart=#165, circuit=CLOSED)",
+    "watcher": "TwitterWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:04:05.557314+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "GmailWatcher started (PID=16692, restart=#165, circuit=CLOSED)",
+    "watcher": "GmailWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:04:15.619460+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "FileSystemWatcher started (PID=18164, restart=#166, circuit=CLOSED)",
+    "watcher": "FileSystemWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:04:15.654645+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "LinkedInWatcher started (PID=11828, restart=#166, circuit=CLOSED)",
+    "watcher": "LinkedInWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:04:15.706063+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "FacebookWatcher started (PID=8060, restart=#166, circuit=CLOSED)",
+    "watcher": "FacebookWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:04:15.736667+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "InstagramWatcher started (PID=6124, restart=#166, circuit=CLOSED)",
+    "watcher": "InstagramWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:04:15.769141+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "TwitterWatcher started (PID=16008, restart=#166, circuit=CLOSED)",
+    "watcher": "TwitterWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:04:20.804173+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "GmailWatcher started (PID=1012, restart=#166, circuit=CLOSED)",
+    "watcher": "GmailWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:04:30.855267+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "FileSystemWatcher started (PID=12852, restart=#167, circuit=CLOSED)",
+    "watcher": "FileSystemWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:04:30.883850+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "LinkedInWatcher started (PID=17824, restart=#167, circuit=CLOSED)",
+    "watcher": "LinkedInWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:04:30.935605+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "FacebookWatcher started (PID=14340, restart=#167, circuit=CLOSED)",
+    "watcher": "FacebookWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:04:30.973514+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "InstagramWatcher started (PID=8984, restart=#167, circuit=CLOSED)",
+    "watcher": "InstagramWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:04:31.015789+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "TwitterWatcher started (PID=17688, restart=#167, circuit=CLOSED)",
+    "watcher": "TwitterWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:04:36.055007+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "GmailWatcher started (PID=9004, restart=#167, circuit=CLOSED)",
+    "watcher": "GmailWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:04:46.143270+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "FileSystemWatcher started (PID=10220, restart=#168, circuit=CLOSED)",
+    "watcher": "FileSystemWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:04:46.161798+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "LinkedInWatcher started (PID=5908, restart=#168, circuit=CLOSED)",
+    "watcher": "LinkedInWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:04:46.221769+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "FacebookWatcher started (PID=5476, restart=#168, circuit=CLOSED)",
+    "watcher": "FacebookWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:04:46.268361+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "InstagramWatcher started (PID=3196, restart=#168, circuit=CLOSED)",
+    "watcher": "InstagramWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:04:46.352210+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "TwitterWatcher started (PID=17608, restart=#168, circuit=CLOSED)",
+    "watcher": "TwitterWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:04:51.392217+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "GmailWatcher started (PID=3428, restart=#168, circuit=CLOSED)",
+    "watcher": "GmailWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:05:01.520683+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "FileSystemWatcher started (PID=18004, restart=#169, circuit=CLOSED)",
+    "watcher": "FileSystemWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:05:01.615186+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "LinkedInWatcher started (PID=17848, restart=#169, circuit=CLOSED)",
+    "watcher": "LinkedInWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:05:01.654186+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "FacebookWatcher started (PID=1972, restart=#169, circuit=CLOSED)",
+    "watcher": "FacebookWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:05:01.703791+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "InstagramWatcher started (PID=2044, restart=#169, circuit=CLOSED)",
+    "watcher": "InstagramWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:05:01.732618+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "TwitterWatcher started (PID=15368, restart=#169, circuit=CLOSED)",
+    "watcher": "TwitterWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:05:06.774438+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "GmailWatcher started (PID=18092, restart=#169, circuit=CLOSED)",
+    "watcher": "GmailWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:05:16.790662+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "FileSystemWatcher started (PID=7556, restart=#170, circuit=CLOSED)",
+    "watcher": "FileSystemWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:05:16.799385+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "LinkedInWatcher started (PID=1012, restart=#170, circuit=CLOSED)",
+    "watcher": "LinkedInWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:05:16.840200+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "FacebookWatcher started (PID=19332, restart=#170, circuit=CLOSED)",
+    "watcher": "FacebookWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:05:16.867988+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "InstagramWatcher started (PID=14068, restart=#170, circuit=CLOSED)",
+    "watcher": "InstagramWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:05:16.895619+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "TwitterWatcher started (PID=13496, restart=#170, circuit=CLOSED)",
+    "watcher": "TwitterWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:05:21.930577+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "GmailWatcher started (PID=1400, restart=#170, circuit=CLOSED)",
+    "watcher": "GmailWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:05:31.948368+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "FileSystemWatcher started (PID=11376, restart=#171, circuit=CLOSED)",
+    "watcher": "FileSystemWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:05:31.957409+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "LinkedInWatcher started (PID=15600, restart=#171, circuit=CLOSED)",
+    "watcher": "LinkedInWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:05:32.008450+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "FacebookWatcher started (PID=19024, restart=#171, circuit=CLOSED)",
+    "watcher": "FacebookWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:05:32.068662+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "InstagramWatcher started (PID=13376, restart=#171, circuit=CLOSED)",
+    "watcher": "InstagramWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:05:32.096748+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "TwitterWatcher started (PID=19260, restart=#171, circuit=CLOSED)",
+    "watcher": "TwitterWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:05:37.126283+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "GmailWatcher started (PID=2060, restart=#171, circuit=CLOSED)",
+    "watcher": "GmailWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:05:47.181034+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "FileSystemWatcher started (PID=9268, restart=#172, circuit=CLOSED)",
+    "watcher": "FileSystemWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:05:47.200139+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "LinkedInWatcher started (PID=5668, restart=#172, circuit=CLOSED)",
+    "watcher": "LinkedInWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:05:47.227479+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "FacebookWatcher started (PID=16556, restart=#172, circuit=CLOSED)",
+    "watcher": "FacebookWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:05:47.254994+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "InstagramWatcher started (PID=4420, restart=#172, circuit=CLOSED)",
+    "watcher": "InstagramWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:05:47.281719+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "TwitterWatcher started (PID=11532, restart=#172, circuit=CLOSED)",
+    "watcher": "TwitterWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:05:52.316038+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "GmailWatcher started (PID=10220, restart=#172, circuit=CLOSED)",
+    "watcher": "GmailWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:06:02.342093+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "FileSystemWatcher started (PID=18448, restart=#173, circuit=CLOSED)",
+    "watcher": "FileSystemWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:06:02.364376+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "LinkedInWatcher started (PID=13480, restart=#173, circuit=CLOSED)",
+    "watcher": "LinkedInWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:06:02.408526+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "FacebookWatcher started (PID=17312, restart=#173, circuit=CLOSED)",
+    "watcher": "FacebookWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:06:02.436608+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "InstagramWatcher started (PID=280, restart=#173, circuit=CLOSED)",
+    "watcher": "InstagramWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:06:02.487170+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "TwitterWatcher started (PID=19032, restart=#173, circuit=CLOSED)",
+    "watcher": "TwitterWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:06:07.516749+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "GmailWatcher started (PID=15104, restart=#173, circuit=CLOSED)",
+    "watcher": "GmailWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:06:17.536420+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "FileSystemWatcher started (PID=1492, restart=#174, circuit=CLOSED)",
+    "watcher": "FileSystemWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:06:17.547965+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "LinkedInWatcher started (PID=11644, restart=#174, circuit=CLOSED)",
+    "watcher": "LinkedInWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:06:17.601825+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "FacebookWatcher started (PID=9264, restart=#174, circuit=CLOSED)",
+    "watcher": "FacebookWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:06:17.654589+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "InstagramWatcher started (PID=17092, restart=#174, circuit=CLOSED)",
+    "watcher": "InstagramWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:06:17.795653+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "TwitterWatcher started (PID=17212, restart=#174, circuit=CLOSED)",
+    "watcher": "TwitterWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:06:23.056285+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "GmailWatcher started (PID=3428, restart=#174, circuit=CLOSED)",
+    "watcher": "GmailWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:06:33.160510+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "FileSystemWatcher started (PID=15480, restart=#175, circuit=CLOSED)",
+    "watcher": "FileSystemWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:06:33.171700+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "LinkedInWatcher started (PID=16884, restart=#175, circuit=CLOSED)",
+    "watcher": "LinkedInWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:06:33.228677+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "FacebookWatcher started (PID=16968, restart=#175, circuit=CLOSED)",
+    "watcher": "FacebookWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:06:33.309403+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "InstagramWatcher started (PID=10244, restart=#175, circuit=CLOSED)",
+    "watcher": "InstagramWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:06:33.376133+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "TwitterWatcher started (PID=14164, restart=#175, circuit=CLOSED)",
+    "watcher": "TwitterWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:06:38.436620+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "GmailWatcher started (PID=148, restart=#175, circuit=CLOSED)",
+    "watcher": "GmailWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:06:48.494329+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "FileSystemWatcher started (PID=15656, restart=#176, circuit=CLOSED)",
+    "watcher": "FileSystemWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:06:48.528977+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "LinkedInWatcher started (PID=18848, restart=#176, circuit=CLOSED)",
+    "watcher": "LinkedInWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:06:48.569626+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "FacebookWatcher started (PID=5020, restart=#176, circuit=CLOSED)",
+    "watcher": "FacebookWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:06:48.610945+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "InstagramWatcher started (PID=18140, restart=#176, circuit=CLOSED)",
+    "watcher": "InstagramWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:06:48.643993+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "TwitterWatcher started (PID=14560, restart=#176, circuit=CLOSED)",
+    "watcher": "TwitterWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:06:53.725968+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "GmailWatcher started (PID=1168, restart=#176, circuit=CLOSED)",
+    "watcher": "GmailWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:07:03.777296+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "FileSystemWatcher started (PID=1996, restart=#177, circuit=CLOSED)",
+    "watcher": "FileSystemWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:07:03.822356+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "LinkedInWatcher started (PID=5316, restart=#177, circuit=CLOSED)",
+    "watcher": "LinkedInWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:07:03.893690+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "FacebookWatcher started (PID=9116, restart=#177, circuit=CLOSED)",
+    "watcher": "FacebookWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:07:03.931576+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "InstagramWatcher started (PID=16720, restart=#177, circuit=CLOSED)",
+    "watcher": "InstagramWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:07:03.973838+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "TwitterWatcher started (PID=14888, restart=#177, circuit=CLOSED)",
+    "watcher": "TwitterWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:07:09.014836+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "GmailWatcher started (PID=18428, restart=#177, circuit=CLOSED)",
+    "watcher": "GmailWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:07:19.083868+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "FileSystemWatcher started (PID=7312, restart=#178, circuit=CLOSED)",
+    "watcher": "FileSystemWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:07:19.131889+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "LinkedInWatcher started (PID=12852, restart=#178, circuit=CLOSED)",
+    "watcher": "LinkedInWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:07:19.173712+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "FacebookWatcher started (PID=17360, restart=#178, circuit=CLOSED)",
+    "watcher": "FacebookWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:07:19.223271+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "InstagramWatcher started (PID=5636, restart=#178, circuit=CLOSED)",
+    "watcher": "InstagramWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:07:19.270306+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "TwitterWatcher started (PID=19172, restart=#178, circuit=CLOSED)",
+    "watcher": "TwitterWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:07:24.302113+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "GmailWatcher started (PID=17560, restart=#178, circuit=CLOSED)",
+    "watcher": "GmailWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:07:34.379960+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "FileSystemWatcher started (PID=18976, restart=#179, circuit=CLOSED)",
+    "watcher": "FileSystemWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:07:34.393733+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "LinkedInWatcher started (PID=3652, restart=#179, circuit=CLOSED)",
+    "watcher": "LinkedInWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:07:34.447707+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "FacebookWatcher started (PID=17656, restart=#179, circuit=CLOSED)",
+    "watcher": "FacebookWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:07:34.588910+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "InstagramWatcher started (PID=19076, restart=#179, circuit=CLOSED)",
+    "watcher": "InstagramWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:07:34.636885+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "TwitterWatcher started (PID=4120, restart=#179, circuit=CLOSED)",
+    "watcher": "TwitterWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:07:39.753592+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "GmailWatcher started (PID=13096, restart=#179, circuit=CLOSED)",
+    "watcher": "GmailWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:07:49.767384+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "FileSystemWatcher started (PID=18636, restart=#180, circuit=CLOSED)",
+    "watcher": "FileSystemWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:07:49.784263+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "LinkedInWatcher started (PID=1416, restart=#180, circuit=CLOSED)",
+    "watcher": "LinkedInWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:07:49.821926+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "FacebookWatcher started (PID=15748, restart=#180, circuit=CLOSED)",
+    "watcher": "FacebookWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:07:49.912039+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "InstagramWatcher started (PID=4656, restart=#180, circuit=CLOSED)",
+    "watcher": "InstagramWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:07:49.953241+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "TwitterWatcher started (PID=7244, restart=#180, circuit=CLOSED)",
+    "watcher": "TwitterWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:07:54.990783+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "GmailWatcher started (PID=19284, restart=#180, circuit=CLOSED)",
+    "watcher": "GmailWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:08:05.022454+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "FileSystemWatcher started (PID=14068, restart=#181, circuit=CLOSED)",
+    "watcher": "FileSystemWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:08:05.035770+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "LinkedInWatcher started (PID=18408, restart=#181, circuit=CLOSED)",
+    "watcher": "LinkedInWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:08:05.080168+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "FacebookWatcher started (PID=19404, restart=#181, circuit=CLOSED)",
+    "watcher": "FacebookWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:08:05.114584+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "InstagramWatcher started (PID=8720, restart=#181, circuit=CLOSED)",
+    "watcher": "InstagramWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:08:05.146136+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "TwitterWatcher started (PID=16640, restart=#181, circuit=CLOSED)",
+    "watcher": "TwitterWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:08:10.223212+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "GmailWatcher started (PID=1400, restart=#181, circuit=CLOSED)",
+    "watcher": "GmailWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:08:20.283961+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "FileSystemWatcher started (PID=17044, restart=#182, circuit=CLOSED)",
+    "watcher": "FileSystemWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:08:20.342404+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "LinkedInWatcher started (PID=2916, restart=#182, circuit=CLOSED)",
+    "watcher": "LinkedInWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:08:20.391762+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "FacebookWatcher started (PID=14076, restart=#182, circuit=CLOSED)",
+    "watcher": "FacebookWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:08:20.432468+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "InstagramWatcher started (PID=5476, restart=#182, circuit=CLOSED)",
+    "watcher": "InstagramWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:08:20.466069+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "TwitterWatcher started (PID=12768, restart=#182, circuit=CLOSED)",
+    "watcher": "TwitterWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:08:25.499230+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "GmailWatcher started (PID=16064, restart=#182, circuit=CLOSED)",
+    "watcher": "GmailWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:08:35.531529+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "FileSystemWatcher started (PID=15456, restart=#183, circuit=CLOSED)",
+    "watcher": "FileSystemWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:08:35.582238+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "LinkedInWatcher started (PID=16208, restart=#183, circuit=CLOSED)",
+    "watcher": "LinkedInWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:08:35.638408+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "FacebookWatcher started (PID=16624, restart=#183, circuit=CLOSED)",
+    "watcher": "FacebookWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:08:35.674641+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "InstagramWatcher started (PID=16848, restart=#183, circuit=CLOSED)",
+    "watcher": "InstagramWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:08:35.707171+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "TwitterWatcher started (PID=12384, restart=#183, circuit=CLOSED)",
+    "watcher": "TwitterWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:08:40.748828+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "GmailWatcher started (PID=2144, restart=#183, circuit=CLOSED)",
+    "watcher": "GmailWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:08:50.792065+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "FileSystemWatcher started (PID=13480, restart=#184, circuit=CLOSED)",
+    "watcher": "FileSystemWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:08:50.827848+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "LinkedInWatcher started (PID=8444, restart=#184, circuit=CLOSED)",
+    "watcher": "LinkedInWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:08:50.882249+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "FacebookWatcher started (PID=5132, restart=#184, circuit=CLOSED)",
+    "watcher": "FacebookWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:08:50.912616+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "InstagramWatcher started (PID=13668, restart=#184, circuit=CLOSED)",
+    "watcher": "InstagramWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:08:50.941978+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "TwitterWatcher started (PID=6800, restart=#184, circuit=CLOSED)",
+    "watcher": "TwitterWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:08:55.982956+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "GmailWatcher started (PID=16128, restart=#184, circuit=CLOSED)",
+    "watcher": "GmailWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:09:06.030540+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "FileSystemWatcher started (PID=10872, restart=#185, circuit=CLOSED)",
+    "watcher": "FileSystemWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:09:06.075562+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "LinkedInWatcher started (PID=6216, restart=#185, circuit=CLOSED)",
+    "watcher": "LinkedInWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:09:06.130950+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "FacebookWatcher started (PID=7268, restart=#185, circuit=CLOSED)",
+    "watcher": "FacebookWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:09:06.160188+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "InstagramWatcher started (PID=7792, restart=#185, circuit=CLOSED)",
+    "watcher": "InstagramWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:09:06.193047+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "TwitterWatcher started (PID=12580, restart=#185, circuit=CLOSED)",
+    "watcher": "TwitterWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:09:11.230316+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "GmailWatcher started (PID=1492, restart=#185, circuit=CLOSED)",
+    "watcher": "GmailWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:09:21.278602+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "FileSystemWatcher started (PID=15440, restart=#186, circuit=CLOSED)",
+    "watcher": "FileSystemWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:09:21.311737+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "LinkedInWatcher started (PID=15356, restart=#186, circuit=CLOSED)",
+    "watcher": "LinkedInWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:09:21.366285+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "FacebookWatcher started (PID=8432, restart=#186, circuit=CLOSED)",
+    "watcher": "FacebookWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:09:21.407539+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "InstagramWatcher started (PID=16356, restart=#186, circuit=CLOSED)",
+    "watcher": "InstagramWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:09:21.436440+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "TwitterWatcher started (PID=1264, restart=#186, circuit=CLOSED)",
+    "watcher": "TwitterWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:09:26.483445+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "GmailWatcher started (PID=1216, restart=#186, circuit=CLOSED)",
+    "watcher": "GmailWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:09:36.534414+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "FileSystemWatcher started (PID=5992, restart=#187, circuit=CLOSED)",
+    "watcher": "FileSystemWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:09:36.569671+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "LinkedInWatcher started (PID=15156, restart=#187, circuit=CLOSED)",
+    "watcher": "LinkedInWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:09:36.629015+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "FacebookWatcher started (PID=8560, restart=#187, circuit=CLOSED)",
+    "watcher": "FacebookWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:09:36.661075+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "InstagramWatcher started (PID=8564, restart=#187, circuit=CLOSED)",
+    "watcher": "InstagramWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:09:36.691749+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "TwitterWatcher started (PID=7544, restart=#187, circuit=CLOSED)",
+    "watcher": "TwitterWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:09:41.730882+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "GmailWatcher started (PID=15284, restart=#187, circuit=CLOSED)",
+    "watcher": "GmailWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:09:51.800636+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "FileSystemWatcher started (PID=2348, restart=#188, circuit=CLOSED)",
+    "watcher": "FileSystemWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:09:51.822482+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "LinkedInWatcher started (PID=18016, restart=#188, circuit=CLOSED)",
+    "watcher": "LinkedInWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:09:51.934388+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "FacebookWatcher started (PID=9496, restart=#188, circuit=CLOSED)",
+    "watcher": "FacebookWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:09:51.977573+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "InstagramWatcher started (PID=16440, restart=#188, circuit=CLOSED)",
+    "watcher": "InstagramWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:09:52.014342+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "TwitterWatcher started (PID=18276, restart=#188, circuit=CLOSED)",
+    "watcher": "TwitterWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:09:57.069753+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "GmailWatcher started (PID=1188, restart=#188, circuit=CLOSED)",
+    "watcher": "GmailWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:10:07.103207+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "FileSystemWatcher started (PID=18684, restart=#189, circuit=CLOSED)",
+    "watcher": "FileSystemWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:10:07.125570+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "LinkedInWatcher started (PID=17764, restart=#189, circuit=CLOSED)",
+    "watcher": "LinkedInWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:10:07.165995+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "FacebookWatcher started (PID=15764, restart=#189, circuit=CLOSED)",
+    "watcher": "FacebookWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:10:07.198651+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "InstagramWatcher started (PID=6984, restart=#189, circuit=CLOSED)",
+    "watcher": "InstagramWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:10:07.242051+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "TwitterWatcher started (PID=17240, restart=#189, circuit=CLOSED)",
+    "watcher": "TwitterWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:10:12.287295+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "GmailWatcher started (PID=18428, restart=#189, circuit=CLOSED)",
+    "watcher": "GmailWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:10:22.354908+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "FileSystemWatcher started (PID=12512, restart=#190, circuit=CLOSED)",
+    "watcher": "FileSystemWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:10:22.389179+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "LinkedInWatcher started (PID=12360, restart=#190, circuit=CLOSED)",
+    "watcher": "LinkedInWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:10:22.439501+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "FacebookWatcher started (PID=11964, restart=#190, circuit=CLOSED)",
+    "watcher": "FacebookWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:10:22.473748+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "InstagramWatcher started (PID=17360, restart=#190, circuit=CLOSED)",
+    "watcher": "InstagramWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:10:22.503315+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "TwitterWatcher started (PID=19172, restart=#190, circuit=CLOSED)",
+    "watcher": "TwitterWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:10:27.542575+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "GmailWatcher started (PID=18000, restart=#190, circuit=CLOSED)",
+    "watcher": "GmailWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:10:37.593886+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "FileSystemWatcher started (PID=5192, restart=#191, circuit=CLOSED)",
+    "watcher": "FileSystemWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:10:37.629187+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "LinkedInWatcher started (PID=14380, restart=#191, circuit=CLOSED)",
+    "watcher": "LinkedInWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:10:37.680086+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "FacebookWatcher started (PID=8728, restart=#191, circuit=CLOSED)",
+    "watcher": "FacebookWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:10:37.713857+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "InstagramWatcher started (PID=1432, restart=#191, circuit=CLOSED)",
+    "watcher": "InstagramWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:10:37.783363+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "TwitterWatcher started (PID=18384, restart=#191, circuit=CLOSED)",
+    "watcher": "TwitterWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:10:42.822947+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "GmailWatcher started (PID=13708, restart=#191, circuit=CLOSED)",
+    "watcher": "GmailWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:10:52.885766+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "FileSystemWatcher started (PID=16124, restart=#192, circuit=CLOSED)",
+    "watcher": "FileSystemWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:10:52.930832+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "LinkedInWatcher started (PID=4956, restart=#192, circuit=CLOSED)",
+    "watcher": "LinkedInWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:10:52.978354+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "FacebookWatcher started (PID=17780, restart=#192, circuit=CLOSED)",
+    "watcher": "FacebookWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:10:53.011940+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "InstagramWatcher started (PID=16824, restart=#192, circuit=CLOSED)",
+    "watcher": "InstagramWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:10:53.041585+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "TwitterWatcher started (PID=16892, restart=#192, circuit=CLOSED)",
+    "watcher": "TwitterWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:10:58.076865+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "GmailWatcher started (PID=276, restart=#192, circuit=CLOSED)",
+    "watcher": "GmailWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:11:08.121950+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "FileSystemWatcher started (PID=5228, restart=#193, circuit=CLOSED)",
+    "watcher": "FileSystemWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:11:08.146309+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "LinkedInWatcher started (PID=19132, restart=#193, circuit=CLOSED)",
+    "watcher": "LinkedInWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:11:08.189000+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "FacebookWatcher started (PID=8260, restart=#193, circuit=CLOSED)",
+    "watcher": "FacebookWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:11:08.217451+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "InstagramWatcher started (PID=18892, restart=#193, circuit=CLOSED)",
+    "watcher": "InstagramWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:11:08.250740+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "TwitterWatcher started (PID=10560, restart=#193, circuit=CLOSED)",
+    "watcher": "TwitterWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:11:13.292074+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "GmailWatcher started (PID=12888, restart=#193, circuit=CLOSED)",
+    "watcher": "GmailWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:11:23.348143+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "FileSystemWatcher started (PID=10624, restart=#194, circuit=CLOSED)",
+    "watcher": "FileSystemWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:11:23.387918+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "LinkedInWatcher started (PID=18436, restart=#194, circuit=CLOSED)",
+    "watcher": "LinkedInWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:11:23.438111+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "FacebookWatcher started (PID=19404, restart=#194, circuit=CLOSED)",
+    "watcher": "FacebookWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:11:23.470845+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "InstagramWatcher started (PID=4996, restart=#194, circuit=CLOSED)",
+    "watcher": "InstagramWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:11:23.504737+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "TwitterWatcher started (PID=17592, restart=#194, circuit=CLOSED)",
+    "watcher": "TwitterWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:11:28.551674+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "GmailWatcher started (PID=13740, restart=#194, circuit=CLOSED)",
+    "watcher": "GmailWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:11:38.599393+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "FileSystemWatcher started (PID=12152, restart=#195, circuit=CLOSED)",
+    "watcher": "FileSystemWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:11:38.625187+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "LinkedInWatcher started (PID=19204, restart=#195, circuit=CLOSED)",
+    "watcher": "LinkedInWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:11:38.675866+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "FacebookWatcher started (PID=15732, restart=#195, circuit=CLOSED)",
+    "watcher": "FacebookWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:11:38.818374+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "InstagramWatcher started (PID=18148, restart=#195, circuit=CLOSED)",
+    "watcher": "InstagramWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:11:38.858396+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "TwitterWatcher started (PID=6632, restart=#195, circuit=CLOSED)",
+    "watcher": "TwitterWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:11:43.901887+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "GmailWatcher started (PID=17364, restart=#195, circuit=CLOSED)",
+    "watcher": "GmailWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:11:53.957873+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "FileSystemWatcher started (PID=15432, restart=#196, circuit=CLOSED)",
+    "watcher": "FileSystemWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:11:54.001687+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "LinkedInWatcher started (PID=8676, restart=#196, circuit=CLOSED)",
+    "watcher": "LinkedInWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:11:54.072418+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "FacebookWatcher started (PID=16208, restart=#196, circuit=CLOSED)",
+    "watcher": "FacebookWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:11:54.104239+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "InstagramWatcher started (PID=12384, restart=#196, circuit=CLOSED)",
+    "watcher": "InstagramWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:11:54.145468+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "TwitterWatcher started (PID=16008, restart=#196, circuit=CLOSED)",
+    "watcher": "TwitterWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:11:59.177075+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "GmailWatcher started (PID=6168, restart=#196, circuit=CLOSED)",
+    "watcher": "GmailWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:12:09.204218+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "FileSystemWatcher started (PID=5576, restart=#197, circuit=CLOSED)",
+    "watcher": "FileSystemWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:12:09.215887+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "LinkedInWatcher started (PID=12500, restart=#197, circuit=CLOSED)",
+    "watcher": "LinkedInWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:12:09.250757+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "FacebookWatcher started (PID=17336, restart=#197, circuit=CLOSED)",
+    "watcher": "FacebookWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:12:09.289782+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "InstagramWatcher started (PID=13668, restart=#197, circuit=CLOSED)",
+    "watcher": "InstagramWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-02-26T17:12:09.322669+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "TwitterWatcher started (PID=15104, restart=#197, circuit=CLOSED)",
+    "watcher": "TwitterWatcher",
+    "circuit_state": "CLOSED"
+  }
+]

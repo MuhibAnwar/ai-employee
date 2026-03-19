@@ -1,0 +1,123 @@
+[
+  {
+    "timestamp": "2026-03-06T19:00:01.705343+00:00",
+    "action_type": "daily_summary",
+    "actor": "orchestrator",
+    "date": "2026-03-07",
+    "crash_counts": {
+      "FileSystemWatcher": 0,
+      "GmailWatcher": 0,
+      "LinkedInWatcher": 0,
+      "FacebookWatcher": 0,
+      "InstagramWatcher": 0,
+      "TwitterWatcher": 0
+    },
+    "total_crashes": 0,
+    "circuit_states": {
+      "FileSystemWatcher": "CLOSED",
+      "GmailWatcher": "CLOSED",
+      "LinkedInWatcher": "CLOSED",
+      "FacebookWatcher": "CLOSED",
+      "InstagramWatcher": "CLOSED",
+      "TwitterWatcher": "CLOSED"
+    },
+    "result": "success",
+    "notes": "Daily summary for 2026-03-07"
+  },
+  {
+    "timestamp": "2026-03-06T19:46:06.251733+00:00",
+    "action_type": "watcher_loop",
+    "actor": "GmailWatcher",
+    "source_file": "gmail_main",
+    "result": "error",
+    "notes": "[WinError 10054] An existing connection was forcibly closed by the remote host"
+  },
+  {
+    "timestamp": "2026-03-06T19:48:06.349907+00:00",
+    "action_type": "watcher_loop",
+    "actor": "GmailWatcher",
+    "source_file": "gmail_main",
+    "result": "error",
+    "notes": "Unable to find the server at gmail.googleapis.com"
+  },
+  {
+    "timestamp": "2026-03-06T19:50:06.387057+00:00",
+    "action_type": "watcher_loop",
+    "actor": "GmailWatcher",
+    "source_file": "gmail_main",
+    "result": "error",
+    "notes": "Unable to find the server at gmail.googleapis.com"
+  },
+  {
+    "timestamp": "2026-03-06T19:52:06.413677+00:00",
+    "action_type": "watcher_loop",
+    "actor": "GmailWatcher",
+    "source_file": "gmail_main",
+    "result": "error",
+    "notes": "Unable to find the server at gmail.googleapis.com"
+  },
+  {
+    "timestamp": "2026-03-06T19:54:06.448584+00:00",
+    "action_type": "watcher_loop",
+    "actor": "GmailWatcher",
+    "source_file": "gmail_main",
+    "result": "error",
+    "notes": "Unable to find the server at gmail.googleapis.com"
+  },
+  {
+    "timestamp": "2026-03-06T20:24:00.116583+00:00",
+    "action_type": "watcher_loop",
+    "actor": "GmailWatcher",
+    "source_file": "gmail_main",
+    "result": "error",
+    "notes": "[Errno 11001] getaddrinfo failed"
+  },
+  {
+    "timestamp": "2026-03-06T20:26:00.161403+00:00",
+    "action_type": "watcher_loop",
+    "actor": "GmailWatcher",
+    "source_file": "gmail_main",
+    "result": "error",
+    "notes": "Unable to find the server at oauth2.googleapis.com"
+  },
+  {
+    "timestamp": "2026-03-06T20:28:00.192953+00:00",
+    "action_type": "watcher_loop",
+    "actor": "GmailWatcher",
+    "source_file": "gmail_main",
+    "result": "error",
+    "notes": "Unable to find the server at oauth2.googleapis.com"
+  },
+  {
+    "timestamp": "2026-03-06T20:30:00.224413+00:00",
+    "action_type": "watcher_loop",
+    "actor": "GmailWatcher",
+    "source_file": "gmail_main",
+    "result": "error",
+    "notes": "Unable to find the server at oauth2.googleapis.com"
+  },
+  {
+    "timestamp": "2026-03-06T20:32:00.264427+00:00",
+    "action_type": "watcher_loop",
+    "actor": "GmailWatcher",
+    "source_file": "gmail_main",
+    "result": "error",
+    "notes": "Unable to find the server at oauth2.googleapis.com"
+  },
+  {
+    "timestamp": "2026-03-06T20:34:00.328006+00:00",
+    "action_type": "watcher_loop",
+    "actor": "GmailWatcher",
+    "source_file": "gmail_main",
+    "result": "error",
+    "notes": "Unable to find the server at oauth2.googleapis.com"
+  },
+  {
+    "timestamp": "2026-03-06T20:36:00.567839+00:00",
+    "action_type": "watcher_loop",
+    "actor": "GmailWatcher",
+    "source_file": "gmail_main",
+    "result": "error",
+    "notes": "Unable to find the server at oauth2.googleapis.com"
+  }
+]

@@ -1,0 +1,88 @@
+[
+  {
+    "timestamp": "2026-03-14T18:54:08.280856+00:00",
+    "action_type": "orchestrator_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "Gold Tier orchestrator started | vault=D:\\aa-3\\hi\\ai-employee-bronze\\vault | dry_run=False"
+  },
+  {
+    "timestamp": "2026-03-14T18:54:13.841381+00:00",
+    "action_type": "preflight_failed",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "error",
+    "notes": "GmailWatcher failed preflight dry-run: exit=3221225786\n",
+    "watcher": "GmailWatcher"
+  },
+  {
+    "timestamp": "2026-03-14T18:54:13.889217+00:00",
+    "action_type": "watcher_circuit_open",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "error",
+    "notes": "GmailWatcher: circuit OPEN — alert created at ALERT_GmailWatcher_DOWN.md",
+    "watcher": "GmailWatcher",
+    "alert_file": "ALERT_GmailWatcher_DOWN.md"
+  },
+  {
+    "timestamp": "2026-03-14T18:54:15.579186+00:00",
+    "action_type": "preflight_failed",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "error",
+    "notes": "LinkedInWatcher failed preflight dry-run: exit=3221225786\n",
+    "watcher": "LinkedInWatcher"
+  },
+  {
+    "timestamp": "2026-03-14T18:54:15.604314+00:00",
+    "action_type": "watcher_circuit_open",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "error",
+    "notes": "LinkedInWatcher: circuit OPEN — alert created at ALERT_LinkedInWatcher_DOWN.md",
+    "watcher": "LinkedInWatcher",
+    "alert_file": "ALERT_LinkedInWatcher_DOWN.md"
+  },
+  {
+    "timestamp": "2026-03-14T18:54:24.124203+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "FileSystemWatcher started (PID=16112, restart=#1, circuit=CLOSED)",
+    "watcher": "FileSystemWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-03-14T18:54:24.156212+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "FacebookWatcher started (PID=8416, restart=#1, circuit=CLOSED)",
+    "watcher": "FacebookWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-03-14T18:54:24.188668+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "InstagramWatcher started (PID=15252, restart=#1, circuit=CLOSED)",
+    "watcher": "InstagramWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-03-14T18:54:24.236883+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "TwitterWatcher started (PID=14888, restart=#1, circuit=CLOSED)",
+    "watcher": "TwitterWatcher",
+    "circuit_state": "CLOSED"
+  }
+]

@@ -1,24 +1,31 @@
 """
 instagram_watcher.py - Instagram Activity Watcher (Gold Tier)
 
-Uses Playwright to visit instagram.com and check DMs + activity notifications.
-Filters for business-relevant keywords and creates Needs_Action files.
+Uses instagrapi library to check the news inbox (likes, comments, mentions).
+Falls back to WAITING mode if no session file is found.
 
 Usage:
     python watchers/instagram_watcher.py --vault ./vault
     python watchers/instagram_watcher.py --vault ./vault --dry-run
 
 Setup:
-    1. Install Playwright: python -m playwright install chromium
-    2. Capture session: python setup/save_social_sessions.py
-    3. Set INSTAGRAM_SESSION_PATH in .env
+    1. Install: pip install instagrapi python-dotenv
+    2. Run once interactively to create the session file:
+         python -c "
+         from instagrapi import Client
+         cl = Client()
+         cl.login('YOUR_USERNAME', 'YOUR_PASSWORD')
+         cl.dump_settings('secrets/instagram_session.json')
+         print('Session saved.')
+         "
+    3. Set INSTAGRAM_SESSION_PATH in .env (optional)
 
 Requirements:
-    pip install playwright python-dotenv
-    python -m playwright install chromium
+    pip install instagrapi python-dotenv
 """
 
 import argparse
+import json
 import os
 import sys
 import time
@@ -27,19 +34,21 @@ from datetime import datetime, timezone
 
 sys.path.insert(0, str(Path(__file__).parent))
 
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
+
 from base_watcher import BaseWatcher
 
 try:
     from dotenv import load_dotenv
-    load_dotenv()
+    load_dotenv(PROJECT_ROOT / ".env")
 except ImportError:
     pass
 
 try:
-    from playwright.sync_api import sync_playwright, TimeoutError as PlaywrightTimeout
-    PLAYWRIGHT_AVAILABLE = True
+    from instagrapi import Client as InstaClient
+    INSTAGRAPI_AVAILABLE = True
 except ImportError:
-    PLAYWRIGHT_AVAILABLE = False
+    INSTAGRAPI_AVAILABLE = False
 
 
 ACTION_KEYWORDS = {
@@ -48,12 +57,12 @@ ACTION_KEYWORDS = {
     "pricing", "rate", "deal", "refund", "support", "client", "business",
 }
 
-SEEN_FILE = Path("./secrets/instagram_seen.txt")
+SEEN_FILE = PROJECT_ROOT / "secrets" / "instagram_seen.txt"
 
 
 class InstagramWatcher(BaseWatcher):
     """
-    Watches Instagram activity using Playwright browser automation.
+    Watches Instagram DMs and activity using instagrapi (no browser required).
 
     Gold Tier Requirement:
       "Facebook + Instagram watcher + posting"
@@ -63,15 +72,12 @@ class InstagramWatcher(BaseWatcher):
         super().__init__(vault_path, check_interval=check_interval)
         self.dry_run = dry_run
         self.session_path = Path(
-            os.getenv("INSTAGRAM_SESSION_PATH", "./secrets/instagram_storage.json")
+            os.getenv("INSTAGRAM_SESSION_PATH", str(PROJECT_ROOT / "secrets" / "instagram_session.json"))
         )
+        self._client = None
         SEEN_FILE.parent.mkdir(parents=True, exist_ok=True)
 
-        if not self.dry_run and not self.session_path.exists():
-            self.logger.warning(
-                f"Instagram session file not found: {self.session_path}\n"
-                "Run: python setup/save_social_sessions.py"
-            )
+    # ── Deduplication ─────────────────────────────────────────────────────────
 
     def _load_seen(self) -> set:
         if SEEN_FILE.exists():
@@ -86,93 +92,119 @@ class InstagramWatcher(BaseWatcher):
     def _notification_key(text: str) -> str:
         return text.strip().lower()[:80]
 
+    # ── Session format validation ──────────────────────────────────────────────
+
+    def _is_instagrapi_session(self) -> bool:
+        """
+        Return True only if the session file looks like an instagrapi dump.
+        Browser session exports have {'cookies': [...], 'origins': [...]}
+        whereas instagrapi dumps have keys like 'uuids', 'mid', 'ig_did', etc.
+        """
+        try:
+            data = json.loads(self.session_path.read_text(encoding="utf-8"))
+            # Browser session export keys — not an instagrapi session
+            if set(data.keys()) <= {"cookies", "origins"}:
+                return False
+            # instagrapi session must have at least one of these
+            return bool(
+                data.get("uuids") or data.get("mid") or data.get("ig_did")
+                or data.get("authorization_data")
+            )
+        except Exception:
+            return False
+
+    # ── Client (lazy init) ────────────────────────────────────────────────────
+
+    def _get_client(self) -> "InstaClient":
+        """Return a cached instagrapi Client loaded from the session file."""
+        if self._client is None:
+            cl = InstaClient()
+            cl.load_settings(str(self.session_path))
+            self._client = cl
+        return self._client
+
+    # ── BaseWatcher interface ─────────────────────────────────────────────────
+
     def check_for_updates(self) -> list:
         if self.dry_run:
-            self.logger.info("[DRY_RUN] Skipping Playwright browser — returning empty list.")
+            self.logger.info("[DRY_RUN] Skipping Instagram API call — returning empty list.")
             return []
 
-        if not PLAYWRIGHT_AVAILABLE:
+        if not INSTAGRAPI_AVAILABLE:
             raise RuntimeError(
-                "Playwright not installed. Run: pip install playwright && "
-                "python -m playwright install chromium"
+                "instagrapi is not installed.\n"
+                "Run: pip install instagrapi  (or: uv add instagrapi)"
             )
 
         if not self.session_path.exists():
-            self.logger.error(
-                f"Session file not found: {self.session_path}. "
-                "Run: python setup/save_social_sessions.py"
+            self.logger.warning(
+                f"[WAITING] Instagram session file not found: {self.session_path}."
+            )
+            return []
+
+        if not self._is_instagrapi_session():
+            self.logger.warning(
+                f"[WAITING] {self.session_path.name} is not an instagrapi session file "
+                "(looks like a browser session export, not an instagrapi dump). "
+                "Create one with: from instagrapi import Client; "
+                "cl=Client(); cl.login('USER','PASS'); "
+                "cl.dump_settings('secrets/instagram_session.json') "
+                "then set INSTAGRAM_SESSION_PATH=secrets/instagram_session.json in .env"
             )
             return []
 
         seen = self._load_seen()
         new_items = []
 
-        with sync_playwright() as pw:
-            browser = pw.chromium.launch(headless=True, args=["--no-sandbox"])
-            context = browser.new_context(storage_state=str(self.session_path))
-            page = context.new_page()
+        try:
+            cl = self._get_client()
 
-            try:
-                # Check activity feed
-                page.goto("https://www.instagram.com/", timeout=30_000)
-                page.wait_for_load_state("domcontentloaded", timeout=20_000)
-
-                if "login" in page.url or "accounts/login" in page.url:
-                    self.logger.warning(
-                        "Instagram session expired. Re-run: python setup/save_social_sessions.py"
-                    )
-                    context.close()
-                    browser.close()
-                    return []
-
-                # Navigate to DMs (most actionable)
-                page.goto("https://www.instagram.com/direct/inbox/", timeout=30_000)
-                page.wait_for_load_state("domcontentloaded", timeout=20_000)
-
+            # Check news inbox (likes, comments, follows, mentions)
+            notifications = cl.news_inbox()
+            for notif in notifications[:20]:
                 try:
-                    page.wait_for_selector(
-                        "[role='listbox'], [class*='DirectInbox']",
-                        timeout=8_000,
-                    )
-                except PlaywrightTimeout:
-                    self.logger.debug("Instagram DM inbox did not load — may be empty or session issue.")
+                    # instagrapi returns dict-like objects
+                    text = ""
+                    if isinstance(notif, dict):
+                        text = (notif.get("text") or notif.get("message") or "").strip()
+                    else:
+                        text = (getattr(notif, "text", None) or str(notif)).strip()
 
-                # Extract DM previews
-                items_els = page.query_selector_all("[role='listbox'] [role='option'], [class*='thread']")
-                for el in items_els[:20]:
-                    try:
-                        text = el.inner_text().strip()
-                        if not text:
-                            continue
-                        key = self._notification_key(text)
-                        if key in seen:
-                            continue
-                        text_lower = text.lower()
-                        if not any(kw in text_lower for kw in ACTION_KEYWORDS):
-                            self._mark_seen(key)
-                            continue
-                        link_el = el.query_selector("a[href]")
-                        url = link_el.get_attribute("href") if link_el else None
-                        if url and url.startswith("/"):
-                            url = "https://www.instagram.com" + url
-                        new_items.append({
-                            "text": text[:500],
-                            "url": url or "https://www.instagram.com/direct/inbox/",
-                            "key": key,
-                            "detected_at": datetime.now(timezone.utc).isoformat(),
-                        })
+                    if not text or len(text) < 3:
+                        continue
+
+                    key = self._notification_key(text)
+                    if key in seen:
+                        continue
+
+                    text_lower = text.lower()
+                    if not any(kw in text_lower for kw in ACTION_KEYWORDS):
                         self._mark_seen(key)
-                    except Exception as e:
-                        self.logger.debug(f"Error parsing DM item: {e}")
+                        continue
 
-            except Exception as e:
-                self.logger.error(f"Error during Instagram scrape: {e}")
-            finally:
-                context.close()
-                browser.close()
+                    url = "https://www.instagram.com/notifications/"
+
+                    new_items.append({
+                        "text": text[:500],
+                        "url": url,
+                        "key": key,
+                        "detected_at": datetime.now(timezone.utc).isoformat(),
+                    })
+                    self._mark_seen(key)
+
+                except Exception as e:
+                    self.logger.debug(f"Error parsing notification: {e}")
+
+        except Exception as e:
+            self.logger.error(f"Instagram API error: {e}")
+            # Reset client so next cycle reloads the session
+            self._client = None
 
         if new_items:
-            self.logger.info(f"Found {len(new_items)} relevant Instagram DM(s).")
+            self.logger.info(f"Found {len(new_items)} relevant Instagram notification(s).")
+        else:
+            self.logger.debug("No new relevant Instagram notifications.")
+
         return new_items
 
     def create_action_file(self, item: dict) -> Path:
@@ -241,13 +273,44 @@ A relevant Instagram message or notification was detected.
 
     def run(self):
         if self.dry_run:
-            self.logger.info(
-                "[DRY_RUN] InstagramWatcher started — no browser will be launched."
-            )
+            self.logger.info("[DRY_RUN] InstagramWatcher started — no API calls will be made.")
+            self.check_for_updates()
             self.logger.info("[DRY_RUN] Exiting after one cycle.")
             return
 
+        if not INSTAGRAPI_AVAILABLE:
+            self.logger.error(
+                "instagrapi not installed. Run: pip install instagrapi\n"
+                "InstagramWatcher cannot start."
+            )
+            return
+
         self.logger.info(f"Starting InstagramWatcher (interval={self.check_interval}s)")
+
+        if not self.session_path.exists() or not self._is_instagrapi_session():
+            if self.session_path.exists():
+                self.logger.warning(
+                    f"[WAITING] {self.session_path.name} is not an instagrapi session. "
+                    "Create a valid session: from instagrapi import Client; "
+                    "cl=Client(); cl.login('USER','PASS'); "
+                    "cl.dump_settings('secrets/instagram_session.json') "
+                    "then set INSTAGRAM_SESSION_PATH in .env"
+                )
+            else:
+                self.logger.warning(
+                    f"[WAITING] Session file not found: {self.session_path}. "
+                    "Create it by running:\n"
+                    "  python -c \"from instagrapi import Client; cl = Client(); "
+                    "cl.login('USER','PASS'); cl.dump_settings('secrets/instagram_session.json')\""
+                )
+            while not (self.session_path.exists() and self._is_instagrapi_session()):
+                try:
+                    time.sleep(60)
+                except KeyboardInterrupt:
+                    self.logger.info("InstagramWatcher stopped by user.")
+                    return
+            self.logger.info("Valid instagrapi session found. Starting InstagramWatcher.")
+
         while True:
             try:
                 items = self.check_for_updates()
@@ -258,13 +321,14 @@ A relevant Instagram message or notification was detected.
                     except Exception as e:
                         self.logger.error(f"Failed to create action file: {e}")
                         self.log_action("create_action_file", item.get("url", "?"), "error", str(e))
+                time.sleep(self.check_interval)
             except KeyboardInterrupt:
                 self.logger.info("InstagramWatcher stopped by user.")
                 break
             except Exception as e:
                 self.logger.error(f"Unexpected error: {e}")
                 self.log_action("watcher_loop", "instagram_main", "error", str(e))
-            time.sleep(self.check_interval)
+                time.sleep(self.check_interval)
 
 
 def main():

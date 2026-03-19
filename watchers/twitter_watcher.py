@@ -1,25 +1,27 @@
 """
-twitter_watcher.py - Twitter/X Notifications + Mentions Watcher (Gold Tier)
+twitter_watcher.py - Twitter/X Mentions Watcher (Gold Tier)
 
-Uses Playwright to visit x.com/notifications, loading a saved session.
-Filters for business-relevant mentions and DMs, creates Needs_Action files.
+Uses tweepy (Twitter API v1.1 OAuth1) to check mentions.
+Falls back to WAITING mode if credentials are missing.
 
 Usage:
     python watchers/twitter_watcher.py --vault ./vault
     python watchers/twitter_watcher.py --vault ./vault --dry-run
 
 Setup:
-    1. Install Playwright: python -m playwright install chromium
-    2. Capture session: python setup/save_social_sessions.py
-    3. Set TWITTER_SESSION_PATH in .env
+    Set in .env:
+        TWITTER_API_KEY=...
+        TWITTER_API_SECRET=...
+        TWITTER_ACCESS_TOKEN=...
+        TWITTER_ACCESS_SECRET=...
+    Get credentials from https://developer.twitter.com/
 
 Keyword filtering (creates action file if ANY match):
     urgent, invoice, payment, order, complaint, dm, mention,
     pricing, proposal, partnership, sponsor, deal, support
 
 Requirements:
-    pip install playwright python-dotenv
-    python -m playwright install chromium
+    pip install tweepy python-dotenv  (or: uv add tweepy)
 """
 
 import argparse
@@ -31,19 +33,21 @@ from datetime import datetime, timezone
 
 sys.path.insert(0, str(Path(__file__).parent))
 
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
+
 from base_watcher import BaseWatcher
 
 try:
     from dotenv import load_dotenv
-    load_dotenv()
+    load_dotenv(PROJECT_ROOT / ".env")
 except ImportError:
     pass
 
 try:
-    from playwright.sync_api import sync_playwright, TimeoutError as PlaywrightTimeout
-    PLAYWRIGHT_AVAILABLE = True
+    import tweepy
+    TWEEPY_AVAILABLE = True
 except ImportError:
-    PLAYWRIGHT_AVAILABLE = False
+    TWEEPY_AVAILABLE = False
 
 
 ACTION_KEYWORDS = {
@@ -52,12 +56,12 @@ ACTION_KEYWORDS = {
     "deal", "support", "client", "refund", "deadline", "collaboration",
 }
 
-SEEN_FILE = Path("./secrets/twitter_seen.txt")
+SEEN_FILE = PROJECT_ROOT / "secrets" / "twitter_seen.txt"
 
 
 class TwitterWatcher(BaseWatcher):
     """
-    Watches Twitter/X notifications and mentions using Playwright.
+    Watches Twitter/X mentions using Tweepy API (no browser required).
 
     Gold Tier Requirement:
       "Twitter/X watcher + posting"
@@ -66,16 +70,14 @@ class TwitterWatcher(BaseWatcher):
     def __init__(self, vault_path: str, dry_run: bool = False, check_interval: int = 300):
         super().__init__(vault_path, check_interval=check_interval)
         self.dry_run = dry_run
-        self.session_path = Path(
-            os.getenv("TWITTER_SESSION_PATH", "./secrets/twitter_storage.json")
-        )
+        self.api_key = os.getenv("TWITTER_API_KEY", "")
+        self.api_secret = os.getenv("TWITTER_API_SECRET", "")
+        self.access_token = os.getenv("TWITTER_ACCESS_TOKEN", "")
+        self.access_secret = os.getenv("TWITTER_ACCESS_SECRET", "")
+        self._api = None
         SEEN_FILE.parent.mkdir(parents=True, exist_ok=True)
 
-        if not self.dry_run and not self.session_path.exists():
-            self.logger.warning(
-                f"Twitter/X session file not found: {self.session_path}\n"
-                "Run: python setup/save_social_sessions.py"
-            )
+    # ── Deduplication ─────────────────────────────────────────────────────────
 
     def _load_seen(self) -> set:
         if SEEN_FILE.exists():
@@ -90,90 +92,94 @@ class TwitterWatcher(BaseWatcher):
     def _notification_key(text: str) -> str:
         return text.strip().lower()[:80]
 
+    # ── Tweepy API (lazy init) ────────────────────────────────────────────────
+
+    def _has_credentials(self) -> bool:
+        return bool(self.api_key and self.api_secret and self.access_token and self.access_secret)
+
+    def _get_api(self) -> "tweepy.API":
+        """Return a cached Tweepy API client."""
+        if self._api is None:
+            auth = tweepy.OAuth1UserHandler(
+                consumer_key=self.api_key,
+                consumer_secret=self.api_secret,
+                access_token=self.access_token,
+                access_token_secret=self.access_secret,
+            )
+            self._api = tweepy.API(auth, wait_on_rate_limit=True)
+        return self._api
+
+    # ── BaseWatcher interface ─────────────────────────────────────────────────
+
     def check_for_updates(self) -> list:
         if self.dry_run:
-            self.logger.info("[DRY_RUN] Skipping Playwright browser — returning empty list.")
+            self.logger.info("[DRY_RUN] Skipping Twitter API call — returning empty list.")
             return []
 
-        if not PLAYWRIGHT_AVAILABLE:
+        if not TWEEPY_AVAILABLE:
             raise RuntimeError(
-                "Playwright not installed. Run: pip install playwright && "
-                "python -m playwright install chromium"
+                "tweepy is not installed.\n"
+                "Run: pip install tweepy  (or: uv add tweepy)"
             )
 
-        if not self.session_path.exists():
-            self.logger.error(
-                f"Session file not found: {self.session_path}. "
-                "Run: python setup/save_social_sessions.py"
+        if not self._has_credentials():
+            self.logger.warning(
+                "[WAITING] Twitter credentials not set. "
+                "Set TWITTER_API_KEY, TWITTER_API_SECRET, "
+                "TWITTER_ACCESS_TOKEN, TWITTER_ACCESS_SECRET in .env"
             )
             return []
 
         seen = self._load_seen()
         new_items = []
 
-        with sync_playwright() as pw:
-            browser = pw.chromium.launch(headless=True, args=["--no-sandbox"])
-            context = browser.new_context(storage_state=str(self.session_path))
-            page = context.new_page()
+        try:
+            api = self._get_api()
+            mentions = api.mentions_timeline(count=20, tweet_mode="extended")
 
-            try:
-                page.goto("https://x.com/notifications/mentions", timeout=30_000)
-                page.wait_for_load_state("domcontentloaded", timeout=20_000)
-
-                if "login" in page.url or "i/flow/login" in page.url:
-                    self.logger.warning(
-                        "Twitter/X session expired. Re-run: python setup/save_social_sessions.py"
-                    )
-                    context.close()
-                    browser.close()
-                    return []
-
+            for mention in mentions:
                 try:
-                    page.wait_for_selector(
-                        "[data-testid='tweet'], [data-testid='notification']",
-                        timeout=10_000,
-                    )
-                except PlaywrightTimeout:
-                    self.logger.debug("Twitter notification list did not load — may be empty.")
+                    text = mention.full_text.strip()
+                    if not text:
+                        continue
 
-                tweets = page.query_selector_all(
-                    "[data-testid='tweet'], [data-testid='notification']"
-                )
+                    key = self._notification_key(text)
+                    if key in seen:
+                        continue
 
-                for tweet in tweets[:30]:
-                    try:
-                        text = tweet.inner_text().strip()
-                        if not text:
-                            continue
-                        key = self._notification_key(text)
-                        if key in seen:
-                            continue
-                        text_lower = text.lower()
-                        if not any(kw in text_lower for kw in ACTION_KEYWORDS):
-                            self._mark_seen(key)
-                            continue
-                        link_el = tweet.query_selector("a[href*='/status/']")
-                        url = link_el.get_attribute("href") if link_el else None
-                        if url and url.startswith("/"):
-                            url = "https://x.com" + url
-                        new_items.append({
-                            "text": text[:500],
-                            "url": url or "https://x.com/notifications/mentions",
-                            "key": key,
-                            "detected_at": datetime.now(timezone.utc).isoformat(),
-                        })
+                    text_lower = text.lower()
+                    if not any(kw in text_lower for kw in ACTION_KEYWORDS):
                         self._mark_seen(key)
-                    except Exception as e:
-                        self.logger.debug(f"Error parsing tweet/notification: {e}")
+                        continue
 
-            except Exception as e:
-                self.logger.error(f"Error during Twitter/X scrape: {e}")
-            finally:
-                context.close()
-                browser.close()
+                    screen_name = mention.user.screen_name
+                    tweet_id = mention.id_str
+                    url = f"https://x.com/{screen_name}/status/{tweet_id}"
+
+                    new_items.append({
+                        "text": text[:500],
+                        "url": url,
+                        "key": key,
+                        "detected_at": datetime.now(timezone.utc).isoformat(),
+                    })
+                    self._mark_seen(key)
+
+                except Exception as e:
+                    self.logger.debug(f"Error parsing mention: {e}")
+
+        except tweepy.TweepyException as e:
+            self.logger.error(f"Twitter API error: {e}")
+            # Reset so next cycle creates a fresh auth object
+            self._api = None
+        except Exception as e:
+            self.logger.error(f"Unexpected Twitter error: {e}")
+            self._api = None
 
         if new_items:
             self.logger.info(f"Found {len(new_items)} relevant Twitter/X mention(s).")
+        else:
+            self.logger.debug("No new relevant Twitter/X mentions.")
+
         return new_items
 
     def create_action_file(self, item: dict) -> Path:
@@ -197,7 +203,7 @@ detected_at: {item['detected_at']}
 
 # Action Required: Twitter/X Mention or DM
 
-A relevant Twitter/X mention or notification was detected.
+A relevant Twitter/X mention was detected.
 
 ## Tweet / Message Preview
 
@@ -242,13 +248,40 @@ A relevant Twitter/X mention or notification was detected.
 
     def run(self):
         if self.dry_run:
-            self.logger.info(
-                "[DRY_RUN] TwitterWatcher started — no browser will be launched."
-            )
+            self.logger.info("[DRY_RUN] TwitterWatcher started — no API calls will be made.")
+            self.check_for_updates()
             self.logger.info("[DRY_RUN] Exiting after one cycle.")
             return
 
+        if not TWEEPY_AVAILABLE:
+            self.logger.error(
+                "tweepy not installed. Run: pip install tweepy\n"
+                "TwitterWatcher cannot start."
+            )
+            return
+
         self.logger.info(f"Starting TwitterWatcher (interval={self.check_interval}s)")
+
+        if not self._has_credentials():
+            self.logger.warning(
+                "[WAITING] Twitter API credentials not set in .env. "
+                "Set TWITTER_API_KEY, TWITTER_API_SECRET, "
+                "TWITTER_ACCESS_TOKEN, TWITTER_ACCESS_SECRET. "
+                "Sleeping until credentials are available."
+            )
+            while not self._has_credentials():
+                try:
+                    time.sleep(60)
+                except KeyboardInterrupt:
+                    self.logger.info("TwitterWatcher stopped by user.")
+                    return
+                # Reload from env in case .env was updated
+                self.api_key = os.getenv("TWITTER_API_KEY", "")
+                self.api_secret = os.getenv("TWITTER_API_SECRET", "")
+                self.access_token = os.getenv("TWITTER_ACCESS_TOKEN", "")
+                self.access_secret = os.getenv("TWITTER_ACCESS_SECRET", "")
+            self.logger.info("Twitter credentials found. Starting TwitterWatcher.")
+
         while True:
             try:
                 items = self.check_for_updates()
@@ -259,13 +292,14 @@ A relevant Twitter/X mention or notification was detected.
                     except Exception as e:
                         self.logger.error(f"Failed to create action file: {e}")
                         self.log_action("create_action_file", item.get("url", "?"), "error", str(e))
+                time.sleep(self.check_interval)
             except KeyboardInterrupt:
                 self.logger.info("TwitterWatcher stopped by user.")
                 break
             except Exception as e:
                 self.logger.error(f"Unexpected error: {e}")
                 self.log_action("watcher_loop", "twitter_main", "error", str(e))
-            time.sleep(self.check_interval)
+                time.sleep(self.check_interval)
 
 
 def main():

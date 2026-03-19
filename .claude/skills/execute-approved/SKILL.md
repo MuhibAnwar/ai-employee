@@ -3,8 +3,9 @@ name: execute-approved
 description: |
   Process all files in vault/Approved/. For each approved action, determine the
   action type from its YAML frontmatter, route it to the correct executor (Email MCP
-  or Playwright), log the result, and move the file to vault/Done/. This is the
+  or linkedin-api), log the result, and move the file to vault/Done/. This is the
   "hands" of the AI Employee — it only acts on what the human has explicitly approved.
+  No Playwright or browser automation is used.
 ---
 
 # Execute Approved Actions
@@ -42,24 +43,23 @@ Read file frontmatter (action: field)
     │          → On error: log error, move file to vault/Done/ with error note
     │
     ├─ action: post_linkedin
-    │       └─ Use Playwright to post to LinkedIn (steps below)
-    │          → On success: screenshot confirmation, move file to vault/Done/
-    │          → On error: log error, leave file in vault/Approved/ with error note
+    │       └─ Run: python scripts/post_to_linkedin.py --file <approved_file>
+    │          Exit 0 → post published → move file to vault/Done/, log success
+    │          Exit 2 → API limitation → show post content for manual paste,
+    │                   move file to vault/Done/ with error note
+    │          Exit 1 → config error → log error, move file to vault/Done/
     │
     ├─ action: post_facebook
-    │       └─ Use Playwright + facebook_storage.json session (steps below)
-    │          → On success: screenshot confirmation, move file to vault/Done/
-    │          → On error: log error, leave file in vault/Approved/ with error note
+    │       └─ Facebook posting via API not yet implemented.
+    │          Log "not implemented", show post content, move to vault/Done/.
     │
     ├─ action: post_instagram
-    │       └─ Use Playwright + instagram_storage.json session (steps below)
-    │          → On success: screenshot confirmation, move file to vault/Done/
-    │          → On error: log error, leave file in vault/Approved/ with error note
+    │       └─ Instagram posting via API not yet implemented (requires image).
+    │          Log "not implemented", show post content, move to vault/Done/.
     │
     ├─ action: post_twitter
-    │       └─ Use Playwright + twitter_storage.json session (steps below)
-    │          → On success: screenshot confirmation, move file to vault/Done/
-    │          → On error: log error, leave file in vault/Approved/ with error note
+    │       └─ Twitter posting via API not yet implemented (needs credentials).
+    │          Log "not implemented", show post content, move to vault/Done/.
     │
     └─ action: (unknown)
             └─ Log warning, move file to vault/Done/ with note "unrecognised action type"
@@ -114,170 +114,71 @@ Report the returned `draft_id` to the user.
 
 #### 2c. Execute: post_linkedin
 
-Use the Playwright MCP (`/browsing-with-playwright` skill pattern):
+Run the posting script (no browser, no Playwright):
 
 ```bash
-# 1. Navigate to LinkedIn
-browser_navigate url="https://www.linkedin.com/"
-
-# 2. Take snapshot to find the "Start a post" button
-browser_snapshot
-
-# 3. Click "Start a post"
-browser_click element="Start a post" ref=<ref from snapshot>
-
-# 4. Wait for post composer to open
-browser_wait_for text="What do you want to talk about?"
-
-# 5. Type the post content
-browser_type element="Post text area" ref=<ref> text=<post content>
-
-# 6. Click "Post" button
-browser_click element="Post" ref=<ref>
-
-# 7. Wait for confirmation
-browser_wait_for text="Your post is now live"
-
-# 8. Take a screenshot as evidence
-browser_take_screenshot type="png"
+python scripts/post_to_linkedin.py --file vault/Approved/<filename>
 ```
 
-If the LinkedIn session is expired (redirected to login):
-- Log error: "LinkedIn session expired"
-- Leave the file in vault/Approved/ (do not move to Done)
-- Instruct user: "Re-authenticate LinkedIn session and re-run /execute-approved"
+The script reads the `## Post Content` or `## Content` section from the approved file and
+attempts to publish via the linkedin-api library.
+
+**Exit codes and what to do:**
+
+| Exit code | Meaning | Action |
+|-----------|---------|--------|
+| 0 | Published successfully | Log success, move file to vault/Done/ |
+| 2 | API limitation (LinkedIn requires OAuth for posting) | Show post content for manual copy-paste, move to Done/ with error note |
+| 1 | Config error (missing credentials) | Log error, move to Done/ with note |
+
+**On exit code 2 (most common):**
+- The script prints the full post content between `====` lines
+- Tell the user: "LinkedIn's API restricts posting to OAuth 2.0 (w_member_social scope). Please copy the post content above and paste it at https://www.linkedin.com/post/new/"
+- Move the file to vault/Done/ and log the limitation
+
+**Credentials required in .env:**
+```
+LINKEDIN_USERNAME=your@email.com
+LINKEDIN_PASSWORD=yourpassword
+```
 
 ---
 
 #### 2d. Execute: post_facebook
 
-Session file: `secrets/facebook_storage.json` (env: `FACEBOOK_SESSION_PATH`)
+Facebook posting via API is not yet implemented (unofficial APIs are fragile).
 
-Parse from the file body:
-```
-Post Content:
-<multi-line post text>
-```
-
-Use Playwright with the saved Facebook session:
-```bash
-# 1. Launch browser with saved session
-browser_navigate url="https://www.facebook.com/"
-
-# 2. Verify session (not redirected to login)
-browser_snapshot  → check URL does not contain "login"
-
-# 3. Click "What's on your mind?" composer
-browser_click element="What's on your mind?" ref=<ref>
-
-# 4. Type post content
-browser_type element="post composer" ref=<ref> text=<post content>
-
-# 5. Click "Post" button
-browser_click element="Post" ref=<ref>
-
-# 6. Wait for confirmation
-browser_wait_for text="Your post is now shared"  (or similar)
-
-# 7. Screenshot as evidence
-browser_take_screenshot type="png"
-```
-
-If session expired (redirected to login):
-- Log error: "Facebook session expired"
-- Leave file in vault/Approved/
-- Instruct user: "Run: python setup/save_social_sessions.py --platform facebook"
+Steps:
+1. Extract the post content from the `## Post Content` or `## Content` section
+2. Display it to the user with instructions to post manually at https://www.facebook.com/
+3. Move the file to vault/Done/ with a note: "manual posting required"
+4. Log the outcome
 
 ---
 
 #### 2e. Execute: post_instagram
 
-Session file: `secrets/instagram_storage.json` (env: `INSTAGRAM_SESSION_PATH`)
+Instagram posting via API requires an image file (Instagram does not allow text-only posts).
 
-Parse from the file body:
-```
-Post Content:
-<caption text>
-Image Path: <optional local path to image>
-```
-
-Note: Instagram web does not support posting without an image. If no image is provided,
-create a Pending_Approval note explaining this limitation and ask the user to provide an image.
-
-If an image path is provided:
-```bash
-# 1. Launch browser with saved session
-browser_navigate url="https://www.instagram.com/"
-
-# 2. Verify session
-browser_snapshot  → check URL does not contain "accounts/login"
-
-# 3. Click "Create" / "+" button
-browser_click element="New post" ref=<ref>
-
-# 4. Upload image (click "Select from computer")
-browser_click element="Select from computer" ref=<ref>
-# → Use file upload dialog to select image at <Image Path>
-
-# 5. Click "Next" through the crop/filter steps
-browser_click element="Next" ref=<ref>  # crop
-browser_click element="Next" ref=<ref>  # filters
-
-# 6. Type caption
-browser_type element="Write a caption" ref=<ref> text=<caption>
-
-# 7. Click "Share"
-browser_click element="Share" ref=<ref>
-
-# 8. Screenshot as evidence
-browser_take_screenshot type="png"
-```
-
-If session expired:
-- Log error: "Instagram session expired"
-- Leave file in vault/Approved/
-- Instruct user: "Run: python setup/save_social_sessions.py --platform instagram"
+Steps:
+1. Extract the caption from the `## Post Content` or `## Content` section
+2. Check if an `Image Path:` field is present in the file body
+3. If no image: display caption, note the limitation, move to Done/
+4. If image provided: note that CLI posting via instagrapi is possible but not yet wired up
+5. Log the outcome
 
 ---
 
 #### 2f. Execute: post_twitter
 
-Session file: `secrets/twitter_storage.json` (env: `TWITTER_SESSION_PATH`)
+Twitter/X posting via API requires API credentials (`TWITTER_API_KEY` etc. in .env).
+The TwitterWatcher is already wired for credentials but the posting path is not yet implemented.
 
-Parse from the file body:
-```
-Post Content:
-<tweet text — max 280 characters>
-```
-
-Use Playwright with the saved Twitter/X session:
-```bash
-# 1. Launch browser with saved session
-browser_navigate url="https://x.com/home"
-
-# 2. Verify session (not redirected to login)
-browser_snapshot  → check URL does not contain "i/flow/login"
-
-# 3. Click "What is happening?!" composer
-browser_click element="Post" (the compose button) ref=<ref>
-
-# 4. Type tweet content
-browser_type element="Post text" ref=<ref> text=<tweet text>
-
-# 5. Click "Post" button to submit
-browser_click element="Post" (submit button) ref=<ref>
-
-# 6. Wait for success indicator
-browser_wait_for text="Your post was sent"  (or similar)
-
-# 7. Screenshot as evidence
-browser_take_screenshot type="png"
-```
-
-If session expired (redirected to login):
-- Log error: "Twitter/X session expired"
-- Leave file in vault/Approved/
-- Instruct user: "Run: python setup/save_social_sessions.py --platform twitter"
+Steps:
+1. Extract the tweet text from the `## Post Content` or `## Content` section
+2. Display it to the user with instructions to post manually at https://x.com/
+3. Move the file to vault/Done/ with a note: "manual posting required — add Twitter API credentials to enable automated posting"
+4. Log the outcome
 
 ---
 
@@ -337,7 +238,9 @@ Dashboard updated.
 - **Always** check `action:` field in YAML frontmatter before routing
 - **Never** guess the action — if the field is missing or unrecognised, archive and warn
 - Email MCP must be registered in Claude Code settings before `send_email` or `draft_email` work
-- For LinkedIn posts: the Playwright browser context must have an active LinkedIn session
-  (session stored at `LINKEDIN_SESSION_PATH` from `.env`)
+- For LinkedIn posts: uses `scripts/post_to_linkedin.py` (no browser). Requires `LINKEDIN_USERNAME`
+  and `LINKEDIN_PASSWORD` in `.env`. LinkedIn's voyager API may reject POST operations (401) —
+  the script then prints post content for manual copy-paste and exits with code 2.
 - `DRY_RUN=true` in `.env` makes the Email MCP log intent only — no real sends
+- No Playwright or browser automation is used anywhere in this skill
 - After execution, the vault/Done/ folder is the audit trail — never modify Done files

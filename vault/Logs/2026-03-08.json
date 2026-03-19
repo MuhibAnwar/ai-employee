@@ -1,0 +1,154 @@
+[
+  {
+    "timestamp": "2026-03-08T18:06:02.529578+00:00",
+    "action_type": "orchestrator_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "Gold Tier orchestrator started | vault=D:\\aa-3\\hi\\ai-employee-bronze\\vault | dry_run=False"
+  },
+  {
+    "timestamp": "2026-03-08T18:06:06.091012+00:00",
+    "action_type": "preflight_failed",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "error",
+    "notes": "GmailWatcher failed preflight dry-run: exit=3221225786\n",
+    "watcher": "GmailWatcher"
+  },
+  {
+    "timestamp": "2026-03-08T18:06:06.125276+00:00",
+    "action_type": "watcher_circuit_open",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "error",
+    "notes": "GmailWatcher: circuit OPEN — alert created at ALERT_GmailWatcher_DOWN.md",
+    "watcher": "GmailWatcher",
+    "alert_file": "ALERT_GmailWatcher_DOWN.md"
+  },
+  {
+    "timestamp": "2026-03-08T18:06:07.680521+00:00",
+    "action_type": "preflight_failed",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "error",
+    "notes": "LinkedInWatcher failed preflight dry-run: exit=3221225786\n",
+    "watcher": "LinkedInWatcher"
+  },
+  {
+    "timestamp": "2026-03-08T18:06:07.724138+00:00",
+    "action_type": "watcher_circuit_open",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "error",
+    "notes": "LinkedInWatcher: circuit OPEN — alert created at ALERT_LinkedInWatcher_DOWN.md",
+    "watcher": "LinkedInWatcher",
+    "alert_file": "ALERT_LinkedInWatcher_DOWN.md"
+  },
+  {
+    "timestamp": "2026-03-08T18:06:13.472372+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "FileSystemWatcher started (PID=4480, restart=#1, circuit=CLOSED)",
+    "watcher": "FileSystemWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-03-08T18:06:13.504253+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "FacebookWatcher started (PID=5232, restart=#1, circuit=CLOSED)",
+    "watcher": "FacebookWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-03-08T18:06:13.532470+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "InstagramWatcher started (PID=11324, restart=#1, circuit=CLOSED)",
+    "watcher": "InstagramWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-03-08T18:06:13.562590+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "TwitterWatcher started (PID=12656, restart=#1, circuit=CLOSED)",
+    "watcher": "TwitterWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-03-08T18:16:08.897423+00:00",
+    "action_type": "circuit_half_open",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "GmailWatcher: entering HALF_OPEN after 600s",
+    "watcher": "GmailWatcher"
+  },
+  {
+    "timestamp": "2026-03-08T18:16:08.953990+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "GmailWatcher started (PID=10360, restart=#1, circuit=HALF_OPEN)",
+    "watcher": "GmailWatcher",
+    "circuit_state": "HALF_OPEN"
+  },
+  {
+    "timestamp": "2026-03-08T18:16:08.976711+00:00",
+    "action_type": "circuit_half_open",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "LinkedInWatcher: entering HALF_OPEN after 600s",
+    "watcher": "LinkedInWatcher"
+  },
+  {
+    "timestamp": "2026-03-08T18:16:09.001069+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "LinkedInWatcher started (PID=8436, restart=#1, circuit=HALF_OPEN)",
+    "watcher": "LinkedInWatcher",
+    "circuit_state": "HALF_OPEN"
+  },
+  {
+    "timestamp": "2026-03-08T18:16:13.766765+00:00",
+    "action_type": "gmail_email_detected",
+    "actor": "GmailWatcher",
+    "source_file": "gmail://message/19cc4ce11dc32721",
+    "result": "success",
+    "notes": "Action file created: EMAIL_20260308T181613_40_teenagers__One_year__Help_build_Hack.md | Subject: 40 teenagers. One year. Help build Hack Club in-person."
+  },
+  {
+    "timestamp": "2026-03-08T18:17:09.033614+00:00",
+    "action_type": "circuit_closed",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "GmailWatcher: HALF_OPEN test passed — circuit CLOSED",
+    "watcher": "GmailWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-03-08T18:17:09.082638+00:00",
+    "action_type": "circuit_closed",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "LinkedInWatcher: HALF_OPEN test passed — circuit CLOSED",
+    "watcher": "LinkedInWatcher",
+    "circuit_state": "CLOSED"
+  }
+]

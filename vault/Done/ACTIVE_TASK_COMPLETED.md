@@ -1,15 +1,15 @@
 ---
-task: Process all files in Needs_Action and move to Done
-max_iterations: 5
-current_iteration: 1
-started: 2026-02-21T12:10:00Z
+task: Check vault/Needs_Action/ for any remaining items, process them, then generate a daily status report in vault/Briefings/Daily_Status_2026-03-01.md showing: watcher health, emails processed today, pending approvals, and completed tasks
+max_iterations: 3
+current_iteration: 2
+started: 2026-03-01T00:10:00Z
 status: active
 ---
 
 # Active Ralph Wiggum Task
 
 ## Task
-Process all files in Needs_Action and move to Done
+Check vault/Needs_Action/ for any remaining items, process them, then generate a daily status report in vault/Briefings/Daily_Status_2026-03-01.md showing: watcher health, emails processed today, pending approvals, and completed tasks.
 
 ## Completion Criteria
 

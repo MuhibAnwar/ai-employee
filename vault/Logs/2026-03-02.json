@@ -1,0 +1,243 @@
+[
+  {
+    "timestamp": "2026-03-01T19:00:02.291736+00:00",
+    "action_type": "daily_summary",
+    "actor": "orchestrator",
+    "date": "2026-03-02",
+    "crash_counts": {
+      "FileSystemWatcher": 0,
+      "GmailWatcher": 0,
+      "LinkedInWatcher": 0,
+      "FacebookWatcher": 0,
+      "InstagramWatcher": 0,
+      "TwitterWatcher": 0
+    },
+    "total_crashes": 0,
+    "circuit_states": {
+      "FileSystemWatcher": "CLOSED",
+      "GmailWatcher": "CLOSED",
+      "LinkedInWatcher": "CLOSED",
+      "FacebookWatcher": "CLOSED",
+      "InstagramWatcher": "CLOSED",
+      "TwitterWatcher": "CLOSED"
+    },
+    "result": "success",
+    "notes": "Daily summary for 2026-03-02"
+  },
+  {
+    "timestamp": "2026-03-01T20:12:02.006097+00:00",
+    "action_type": "watcher_loop",
+    "actor": "GmailWatcher",
+    "source_file": "gmail_main",
+    "result": "error",
+    "notes": "[WinError 10054] An existing connection was forcibly closed by the remote host"
+  },
+  {
+    "timestamp": "2026-03-01T20:14:02.697033+00:00",
+    "action_type": "watcher_loop",
+    "actor": "GmailWatcher",
+    "source_file": "gmail_main",
+    "result": "error",
+    "notes": "[WinError 10054] An existing connection was forcibly closed by the remote host"
+  },
+  {
+    "timestamp": "2026-03-01T20:34:25.730097+00:00",
+    "action_type": "watcher_loop",
+    "actor": "GmailWatcher",
+    "source_file": "gmail_main",
+    "result": "error",
+    "notes": "[WinError 10054] An existing connection was forcibly closed by the remote host"
+  },
+  {
+    "timestamp": "2026-03-01T20:38:34.046706+00:00",
+    "action_type": "approved_action_executed",
+    "actor": "claude_code",
+    "source_file": "vault/Approved/LINKEDIN_TEST_POST.md",
+    "result": "api_limitation",
+    "notes": "post_linkedin | exit 2 — LinkedIn voyager API rejects write ops (401). No browser used. Post content displayed for manual paste. File moved to Done."
+  },
+  {
+    "timestamp": "2026-03-01T21:02:50.846701+00:00",
+    "action_type": "watcher_loop",
+    "actor": "GmailWatcher",
+    "source_file": "gmail_main",
+    "result": "error",
+    "notes": "[WinError 10054] An existing connection was forcibly closed by the remote host"
+  },
+  {
+    "timestamp": "2026-03-01T21:11:15.954359+00:00",
+    "action_type": "watcher_loop",
+    "actor": "GmailWatcher",
+    "source_file": "gmail_main",
+    "result": "error",
+    "notes": "[WinError 10054] An existing connection was forcibly closed by the remote host"
+  },
+  {
+    "timestamp": "2026-03-01T21:13:16.730389+00:00",
+    "action_type": "watcher_loop",
+    "actor": "GmailWatcher",
+    "source_file": "gmail_main",
+    "result": "error",
+    "notes": "[WinError 10054] An existing connection was forcibly closed by the remote host"
+  },
+  {
+    "timestamp": "2026-03-01T22:08:51.069819+00:00",
+    "action_type": "watcher_crashed",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "error",
+    "notes": "FileSystemWatcher exited (code=1073807364) | circuit=CLOSED",
+    "watcher": "FileSystemWatcher",
+    "exit_code": 1073807364,
+    "circuit_state": "CLOSED",
+    "crash_count": 1,
+    "restart_number": 1,
+    "traceback": "2026-03-01T23:15:15 [INFO] FileSystemWatcher: Monitoring drop folder: D:\\aa-3\\hi\\ai-employee-bronze\\vault\\Inbox\n2026-03-01T23:15:15 [INFO] FileSystemWatcher: Action files will be created in: D:\\aa-3\\hi\\ai-employee-bronze\\vault\\Needs_Action\n2026-03-01T23:15:15 [INFO] FileSystemWatcher: Press Ctrl+C to stop."
+  },
+  {
+    "timestamp": "2026-03-01T22:08:51.196756+00:00",
+    "action_type": "watcher_crashed",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "error",
+    "notes": "GmailWatcher exited (code=1073807364) | circuit=CLOSED",
+    "watcher": "GmailWatcher",
+    "exit_code": 1073807364,
+    "circuit_state": "CLOSED",
+    "crash_count": 1,
+    "restart_number": 1,
+    "traceback": "ent<4.0.0\n2026-03-01T23:15:18 [INFO] GmailWatcher: Gmail API authenticated successfully.\n2026-03-02T01:12:01 [ERROR] GmailWatcher: Unexpected error in main loop: [WinError 10054] An existing connection was forcibly closed by the remote host\n2026-03-02T01:14:02 [ERROR] GmailWatcher: Unexpected error in main loop: [WinError 10054] An existing connection was forcibly closed by the remote host\n2026-03-02T01:34:25 [ERROR] GmailWatcher: Unexpected error in main loop: [WinError 10054] An existing connection was forcibly closed by the remote host\n2026-03-02T02:02:50 [ERROR] GmailWatcher: Unexpected error in main loop: [WinError 10054] An existing connection was forcibly closed by the remote host\n2026-03-02T02:11:15 [ERROR] GmailWatcher: Unexpected error in main loop: [WinError 10054] An existing connection was forcibly closed by the remote host\n2026-03-02T02:13:16 [ERROR] GmailWatcher: Unexpected error in main loop: [WinError 10054] An existing connection was forcibly closed by the remote host"
+  },
+  {
+    "timestamp": "2026-03-01T22:08:51.214822+00:00",
+    "action_type": "watcher_crashed",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "error",
+    "notes": "LinkedInWatcher exited (code=1073807364) | circuit=CLOSED",
+    "watcher": "LinkedInWatcher",
+    "exit_code": 1073807364,
+    "circuit_state": "CLOSED",
+    "crash_count": 1,
+    "restart_number": 1,
+    "traceback": "existing connection was forcibly closed by the remote host', None, 10054, None))\n2026-03-02T01:07:10 [ERROR] LinkedInWatcher: LinkedIn API error: ('Connection aborted.', ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None))\n2026-03-02T01:32:35 [ERROR] LinkedInWatcher: LinkedIn API error: ('Connection aborted.', ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None))\n2026-03-02T01:47:51 [ERROR] LinkedInWatcher: LinkedIn API error: ('Connection aborted.', ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None))\n2026-03-02T02:03:26 [ERROR] LinkedInWatcher: LinkedIn API error: HTTPSConnectionPool(host='www.linkedin.com', port=443): Read timed out. (read timeout=None)\n2026-03-02T02:54:26 [ERROR] LinkedInWatcher: LinkedIn API error: HTTPSConnectionPool(host='www.linkedin.com', port=443): Read timed out. (read timeout=None)"
+  },
+  {
+    "timestamp": "2026-03-01T22:08:51.248916+00:00",
+    "action_type": "watcher_crashed",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "error",
+    "notes": "FacebookWatcher exited (code=1073807364) | circuit=CLOSED",
+    "watcher": "FacebookWatcher",
+    "exit_code": 1073807364,
+    "circuit_state": "CLOSED",
+    "crash_count": 1,
+    "restart_number": 1,
+    "traceback": "2026-03-01T23:15:15 [INFO] FacebookWatcher: Starting FacebookWatcher (interval=300s)\n2026-03-02T02:06:45 [ERROR] FacebookWatcher: Facebook request error: HTTPSConnectionPool(host='mbasic.facebook.com', port=443): Read timed out. (read timeout=20)"
+  },
+  {
+    "timestamp": "2026-03-01T22:08:51.264547+00:00",
+    "action_type": "watcher_crashed",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "error",
+    "notes": "InstagramWatcher exited (code=1073807364) | circuit=CLOSED",
+    "watcher": "InstagramWatcher",
+    "exit_code": 1073807364,
+    "circuit_state": "CLOSED",
+    "crash_count": 1,
+    "restart_number": 1,
+    "traceback": ":17 [ERROR] InstagramWatcher: Instagram API error: 'Client' object has no attribute 'news_inbox'\n2026-03-02T01:30:17 [ERROR] InstagramWatcher: Instagram API error: 'Client' object has no attribute 'news_inbox'\n2026-03-02T01:35:17 [ERROR] InstagramWatcher: Instagram API error: 'Client' object has no attribute 'news_inbox'\n2026-03-02T01:40:17 [ERROR] InstagramWatcher: Instagram API error: 'Client' object has no attribute 'news_inbox'\n2026-03-02T01:45:17 [ERROR] InstagramWatcher: Instagram API error: 'Client' object has no attribute 'news_inbox'\n2026-03-02T01:50:17 [ERROR] InstagramWatcher: Instagram API error: 'Client' object has no attribute 'news_inbox'\n2026-03-02T01:55:17 [ERROR] InstagramWatcher: Instagram API error: 'Client' object has no attribute 'news_inbox'\n2026-03-02T02:00:17 [ERROR] InstagramWatcher: Instagram API error: 'Client' object has no attribute 'news_inbox'\n2026-03-02T02:05:17 [ERROR] InstagramWatcher: Instagram API error: 'Client' object has no attribute 'news_inbox'"
+  },
+  {
+    "timestamp": "2026-03-01T22:08:51.277487+00:00",
+    "action_type": "watcher_crashed",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "error",
+    "notes": "TwitterWatcher exited (code=1073807364) | circuit=CLOSED",
+    "watcher": "TwitterWatcher",
+    "exit_code": 1073807364,
+    "circuit_state": "CLOSED",
+    "crash_count": 1,
+    "restart_number": 1,
+    "traceback": "2026-03-01T23:15:16 [INFO] TwitterWatcher: Starting TwitterWatcher (interval=300s)\n2026-03-01T23:15:16 [WARNING] TwitterWatcher: [WAITING] Twitter API credentials not set in .env. Set TWITTER_API_KEY, TWITTER_API_SECRET, TWITTER_ACCESS_TOKEN, TWITTER_ACCESS_SECRET. Sleeping until credentials are available."
+  },
+  {
+    "timestamp": "2026-03-02T17:30:38.754163+00:00",
+    "action_type": "orchestrator_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "Gold Tier orchestrator started | vault=D:\\aa-3\\hi\\ai-employee-bronze\\vault | dry_run=False"
+  },
+  {
+    "timestamp": "2026-03-02T17:30:57.312370+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "FileSystemWatcher started (PID=4856, restart=#1, circuit=CLOSED)",
+    "watcher": "FileSystemWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-03-02T17:30:57.358508+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "GmailWatcher started (PID=7596, restart=#1, circuit=CLOSED)",
+    "watcher": "GmailWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-03-02T17:30:57.458624+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "LinkedInWatcher started (PID=9964, restart=#1, circuit=CLOSED)",
+    "watcher": "LinkedInWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-03-02T17:30:57.628131+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "FacebookWatcher started (PID=7728, restart=#1, circuit=CLOSED)",
+    "watcher": "FacebookWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-03-02T17:30:57.729352+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "InstagramWatcher started (PID=8912, restart=#1, circuit=CLOSED)",
+    "watcher": "InstagramWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-03-02T17:30:57.780852+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "TwitterWatcher started (PID=2476, restart=#1, circuit=CLOSED)",
+    "watcher": "TwitterWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-03-02T17:35:30.090084+00:00",
+    "action_type": "watcher_loop",
+    "actor": "GmailWatcher",
+    "source_file": "gmail_main",
+    "result": "error",
+    "notes": "[WinError 10054] An existing connection was forcibly closed by the remote host"
+  }
+]

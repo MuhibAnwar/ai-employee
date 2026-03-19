@@ -55,8 +55,24 @@ function loadCredentials() {
     );
   }
   const token = JSON.parse(fs.readFileSync(TOKEN_PATH, "utf-8"));
-  const auth = new google.auth.OAuth2();
-  auth.setCredentials(token);
+
+  // Python's google-auth saves access_token as "token" and expiry as an ISO
+  // string. Node.js google-auth-library expects "access_token" and
+  // "expiry_date" (milliseconds). client_id/client_secret must be passed to
+  // the OAuth2 constructor so the library can auto-refresh expired tokens.
+  const auth = new google.auth.OAuth2(
+    token.client_id,
+    token.client_secret,
+    token.token_uri
+  );
+  auth.setCredentials({
+    access_token: token.token || token.access_token,
+    refresh_token: token.refresh_token,
+    expiry_date: token.expiry
+      ? new Date(token.expiry).getTime()
+      : token.expiry_date,
+    token_type: token.token_type || "Bearer",
+  });
   return auth;
 }
 

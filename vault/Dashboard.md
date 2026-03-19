@@ -1,7 +1,7 @@
 ---
-last_updated: 2026-02-23T20:00:00Z
+last_updated: 2026-03-01T00:00:05Z
 status: active
-tier: Gold (COMPLETE)
+tier: Gold
 ---
 
 # AI Employee Dashboard
@@ -13,9 +13,9 @@ tier: Gold (COMPLETE)
 | Item | Value |
 |------|-------|
 | AI Employee | Active |
-| Tier | **Gold ✅ COMPLETE** |
-| Last Updated | 2026-02-23 20:00 UTC |
-| Vault Health | OK |
+| Tier | **Gold** |
+| Last Updated | 2026-03-01 (Ralph Wiggum Triage Loop) |
+| Vault Health | ⚠️ Watchers DOWN — orchestrator needs restart |
 | Silver Tier | ✅ Verified 2026-02-21 |
 | Gold Phase 1 | ✅ Verified 2026-02-21 (Ralph loop, error recovery) |
 | Gold Phase 2 | ✅ Verified 2026-02-22 (6 watchers, all exit 0) |
@@ -25,42 +25,57 @@ tier: Gold (COMPLETE)
 
 ## Watcher Health (6 Sources)
 
-| Watcher | Status | Verified |
-|---------|--------|---------|
-| FileSystemWatcher | ✅ HEALTHY | 2026-02-22T14:41Z dry-run exit 0 |
-| GmailWatcher | ✅ HEALTHY | 2026-02-22T14:42Z dry-run exit 0 |
-| LinkedInWatcher | ✅ HEALTHY | 2026-02-22T14:43Z dry-run exit 0 |
-| FacebookWatcher | ✅ HEALTHY | 2026-02-22T14:44Z dry-run exit 0 |
-| InstagramWatcher | ✅ HEALTHY | 2026-02-22T14:44Z dry-run exit 0 |
-| TwitterWatcher | ✅ HEALTHY | 2026-02-22T14:44Z dry-run exit 0 |
+| Watcher | Status | Notes |
+|---------|--------|-------|
+| GmailWatcher | 🔴 DOWN | Circuit OPEN (alert filed). **Auth fixed** — crashed at 15:20 via PM2 kill (1073807364). Restart orchestrator. |
+| FacebookWatcher | 🔴 DOWN | Circuit OPEN (alert filed). Session expired OR PM2 kill. |
+| InstagramWatcher | 🔴 DOWN | Circuit OPEN (alert filed). `news_inbox()` missing from instagrapi. |
+| TwitterWatcher | 🔴 DOWN | Circuit OPEN (alert filed). API credentials not set in `.env`. |
+| LinkedInWatcher | 🔴 DOWN | Circuit OPEN (alert filed). May be PM2 kill — restart orchestrator first. |
+| FileSystemWatcher | 🔴 DOWN | Circuit OPEN (alert filed). May be PM2 kill — restart orchestrator first. |
 
-**All 6 watchers healthy — zero errors**
+**0/6 HEALTHY — See `vault/Plans/PLAN_Watchers_Recovery.md` for fix steps.**
+
+> **Key finding from logs (2026-03-01):** GmailWatcher auth was already fixed (HALF_OPEN test
+> passed at 15:07:57 UTC). All 6 watchers crashed at 15:20 with exit code 1073807364 (PM2
+> CTRL_BREAK kill). The orchestrator may simply need to be restarted via PM2.
 
 ## Inbox
 
-- **Pending items:** 1
-  - `test_task.md` (already processed — source file not cleaned up)
+- **Pending items:** 2
+  - `test_task.md`
+  - `test01.md`
 
 ## Needs Action by Domain
 
-- **Total:** 0 — all clear
-  - Filesystem: 0
+- **Total:** 6 (all watcher DOWN alerts — active until watchers recover)
+  - System Alerts: 6
+    - `ALERT_GmailWatcher_DOWN.md`
+    - `ALERT_FacebookWatcher_DOWN.md`
+    - `ALERT_InstagramWatcher_DOWN.md`
+    - `ALERT_TwitterWatcher_DOWN.md`
+    - `ALERT_LinkedInWatcher_DOWN.md`
+    - `ALERT_FileSystemWatcher_DOWN.md`
   - Email: 0
+  - Filesystem: 0
   - LinkedIn: 0
   - Facebook: 0
   - Instagram: 0
   - Twitter/X: 0
-  - System Alerts: 0
 
 ## Pending Approvals
 
-- **Awaiting your review:** 0 — _No pending approvals_
+- **Awaiting your review:** 2
+
+| File | Priority | Action |
+|------|----------|--------|
+| `REVIEW_GCP_Billing_Closure_20260301.md` | HIGH | GCP billing account closed — decide to reopen or migrate |
+| `REVIEW_Suspicious_Immigration_Email_20260301.md` | HIGH | Phishing flag — email from canadianvisa.org |
 
 ## Active Plans
 
-- **In progress:** 2
-  - `PLAN_20260221T120000_silver_tier_email_verification.md`
-  - `PLAN_20260223T194900_full_pipeline_verification.md`
+- **In progress:** 1
+  - `PLAN_Watchers_Recovery.md` — **URGENT** — step-by-step recovery for all 6 watchers
 
 ## Accounting
 
@@ -72,33 +87,23 @@ tier: Gold (COMPLETE)
 - **Latest CEO briefing:** `vault/Briefings/2026-02-22_Monday_CEO_Briefing.md`
 - **Gold Tier report:** `vault/Briefings/Gold_Tier_Complete.md`
 - **Full Tier Verification:** `vault/Briefings/Full_Tier_Verification_Report.md`
-- **Next CEO briefing:** 2026-03-02 (Monday)
+- **Next CEO briefing:** 2026-03-02 (Monday) — **due tomorrow**
 
 ## Done This Session
 
-- **Completed items (total):** 13
-  - FILE_20260219T000000_test_task.md
-  - TEST_EMAIL_001.md
-  - PLAN_20260221T120000_silver_tier_email_verification.md
-  - PLAN_20260221T121000_ralph_test.md
-  - RALPH_TEST_001.md
-  - ACTIVE_TASK_COMPLETED.md (Silver Ralph verify)
-  - ALERT_FileSystemWatcher_DOWN.md
-  - ALERT_LinkedInWatcher_DOWN.md
-  - GOLD_VERIFY_20260222T140000_cross_domain_test.md
-  - PLAN_20260222T140000_gold_tier_verification.md
-  - ACTIVE_TASK_GOLD_VERIFY_20260222.md
-  - VERIFICATION_TEST_20260223.md
-  - VERIFY_20260223T194900_pipeline_health.md ✅ _(approved 2026-02-23)_
+- **Completed items (total):** 42
+  - 19 from previous sessions
+  - 23 triaged this session (newsletters, marketing, informational, previously-processed emails)
 
 ## Recent Activity
 
-- `2026-02-23T20:00:00Z` — **approved_action_executed** — pipeline_verification acknowledged; VERIFY_20260223T194900_pipeline_health.md → Done ✅
-- `2026-02-23T19:49:02Z` — **full_tier_verification** — 21/22 checks PASSED (1 known: Email MCP not registered)
-- `2026-02-23T19:49:01Z` — **pending_approval_created** — VERIFY_20260223T194900_pipeline_health.md
-- `2026-02-23T19:49:00Z` — **triage_processed** — VERIFICATION_TEST.md → Plan created
-- `2026-02-22T14:41:00Z` — **watcher_dry_run_verified** — All 6 watchers EXIT 0 ✅
+- `2026-03-01T00:00:05Z` — **dashboard_updated** — needs_action=6, pending=2, plans=1, done=42
+- `2026-03-01T00:00:04Z` — **pending_approval_created** — Suspicious immigration email flagged
+- `2026-03-01T00:00:03Z` — **pending_approval_created** — GCP billing closure flagged HIGH
+- `2026-03-01T00:00:02Z` — **plan_created** — PLAN_Watchers_Recovery.md (URGENT)
+- `2026-03-01T00:00:01Z` — **triage_batch** — 23 items → Done, 6 ALERTs remain in Needs_Action
+- `2026-03-01T00:00:00Z` — **ralph_wiggum_loop** — iteration 1 started
 
 ---
 
-*Generated by AI Employee v0.3 (Gold Tier Complete) — 2026-02-23T20:00:00Z*
+*Generated by AI Employee v0.3 (Gold Tier) — 2026-03-01T00:00:05Z*

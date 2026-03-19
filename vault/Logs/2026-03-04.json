@@ -1,0 +1,295 @@
+[
+  {
+    "timestamp": "2026-03-03T19:00:04.795821+00:00",
+    "action_type": "daily_summary",
+    "actor": "orchestrator",
+    "date": "2026-03-04",
+    "crash_counts": {
+      "FileSystemWatcher": 0,
+      "GmailWatcher": 0,
+      "LinkedInWatcher": 0,
+      "FacebookWatcher": 0,
+      "InstagramWatcher": 0,
+      "TwitterWatcher": 0
+    },
+    "total_crashes": 0,
+    "circuit_states": {
+      "FileSystemWatcher": "CLOSED",
+      "GmailWatcher": "CLOSED",
+      "LinkedInWatcher": "CLOSED",
+      "FacebookWatcher": "CLOSED",
+      "InstagramWatcher": "CLOSED",
+      "TwitterWatcher": "CLOSED"
+    },
+    "result": "success",
+    "notes": "Daily summary for 2026-03-04"
+  },
+  {
+    "timestamp": "2026-03-03T20:38:08.029476+00:00",
+    "action_type": "watcher_loop",
+    "actor": "GmailWatcher",
+    "source_file": "gmail_main",
+    "result": "error",
+    "notes": "[WinError 10054] An existing connection was forcibly closed by the remote host"
+  },
+  {
+    "timestamp": "2026-03-03T20:40:30.178878+00:00",
+    "action_type": "watcher_loop",
+    "actor": "GmailWatcher",
+    "source_file": "gmail_main",
+    "result": "error",
+    "notes": "[WinError 10054] An existing connection was forcibly closed by the remote host"
+  },
+  {
+    "timestamp": "2026-03-03T20:44:49.989844+00:00",
+    "action_type": "watcher_loop",
+    "actor": "GmailWatcher",
+    "source_file": "gmail_main",
+    "result": "error",
+    "notes": "[WinError 10054] An existing connection was forcibly closed by the remote host"
+  },
+  {
+    "timestamp": "2026-03-03T20:58:53.110453+00:00",
+    "action_type": "gmail_email_detected",
+    "actor": "GmailWatcher",
+    "source_file": "gmail://message/19cb57ce922d6fa0",
+    "result": "success",
+    "notes": "Action file created: EMAIL_20260303T205853_Synthica_Research_Group_s_First_Round_Re.md | Subject: Synthica Research Group's First Round Results"
+  },
+  {
+    "timestamp": "2026-03-03T21:11:55.944805+00:00",
+    "action_type": "watcher_crashed",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "error",
+    "notes": "FileSystemWatcher exited (code=1073807364) | circuit=CLOSED",
+    "watcher": "FileSystemWatcher",
+    "exit_code": 1073807364,
+    "circuit_state": "CLOSED",
+    "crash_count": 1,
+    "restart_number": 1,
+    "traceback": "2026-03-03T23:38:49 [INFO] FileSystemWatcher: Monitoring drop folder: D:\\aa-3\\hi\\ai-employee-bronze\\vault\\Inbox\n2026-03-03T23:38:49 [INFO] FileSystemWatcher: Action files will be created in: D:\\aa-3\\hi\\ai-employee-bronze\\vault\\Needs_Action\n2026-03-03T23:38:49 [INFO] FileSystemWatcher: Press Ctrl+C to stop."
+  },
+  {
+    "timestamp": "2026-03-03T21:11:55.982121+00:00",
+    "action_type": "watcher_crashed",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "error",
+    "notes": "GmailWatcher exited (code=1073807364) | circuit=CLOSED",
+    "watcher": "GmailWatcher",
+    "exit_code": 1073807364,
+    "circuit_state": "CLOSED",
+    "crash_count": 1,
+    "restart_number": 1,
+    "traceback": "\\aa-3\\hi\\ai-employee-bronze\\vault)\n2026-03-03T23:38:52 [INFO] GmailWatcher: Gmail token saved to D:\\aa-3\\hi\\ai-employee-bronze\\secrets\\gmail_token.json\n2026-03-03T23:38:52 [INFO] googleapiclient.discovery_cache: file_cache is only supported with oauth2client<4.0.0\n2026-03-03T23:38:52 [INFO] GmailWatcher: Gmail API authenticated successfully.\n2026-03-04T01:38:08 [ERROR] GmailWatcher: Unexpected error in main loop: [WinError 10054] An existing connection was forcibly closed by the remote host\n2026-03-04T01:40:30 [ERROR] GmailWatcher: Unexpected error in main loop: [WinError 10054] An existing connection was forcibly closed by the remote host\n2026-03-04T01:44:49 [ERROR] GmailWatcher: Unexpected error in main loop: [WinError 10054] An existing connection was forcibly closed by the remote host\n2026-03-04T01:58:53 [INFO] GmailWatcher: Found 1 new important email(s).\n2026-03-04T01:58:53 [INFO] GmailWatcher: Created action file: EMAIL_20260303T205853_Synthica_Research_Group_s_First_Round_Re.md"
+  },
+  {
+    "timestamp": "2026-03-03T21:11:55.993337+00:00",
+    "action_type": "watcher_crashed",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "error",
+    "notes": "LinkedInWatcher exited (code=1073807364) | circuit=CLOSED",
+    "watcher": "LinkedInWatcher",
+    "exit_code": 1073807364,
+    "circuit_state": "CLOSED",
+    "crash_count": 1,
+    "restart_number": 1,
+    "traceback": ".\n2026-03-04T00:29:45 [INFO] LinkedInWatcher: No new relevant LinkedIn messages.\n2026-03-04T00:34:45 [INFO] LinkedInWatcher: Fetching LinkedIn conversations...\n2026-03-04T00:34:48 [INFO] LinkedInWatcher: No new relevant LinkedIn messages.\n2026-03-04T00:39:48 [INFO] LinkedInWatcher: Fetching LinkedIn conversations...\n2026-03-04T00:39:50 [ERROR] LinkedInWatcher: LinkedIn API error: ('Connection aborted.', ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None))\n2026-03-04T00:39:50 [INFO] LinkedInWatcher: No new relevant LinkedIn messages.\n2026-03-04T00:44:50 [INFO] LinkedInWatcher: Authenticating with LinkedIn API...\n2026-03-04T00:44:52 [INFO] LinkedInWatcher: LinkedIn API authenticated successfully.\n2026-03-04T00:44:52 [INFO] LinkedInWatcher: Fetching LinkedIn conversations...\n2026-03-04T00:44:58 [INFO] LinkedInWatcher: No new relevant LinkedIn messages.\n2026-03-04T00:49:58 [INFO] LinkedInWatcher: Fetching LinkedIn conversations..."
+  },
+  {
+    "timestamp": "2026-03-03T21:11:56.004822+00:00",
+    "action_type": "watcher_crashed",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "error",
+    "notes": "FacebookWatcher exited (code=1073807364) | circuit=CLOSED",
+    "watcher": "FacebookWatcher",
+    "exit_code": 1073807364,
+    "circuit_state": "CLOSED",
+    "crash_count": 1,
+    "restart_number": 1,
+    "traceback": "2026-03-03T23:38:50 [INFO] FacebookWatcher: Starting FacebookWatcher (interval=300s)\n2026-03-04T01:47:57 [ERROR] FacebookWatcher: Facebook request error: HTTPSConnectionPool(host='mbasic.facebook.com', port=443): Read timed out. (read timeout=20)"
+  },
+  {
+    "timestamp": "2026-03-03T21:11:56.017003+00:00",
+    "action_type": "watcher_crashed",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "error",
+    "notes": "InstagramWatcher exited (code=1073807364) | circuit=CLOSED",
+    "watcher": "InstagramWatcher",
+    "exit_code": 1073807364,
+    "circuit_state": "CLOSED",
+    "crash_count": 1,
+    "restart_number": 1,
+    "traceback": ":51 [ERROR] InstagramWatcher: Instagram API error: 'Client' object has no attribute 'news_inbox'\n2026-03-04T00:53:51 [ERROR] InstagramWatcher: Instagram API error: 'Client' object has no attribute 'news_inbox'\n2026-03-04T01:37:09 [ERROR] InstagramWatcher: Instagram API error: 'Client' object has no attribute 'news_inbox'\n2026-03-04T01:42:09 [ERROR] InstagramWatcher: Instagram API error: 'Client' object has no attribute 'news_inbox'\n2026-03-04T01:47:09 [ERROR] InstagramWatcher: Instagram API error: 'Client' object has no attribute 'news_inbox'\n2026-03-04T01:52:09 [ERROR] InstagramWatcher: Instagram API error: 'Client' object has no attribute 'news_inbox'\n2026-03-04T01:57:09 [ERROR] InstagramWatcher: Instagram API error: 'Client' object has no attribute 'news_inbox'\n2026-03-04T02:02:10 [ERROR] InstagramWatcher: Instagram API error: 'Client' object has no attribute 'news_inbox'\n2026-03-04T02:07:10 [ERROR] InstagramWatcher: Instagram API error: 'Client' object has no attribute 'news_inbox'"
+  },
+  {
+    "timestamp": "2026-03-03T21:11:56.028051+00:00",
+    "action_type": "watcher_crashed",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "error",
+    "notes": "TwitterWatcher exited (code=1073807364) | circuit=CLOSED",
+    "watcher": "TwitterWatcher",
+    "exit_code": 1073807364,
+    "circuit_state": "CLOSED",
+    "crash_count": 1,
+    "restart_number": 1,
+    "traceback": "2026-03-03T23:38:50 [INFO] TwitterWatcher: Starting TwitterWatcher (interval=300s)\n2026-03-03T23:38:50 [WARNING] TwitterWatcher: [WAITING] Twitter API credentials not set in .env. Set TWITTER_API_KEY, TWITTER_API_SECRET, TWITTER_ACCESS_TOKEN, TWITTER_ACCESS_SECRET. Sleeping until credentials are available."
+  },
+  {
+    "timestamp": "2026-03-04T15:06:00.873935+00:00",
+    "action_type": "orchestrator_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "Gold Tier orchestrator started | vault=D:\\aa-3\\hi\\ai-employee-bronze\\vault | dry_run=False"
+  },
+  {
+    "timestamp": "2026-03-04T15:06:04.244689+00:00",
+    "action_type": "preflight_failed",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "error",
+    "notes": "GmailWatcher failed preflight dry-run: exit=3221225786\n",
+    "watcher": "GmailWatcher"
+  },
+  {
+    "timestamp": "2026-03-04T15:06:04.275357+00:00",
+    "action_type": "watcher_circuit_open",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "error",
+    "notes": "GmailWatcher: circuit OPEN — alert created at ALERT_GmailWatcher_DOWN.md",
+    "watcher": "GmailWatcher",
+    "alert_file": "ALERT_GmailWatcher_DOWN.md"
+  },
+  {
+    "timestamp": "2026-03-04T15:06:05.861351+00:00",
+    "action_type": "preflight_failed",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "error",
+    "notes": "LinkedInWatcher failed preflight dry-run: exit=3221225786\n2026-03-04T20:06:05 [INFO] LinkedInWatcher: [DRY_RUN] LinkedInWatcher started in dry-run mode. No API calls will be made.\n2026-03-04T20:06:05 [INFO] LinkedInWatcher: [DRY_RUN] Skipping LinkedIn API call — returning empty list.\n2026-03-04T20:06:05 [INFO] LinkedInWatcher: [DRY_RUN] Exiting after one cycle.",
+    "watcher": "LinkedInWatcher"
+  },
+  {
+    "timestamp": "2026-03-04T15:06:05.894901+00:00",
+    "action_type": "watcher_circuit_open",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "error",
+    "notes": "LinkedInWatcher: circuit OPEN — alert created at ALERT_LinkedInWatcher_DOWN.md",
+    "watcher": "LinkedInWatcher",
+    "alert_file": "ALERT_LinkedInWatcher_DOWN.md"
+  },
+  {
+    "timestamp": "2026-03-04T15:06:11.987919+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "FileSystemWatcher started (PID=3104, restart=#1, circuit=CLOSED)",
+    "watcher": "FileSystemWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-03-04T15:06:12.037388+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "FacebookWatcher started (PID=5416, restart=#1, circuit=CLOSED)",
+    "watcher": "FacebookWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-03-04T15:06:12.079589+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "InstagramWatcher started (PID=16296, restart=#1, circuit=CLOSED)",
+    "watcher": "InstagramWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-03-04T15:06:12.150101+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "TwitterWatcher started (PID=15840, restart=#1, circuit=CLOSED)",
+    "watcher": "TwitterWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-03-04T15:16:07.489916+00:00",
+    "action_type": "circuit_half_open",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "GmailWatcher: entering HALF_OPEN after 600s",
+    "watcher": "GmailWatcher"
+  },
+  {
+    "timestamp": "2026-03-04T15:16:07.519237+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "GmailWatcher started (PID=2880, restart=#1, circuit=HALF_OPEN)",
+    "watcher": "GmailWatcher",
+    "circuit_state": "HALF_OPEN"
+  },
+  {
+    "timestamp": "2026-03-04T15:16:07.538242+00:00",
+    "action_type": "circuit_half_open",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "LinkedInWatcher: entering HALF_OPEN after 600s",
+    "watcher": "LinkedInWatcher"
+  },
+  {
+    "timestamp": "2026-03-04T15:16:07.563212+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "LinkedInWatcher started (PID=13504, restart=#1, circuit=HALF_OPEN)",
+    "watcher": "LinkedInWatcher",
+    "circuit_state": "HALF_OPEN"
+  },
+  {
+    "timestamp": "2026-03-04T15:16:14.142840+00:00",
+    "action_type": "gmail_email_detected",
+    "actor": "GmailWatcher",
+    "source_file": "gmail://message/19cb5b26165f867e",
+    "result": "success",
+    "notes": "Action file created: EMAIL_20260304T151614_Parquet_can_shrink_your_data_100x.md | Subject: Parquet can shrink your data 100x"
+  },
+  {
+    "timestamp": "2026-03-04T15:17:07.593601+00:00",
+    "action_type": "circuit_closed",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "GmailWatcher: HALF_OPEN test passed — circuit CLOSED",
+    "watcher": "GmailWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-03-04T15:17:07.660720+00:00",
+    "action_type": "circuit_closed",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "LinkedInWatcher: HALF_OPEN test passed — circuit CLOSED",
+    "watcher": "LinkedInWatcher",
+    "circuit_state": "CLOSED"
+  }
+]

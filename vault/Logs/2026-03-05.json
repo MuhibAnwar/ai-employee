@@ -1,0 +1,226 @@
+[
+  {
+    "timestamp": "2026-03-05T18:13:15.875067+00:00",
+    "action_type": "orchestrator_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "Gold Tier orchestrator started | vault=D:\\aa-3\\hi\\ai-employee-bronze\\vault | dry_run=False"
+  },
+  {
+    "timestamp": "2026-03-05T18:13:19.526699+00:00",
+    "action_type": "preflight_failed",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "error",
+    "notes": "GmailWatcher failed preflight dry-run: exit=3221225786\n",
+    "watcher": "GmailWatcher"
+  },
+  {
+    "timestamp": "2026-03-05T18:13:19.554638+00:00",
+    "action_type": "watcher_circuit_open",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "error",
+    "notes": "GmailWatcher: circuit OPEN — alert created at ALERT_GmailWatcher_DOWN.md",
+    "watcher": "GmailWatcher",
+    "alert_file": "ALERT_GmailWatcher_DOWN.md"
+  },
+  {
+    "timestamp": "2026-03-05T18:13:23.973743+00:00",
+    "action_type": "preflight_failed",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "error",
+    "notes": "InstagramWatcher failed preflight dry-run: exit=3221225786\n",
+    "watcher": "InstagramWatcher"
+  },
+  {
+    "timestamp": "2026-03-05T18:13:24.003650+00:00",
+    "action_type": "watcher_circuit_open",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "error",
+    "notes": "InstagramWatcher: circuit OPEN — alert created at ALERT_InstagramWatcher_DOWN.md",
+    "watcher": "InstagramWatcher",
+    "alert_file": "ALERT_InstagramWatcher_DOWN.md"
+  },
+  {
+    "timestamp": "2026-03-05T18:13:25.363962+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "FileSystemWatcher started (PID=12312, restart=#1, circuit=CLOSED)",
+    "watcher": "FileSystemWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-03-05T18:13:25.395084+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "LinkedInWatcher started (PID=3344, restart=#1, circuit=CLOSED)",
+    "watcher": "LinkedInWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-03-05T18:13:25.429492+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "FacebookWatcher started (PID=12004, restart=#1, circuit=CLOSED)",
+    "watcher": "FacebookWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-03-05T18:13:25.464811+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "TwitterWatcher started (PID=13308, restart=#1, circuit=CLOSED)",
+    "watcher": "TwitterWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-03-05T18:26:26.421702+00:00",
+    "action_type": "circuit_half_open",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "GmailWatcher: entering HALF_OPEN after 600s",
+    "watcher": "GmailWatcher"
+  },
+  {
+    "timestamp": "2026-03-05T18:26:26.535610+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "GmailWatcher started (PID=5540, restart=#1, circuit=HALF_OPEN)",
+    "watcher": "GmailWatcher",
+    "circuit_state": "HALF_OPEN"
+  },
+  {
+    "timestamp": "2026-03-05T18:26:26.558922+00:00",
+    "action_type": "circuit_half_open",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "InstagramWatcher: entering HALF_OPEN after 600s",
+    "watcher": "InstagramWatcher"
+  },
+  {
+    "timestamp": "2026-03-05T18:26:26.697304+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "InstagramWatcher started (PID=13736, restart=#1, circuit=HALF_OPEN)",
+    "watcher": "InstagramWatcher",
+    "circuit_state": "HALF_OPEN"
+  },
+  {
+    "timestamp": "2026-03-05T18:26:34.635871+00:00",
+    "action_type": "gmail_email_detected",
+    "actor": "GmailWatcher",
+    "source_file": "gmail://message/19cbad9eeb04427d",
+    "result": "success",
+    "notes": "Action file created: EMAIL_20260305T182634_Build_a_hardware_project__get__400_and_a.md | Subject: Build a hardware project, get $400 and a free hackathon ticket"
+  },
+  {
+    "timestamp": "2026-03-05T18:26:34.741705+00:00",
+    "action_type": "gmail_email_detected",
+    "actor": "GmailWatcher",
+    "source_file": "gmail://message/19cba6dd7358b051",
+    "result": "success",
+    "notes": "Action file created: EMAIL_20260305T182634_mem_eted__muhiblevels_shared_something_n.md | Subject: mem.eted, muhiblevels shared something new"
+  },
+  {
+    "timestamp": "2026-03-05T18:26:41.762599+00:00",
+    "action_type": "watcher_crashed",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "error",
+    "notes": "FileSystemWatcher exited (code=1073807364) | circuit=CLOSED",
+    "watcher": "FileSystemWatcher",
+    "exit_code": 1073807364,
+    "circuit_state": "CLOSED",
+    "crash_count": 1,
+    "restart_number": 1,
+    "traceback": "2026-03-05T23:13:26 [INFO] FileSystemWatcher: Monitoring drop folder: D:\\aa-3\\hi\\ai-employee-bronze\\vault\\Inbox\n2026-03-05T23:13:26 [INFO] FileSystemWatcher: Action files will be created in: D:\\aa-3\\hi\\ai-employee-bronze\\vault\\Needs_Action\n2026-03-05T23:13:26 [INFO] FileSystemWatcher: Press Ctrl+C to stop."
+  },
+  {
+    "timestamp": "2026-03-05T18:26:41.930928+00:00",
+    "action_type": "watcher_crashed",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "error",
+    "notes": "GmailWatcher exited (code=1073807364) | circuit=OPEN",
+    "watcher": "GmailWatcher",
+    "exit_code": 1073807364,
+    "circuit_state": "OPEN",
+    "crash_count": 0,
+    "restart_number": 1,
+    "traceback": "2026-03-05T23:26:30 [INFO] GmailWatcher: Starting GmailWatcher (interval=120s, vault=D:\\aa-3\\hi\\ai-employee-bronze\\vault)\n2026-03-05T23:26:31 [INFO] GmailWatcher: Gmail token saved to D:\\aa-3\\hi\\ai-employee-bronze\\secrets\\gmail_token.json\n2026-03-05T23:26:31 [INFO] googleapiclient.discovery_cache: file_cache is only supported with oauth2client<4.0.0\n2026-03-05T23:26:32 [INFO] GmailWatcher: Gmail API authenticated successfully.\n2026-03-05T23:26:34 [INFO] GmailWatcher: Found 2 new important email(s).\n2026-03-05T23:26:34 [INFO] GmailWatcher: Created action file: EMAIL_20260305T182634_Build_a_hardware_project__get__400_and_a.md\n2026-03-05T23:26:34 [INFO] GmailWatcher: Created action file: EMAIL_20260305T182634_mem_eted__muhiblevels_shared_something_n.md"
+  },
+  {
+    "timestamp": "2026-03-05T18:26:41.967973+00:00",
+    "action_type": "watcher_crashed",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "error",
+    "notes": "LinkedInWatcher exited (code=1073807364) | circuit=CLOSED",
+    "watcher": "LinkedInWatcher",
+    "exit_code": 1073807364,
+    "circuit_state": "CLOSED",
+    "crash_count": 1,
+    "restart_number": 1,
+    "traceback": "2026-03-05T23:13:27 [INFO] LinkedInWatcher: Starting LinkedInWatcher (interval=300s, vault=D:\\aa-3\\hi\\ai-employee-bronze\\vault)\n2026-03-05T23:13:27 [INFO] LinkedInWatcher: Authenticating with LinkedIn API...\n2026-03-05T23:13:29 [INFO] LinkedInWatcher: LinkedIn API authenticated successfully.\n2026-03-05T23:13:29 [INFO] LinkedInWatcher: Fetching LinkedIn conversations...\n2026-03-05T23:13:34 [INFO] LinkedInWatcher: No new relevant LinkedIn messages.\n2026-03-05T23:18:34 [INFO] LinkedInWatcher: Fetching LinkedIn conversations...\n2026-03-05T23:18:40 [INFO] LinkedInWatcher: No new relevant LinkedIn messages."
+  },
+  {
+    "timestamp": "2026-03-05T18:26:41.993434+00:00",
+    "action_type": "watcher_crashed",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "error",
+    "notes": "FacebookWatcher exited (code=1073807364) | circuit=CLOSED",
+    "watcher": "FacebookWatcher",
+    "exit_code": 1073807364,
+    "circuit_state": "CLOSED",
+    "crash_count": 1,
+    "restart_number": 1,
+    "traceback": "2026-03-05T23:13:26 [INFO] FacebookWatcher: Starting FacebookWatcher (interval=300s)"
+  },
+  {
+    "timestamp": "2026-03-05T18:26:42.035072+00:00",
+    "action_type": "watcher_crashed",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "error",
+    "notes": "InstagramWatcher exited (code=1073807364) | circuit=OPEN",
+    "watcher": "InstagramWatcher",
+    "exit_code": 1073807364,
+    "circuit_state": "OPEN",
+    "crash_count": 0,
+    "restart_number": 1,
+    "traceback": "2026-03-05T23:26:29 [INFO] InstagramWatcher: Starting InstagramWatcher (interval=300s)\n2026-03-05T23:26:29 [ERROR] InstagramWatcher: Instagram API error: 'Client' object has no attribute 'news_inbox'"
+  },
+  {
+    "timestamp": "2026-03-05T18:26:42.062096+00:00",
+    "action_type": "watcher_crashed",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "error",
+    "notes": "TwitterWatcher exited (code=1073807364) | circuit=CLOSED",
+    "watcher": "TwitterWatcher",
+    "exit_code": 1073807364,
+    "circuit_state": "CLOSED",
+    "crash_count": 1,
+    "restart_number": 1,
+    "traceback": "2026-03-05T23:13:26 [INFO] TwitterWatcher: Starting TwitterWatcher (interval=300s)\n2026-03-05T23:13:26 [WARNING] TwitterWatcher: [WAITING] Twitter API credentials not set in .env. Set TWITTER_API_KEY, TWITTER_API_SECRET, TWITTER_ACCESS_TOKEN, TWITTER_ACCESS_SECRET. Sleeping until credentials are available."
+  }
+]

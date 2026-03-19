@@ -34,9 +34,11 @@ import time
 from datetime import datetime, timezone
 from pathlib import Path
 
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
+
 try:
     from dotenv import load_dotenv
-    load_dotenv()
+    load_dotenv(PROJECT_ROOT / ".env")
 except ImportError:
     pass
 
@@ -54,8 +56,6 @@ logger = logging.getLogger("orchestrator")
 # ─────────────────────────────────────────────────────────────────────────────
 # Configuration
 # ─────────────────────────────────────────────────────────────────────────────
-
-PROJECT_ROOT = Path(__file__).parent.parent
 
 # Timing
 RESTART_DELAY     = 10    # s between crash and next restart (CLOSED state)
@@ -106,6 +106,40 @@ WATCHERS = [
         "extra_args": ["--interval", "300"],
     },
 ]
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Preflight check
+# ─────────────────────────────────────────────────────────────────────────────
+
+PREFLIGHT_TIMEOUT = 8  # seconds — dry-run watchers that timeout are healthy
+
+def preflight_check(name: str, script: str, vault_path: str) -> tuple[bool, str]:
+    """
+    Run a watcher in --dry-run for up to PREFLIGHT_TIMEOUT seconds.
+    Returns (ok, error_msg).
+      - TimeoutExpired → ok (process is still running → healthy)
+      - exit=0         → ok (dry-run completed one cycle cleanly)
+      - exit!=0        → fail (import error, missing vault, auth failure, etc.)
+    """
+    cmd = [
+        sys.executable,
+        str(PROJECT_ROOT / script),
+        "--vault", vault_path,
+        "--dry-run",
+    ]
+    try:
+        result = subprocess.run(
+            cmd, capture_output=True, text=True, timeout=PREFLIGHT_TIMEOUT,
+            cwd=str(PROJECT_ROOT),
+        )
+        if result.returncode != 0:
+            output = (result.stdout + result.stderr).strip()[-600:]
+            return False, f"exit={result.returncode}\n{output}"
+        return True, ""
+    except subprocess.TimeoutExpired:
+        return True, ""   # still running after timeout = healthy
+    except Exception as exc:
+        return False, str(exc)
 
 # ─────────────────────────────────────────────────────────────────────────────
 # Vault log helper
@@ -323,10 +357,10 @@ _SUGGESTED_FIXES: dict[str, str] = {
         "4. Check Gmail API quota at https://console.cloud.google.com/"
     ),
     "LinkedInWatcher": (
-        "1. LinkedIn session may have expired — `secrets/linkedin_session/`\n"
-        "2. Re-authenticate via Playwright: open LinkedIn in browser and save session\n"
-        "3. Check `LINKEDIN_SESSION_PATH` in `.env`\n"
-        "4. Verify `playwright` is installed: `pip install playwright`"
+        "1. Check `LINKEDIN_USERNAME` and `LINKEDIN_PASSWORD` in `.env`\n"
+        "2. Verify `linkedin-api` is installed: `pip install linkedin-api`\n"
+        "3. LinkedIn may have rate-limited — wait 15 min and retry\n"
+        "4. Review `vault/Logs/` for the specific API error message"
     ),
     "FileSystemWatcher": (
         "1. Check vault path exists: `ls ./vault/Inbox/`\n"
@@ -336,21 +370,21 @@ _SUGGESTED_FIXES: dict[str, str] = {
     ),
     "FacebookWatcher": (
         "1. Facebook session may have expired — `secrets/facebook_storage.json`\n"
-        "2. Re-authenticate: `python setup/save_social_sessions.py --platform facebook`\n"
+        "2. Re-capture cookies with a browser on another machine, save as `facebook_storage.json`\n"
         "3. Check `FACEBOOK_SESSION_PATH` in `.env`\n"
-        "4. Verify `playwright` is installed: `pip install playwright && python -m playwright install chromium`"
+        "4. Verify `requests` is installed: `pip install requests`"
     ),
     "InstagramWatcher": (
-        "1. Instagram session may have expired — `secrets/instagram_storage.json`\n"
-        "2. Re-authenticate: `python setup/save_social_sessions.py --platform instagram`\n"
+        "1. Instagram session may have expired — `secrets/instagram_session.json`\n"
+        "2. Re-create: `from instagrapi import Client; cl=Client(); cl.login('u','p'); cl.dump_settings('secrets/instagram_session.json')`\n"
         "3. Check `INSTAGRAM_SESSION_PATH` in `.env`\n"
-        "4. Verify `playwright` is installed: `pip install playwright && python -m playwright install chromium`"
+        "4. Verify `instagrapi` is installed: `pip install instagrapi`"
     ),
     "TwitterWatcher": (
-        "1. Twitter/X session may have expired — `secrets/twitter_storage.json`\n"
-        "2. Re-authenticate: `python setup/save_social_sessions.py --platform twitter`\n"
-        "3. Check `TWITTER_SESSION_PATH` in `.env`\n"
-        "4. Verify `playwright` is installed: `pip install playwright && python -m playwright install chromium`"
+        "1. Check TWITTER_API_KEY, TWITTER_API_SECRET, TWITTER_ACCESS_TOKEN, TWITTER_ACCESS_SECRET in `.env`\n"
+        "2. Verify `tweepy` is installed: `pip install tweepy`\n"
+        "3. Check API rate limits at https://developer.twitter.com/\n"
+        "4. Verify your Twitter app has 'Read' permissions enabled"
     ),
 }
 
@@ -400,12 +434,22 @@ class WatcherProcess:
     def _spawn(self) -> None:
         cmd = self._build_cmd()
         logger.info(f"[{self.name}] Spawning: {' '.join(cmd)}")
+        # On Windows, DETACHED_PROCESS completely removes the child from any
+        # console and prevents both CTRL_C_EVENT and CTRL_BREAK_EVENT from
+        # PM2's process management from propagating into watcher subprocesses
+        # (which caused exit=3221225786 / STATUS_CONTROL_C_EXIT).
+        extra: dict = {}
+        if sys.platform == "win32":
+            extra["creationflags"] = subprocess.DETACHED_PROCESS
         self.process = subprocess.Popen(
             cmd,
+            stdin=subprocess.DEVNULL,
             stdout=subprocess.PIPE,
             stderr=subprocess.STDOUT,
             text=True,
             bufsize=1,
+            cwd=str(PROJECT_ROOT),
+            **extra,
         )
         self.restart_count += 1
         log_event(
@@ -666,9 +710,34 @@ def run(vault_path: str, dry_run: bool) -> None:
         for w in WATCHERS
     ]
 
-    # Start all watchers
+    # Preflight: dry-run each watcher before spawning in live mode
+    if not dry_run:
+        logger.info("Running preflight checks (dry-run) for all watchers…")
+        for wp in processes:
+            ok, err = preflight_check(wp.name, wp.script, str(vault))
+            if ok:
+                logger.info(f"  [PREFLIGHT OK]   {wp.name}")
+            else:
+                logger.error(f"  [PREFLIGHT FAIL] {wp.name}: {err[:200]}")
+                log_event(
+                    logs_dir, "preflight_failed",
+                    f"{wp.name} failed preflight dry-run: {err[:400]}",
+                    result="error",
+                    extra={"watcher": wp.name},
+                )
+                # Open the circuit immediately so it doesn't crashloop on start
+                wp.circuit.record_crash(err)
+                wp.circuit.record_crash(err)
+                wp.circuit.record_crash(err)  # 3 = threshold → OPEN
+                wp._create_alert_file()
+        logger.info("Preflight complete.")
+
+    # Start all watchers (OPEN ones will be skipped by check_and_restart)
     for wp in processes:
-        wp.start()
+        if wp.circuit.state == CLOSED:
+            wp.start()
+        else:
+            logger.warning(f"[{wp.name}] Skipping live start — circuit OPEN (preflight failed)")
     update_dashboard_health(vault, processes)
     logger.info("All watchers started. Health monitoring active.")
 
@@ -725,7 +794,14 @@ def main() -> None:
     )
     args = parser.parse_args()
 
-    vault_path = Path(args.vault).resolve()
+    # Resolve vault path against PROJECT_ROOT when relative, so the orchestrator
+    # works correctly regardless of which directory PM2 (or any launcher) uses
+    # as its working directory.
+    vault_path = Path(args.vault)
+    if not vault_path.is_absolute():
+        vault_path = PROJECT_ROOT / vault_path
+    vault_path = vault_path.resolve()
+
     if not vault_path.exists():
         print(f"ERROR: Vault path does not exist: {vault_path}", file=sys.stderr)
         sys.exit(1)

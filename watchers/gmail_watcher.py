@@ -30,11 +30,13 @@ from datetime import datetime, timezone
 # Allow running from project root or watchers/ directory
 sys.path.insert(0, str(Path(__file__).parent))
 
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
+
 from base_watcher import BaseWatcher
 
 try:
     from dotenv import load_dotenv
-    load_dotenv()
+    load_dotenv(PROJECT_ROOT / ".env")
 except ImportError:
     pass  # python-dotenv is optional; env vars may be set directly
 
@@ -48,11 +50,12 @@ except ImportError:
     GMAIL_AVAILABLE = False
 
 
-# OAuth scopes — read-only is enough for watching; send scope needed for MCP server
-SCOPES = ["https://www.googleapis.com/auth/gmail.readonly"]
+# OAuth scopes — must match the scope used in setup/gmail_auth.py so the
+# existing token can be refreshed without re-running the auth flow.
+SCOPES = ["https://mail.google.com/"]
 
 # File to track processed message IDs so we never duplicate action files
-PROCESSED_IDS_FILE = Path("./secrets/gmail_processed_ids.txt")
+PROCESSED_IDS_FILE = PROJECT_ROOT / "secrets" / "gmail_processed_ids.txt"
 
 
 class GmailWatcher(BaseWatcher):
@@ -68,12 +71,22 @@ class GmailWatcher(BaseWatcher):
         self.dry_run = dry_run
         self._service = None
 
-        # Paths from env or defaults
-        self.credentials_path = Path(
-            os.getenv("GMAIL_CREDENTIALS_PATH", "./secrets/gmail_credentials.json")
+        # Paths from env or defaults — resolve relative paths against PROJECT_ROOT
+        # so they work correctly regardless of the process working directory.
+        def _resolve(env_var: str, default: Path) -> Path:
+            val = os.getenv(env_var, "")
+            if not val:
+                return default
+            p = Path(val)
+            return p if p.is_absolute() else (PROJECT_ROOT / p).resolve()
+
+        self.credentials_path = _resolve(
+            "GMAIL_CREDENTIALS_PATH",
+            PROJECT_ROOT / "secrets" / "gmail_credentials.json",
         )
-        self.token_path = Path(
-            os.getenv("GMAIL_TOKEN_PATH", "./secrets/gmail_token.json")
+        self.token_path = _resolve(
+            "GMAIL_TOKEN_PATH",
+            PROJECT_ROOT / "secrets" / "gmail_token.json",
         )
 
         # Ensure secrets dir exists

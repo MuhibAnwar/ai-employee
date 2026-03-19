@@ -20,7 +20,7 @@ except ImportError:
     print("Run: pip install google-auth google-auth-httplib2 google-api-python-client")
     sys.exit(1)
 
-PROJECT_ROOT = Path(__file__).parent.parent
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
 TOKEN_FILE = PROJECT_ROOT / "secrets" / "gmail_token.json"
 
 if not TOKEN_FILE.exists():

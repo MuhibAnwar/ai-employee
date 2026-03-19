@@ -1,31 +1,31 @@
 """
 facebook_watcher.py - Facebook Notifications Watcher (Gold Tier)
 
-Uses Playwright to visit facebook.com/notifications, loading a saved session.
-Extracts notification text and creates structured .md action files in
-vault/Needs_Action/ for keyword-matched items.
+Uses requests + session cookies loaded from facebook_storage.json.
+Falls back to WAITING mode if no session file is found or requests fail.
 
 Usage:
     python watchers/facebook_watcher.py --vault ./vault
     python watchers/facebook_watcher.py --vault ./vault --dry-run
 
 Setup:
-    1. Install Playwright browsers: python -m playwright install chromium
-    2. Capture session: python setup/save_social_sessions.py
-       (opens browser → log in to Facebook → session saved automatically)
-    3. Set FACEBOOK_SESSION_PATH in .env
+    1. Export your Facebook session cookies to secrets/facebook_storage.json
+       Use a browser extension (e.g. EditThisCookie) to export cookies as JSON,
+       or use browser developer tools → Application → Cookies → export.
+    2. Set FACEBOOK_SESSION_PATH in .env (optional, default: secrets/facebook_storage.json)
 
 Keyword filtering (creates action file if ANY match):
     urgent, invoice, payment, order, complaint, question, dm, message,
     refund, support, client, pricing, proposal
 
 Requirements:
-    pip install playwright python-dotenv
-    python -m playwright install chromium
+    pip install requests python-dotenv
 """
 
 import argparse
+import json
 import os
+import re
 import sys
 import time
 from pathlib import Path
@@ -33,19 +33,21 @@ from datetime import datetime, timezone
 
 sys.path.insert(0, str(Path(__file__).parent))
 
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
+
 from base_watcher import BaseWatcher
 
 try:
     from dotenv import load_dotenv
-    load_dotenv()
+    load_dotenv(PROJECT_ROOT / ".env")
 except ImportError:
     pass
 
 try:
-    from playwright.sync_api import sync_playwright, TimeoutError as PlaywrightTimeout
-    PLAYWRIGHT_AVAILABLE = True
+    import requests
+    REQUESTS_AVAILABLE = True
 except ImportError:
-    PLAYWRIGHT_AVAILABLE = False
+    REQUESTS_AVAILABLE = False
 
 
 ACTION_KEYWORDS = {
@@ -54,12 +56,22 @@ ACTION_KEYWORDS = {
     "pricing", "proposal", "deadline", "follow up",
 }
 
-SEEN_FILE = Path("./secrets/facebook_seen.txt")
+SEEN_FILE = PROJECT_ROOT / "secrets" / "facebook_seen.txt"
+
+_HEADERS = {
+    "User-Agent": (
+        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+        "AppleWebKit/537.36 (KHTML, like Gecko) "
+        "Chrome/121.0.0.0 Safari/537.36"
+    ),
+    "Accept-Language": "en-US,en;q=0.9",
+}
 
 
 class FacebookWatcher(BaseWatcher):
     """
-    Watches Facebook notifications using Playwright browser automation.
+    Watches Facebook notifications using requests + stored session cookies.
+    Uses mbasic.facebook.com for simpler, more parseable HTML responses.
 
     Gold Tier Requirement:
       "Facebook + Instagram watcher + posting"
@@ -69,15 +81,10 @@ class FacebookWatcher(BaseWatcher):
         super().__init__(vault_path, check_interval=check_interval)
         self.dry_run = dry_run
         self.session_path = Path(
-            os.getenv("FACEBOOK_SESSION_PATH", "./secrets/facebook_storage.json")
+            os.getenv("FACEBOOK_SESSION_PATH", str(PROJECT_ROOT / "secrets" / "facebook_storage.json"))
         )
+        self._session = None
         SEEN_FILE.parent.mkdir(parents=True, exist_ok=True)
-
-        if not self.dry_run and not self.session_path.exists():
-            self.logger.warning(
-                f"Facebook session file not found: {self.session_path}\n"
-                "Run: python setup/save_social_sessions.py"
-            )
 
     # ── Deduplication ─────────────────────────────────────────────────────────
 
@@ -94,95 +101,118 @@ class FacebookWatcher(BaseWatcher):
     def _notification_key(text: str) -> str:
         return text.strip().lower()[:80]
 
+    # ── Session management ────────────────────────────────────────────────────
+
+    def _get_session(self) -> "requests.Session":
+        """Build a requests.Session with cookies from the session cookies JSON file."""
+        if self._session is not None:
+            return self._session
+
+        session = requests.Session()
+        session.headers.update(_HEADERS)
+
+        storage = json.loads(self.session_path.read_text(encoding="utf-8"))
+        for cookie in storage.get("cookies", []):
+            domain = cookie.get("domain", "")
+            # Strip leading dot for requests cookie jar
+            domain = domain.lstrip(".")
+            session.cookies.set(
+                cookie["name"],
+                cookie["value"],
+                domain=domain,
+                path=cookie.get("path", "/"),
+            )
+
+        self._session = session
+        return session
+
     # ── BaseWatcher interface ─────────────────────────────────────────────────
 
     def check_for_updates(self) -> list:
         if self.dry_run:
-            self.logger.info("[DRY_RUN] Skipping Playwright browser — returning empty list.")
+            self.logger.info("[DRY_RUN] Skipping Facebook request — returning empty list.")
             return []
 
-        if not PLAYWRIGHT_AVAILABLE:
-            raise RuntimeError(
-                "Playwright not installed. Run: pip install playwright && "
-                "python -m playwright install chromium"
-            )
+        if not REQUESTS_AVAILABLE:
+            raise RuntimeError("requests library not installed. Run: pip install requests")
 
         if not self.session_path.exists():
-            self.logger.error(
-                f"Session file not found: {self.session_path}. "
-                "Run: python setup/save_social_sessions.py"
+            self.logger.warning(
+                f"[WAITING] Facebook session file not found: {self.session_path}. "
+                "Export cookies from your browser to that path."
             )
             return []
 
         seen = self._load_seen()
         new_items = []
 
-        with sync_playwright() as pw:
-            browser = pw.chromium.launch(headless=True, args=["--no-sandbox"])
-            context = browser.new_context(storage_state=str(self.session_path))
-            page = context.new_page()
+        try:
+            session = self._get_session()
 
-            try:
-                page.goto("https://www.facebook.com/notifications/", timeout=30_000)
-                page.wait_for_load_state("domcontentloaded", timeout=20_000)
+            # Use mbasic for simpler HTML
+            resp = session.get(
+                "https://mbasic.facebook.com/notifications/",
+                timeout=20,
+                allow_redirects=True,
+            )
 
-                # Check session validity
-                if "login" in page.url or "checkpoint" in page.url:
-                    self.logger.warning(
-                        "Facebook session expired. Re-run: python setup/save_social_sessions.py"
-                    )
-                    context.close()
-                    browser.close()
-                    return []
-
-                try:
-                    page.wait_for_selector(
-                        "[data-testid='notification_item'], [role='article']",
-                        timeout=10_000,
-                    )
-                except PlaywrightTimeout:
-                    self.logger.warning("Notification feed did not load in time.")
-                    browser.close()
-                    return []
-
-                cards = page.query_selector_all(
-                    "[data-testid='notification_item'], [role='article']"
+            # Session expired if redirected to login
+            if "login" in resp.url or "checkpoint" in resp.url:
+                self.logger.warning(
+                    f"Facebook session expired. Re-export cookies to: {self.session_path}"
                 )
+                self._session = None
+                return []
 
-                for card in cards[:30]:
-                    try:
-                        text = card.inner_text().strip()
-                        if not text:
-                            continue
-                        key = self._notification_key(text)
-                        if key in seen:
-                            continue
-                        text_lower = text.lower()
-                        if not any(kw in text_lower for kw in ACTION_KEYWORDS):
-                            self._mark_seen(key)
-                            continue
-                        link_el = card.query_selector("a[href]")
-                        url = link_el.get_attribute("href") if link_el else None
-                        if url and url.startswith("/"):
-                            url = "https://www.facebook.com" + url
-                        new_items.append({
-                            "text": text[:500],
-                            "url": url or "https://www.facebook.com/notifications/",
-                            "key": key,
-                            "detected_at": datetime.now(timezone.utc).isoformat(),
-                        })
-                        self._mark_seen(key)
-                    except Exception as e:
-                        self.logger.debug(f"Error parsing notification card: {e}")
+            if resp.status_code != 200:
+                self.logger.warning(f"Facebook returned HTTP {resp.status_code}")
+                return []
 
-            except Exception as e:
-                self.logger.error(f"Error during Facebook page scrape: {e}")
-            finally:
-                context.close()
-                browser.close()
+            html = resp.text
+
+            # Extract notification anchor tags and their text from mbasic HTML
+            # mbasic notifications are in <td> blocks with <a href> links
+            # Pattern: find notification item links inside the notifications list
+            pattern = re.compile(
+                r'<a\s+href="(/notifications/[^"]+)"[^>]*>(.*?)</a>',
+                re.DOTALL | re.IGNORECASE,
+            )
+            matches = pattern.findall(html)
+
+            for href, raw_text in matches[:30]:
+                # Strip HTML tags from raw_text
+                text = re.sub(r"<[^>]+>", " ", raw_text).strip()
+                text = re.sub(r"\s+", " ", text)
+                if not text or len(text) < 5:
+                    continue
+
+                key = self._notification_key(text)
+                if key in seen:
+                    continue
+
+                text_lower = text.lower()
+                if not any(kw in text_lower for kw in ACTION_KEYWORDS):
+                    self._mark_seen(key)
+                    continue
+
+                url = "https://www.facebook.com" + href.split("?")[0]
+                new_items.append({
+                    "text": text[:500],
+                    "url": url,
+                    "key": key,
+                    "detected_at": datetime.now(timezone.utc).isoformat(),
+                })
+                self._mark_seen(key)
+
+        except Exception as e:
+            self.logger.error(f"Facebook request error: {e}")
+            self._session = None
 
         if new_items:
             self.logger.info(f"Found {len(new_items)} relevant Facebook notification(s).")
+        else:
+            self.logger.debug("No new relevant Facebook notifications.")
+
         return new_items
 
     def create_action_file(self, item: dict) -> Path:
@@ -251,15 +281,30 @@ A relevant Facebook notification was detected that may require a response.
 
     def run(self):
         if self.dry_run:
-            self.logger.info(
-                "[DRY_RUN] FacebookWatcher started — no browser will be launched."
-            )
+            self.logger.info("[DRY_RUN] FacebookWatcher started — no requests will be made.")
+            self.check_for_updates()
             self.logger.info("[DRY_RUN] Exiting after one cycle.")
             return
 
-        self.logger.info(
-            f"Starting FacebookWatcher (interval={self.check_interval}s)"
-        )
+        if not REQUESTS_AVAILABLE:
+            self.logger.error("requests library not installed. Run: pip install requests")
+            return
+
+        self.logger.info(f"Starting FacebookWatcher (interval={self.check_interval}s)")
+
+        if not self.session_path.exists():
+            self.logger.warning(
+                f"[WAITING] Session file not found: {self.session_path}. "
+                "Export cookies from your browser to that path. Sleeping until present."
+            )
+            while not self.session_path.exists():
+                try:
+                    time.sleep(60)
+                except KeyboardInterrupt:
+                    self.logger.info("FacebookWatcher stopped by user.")
+                    return
+            self.logger.info("Session file found. Starting FacebookWatcher.")
+
         while True:
             try:
                 items = self.check_for_updates()
@@ -270,13 +315,14 @@ A relevant Facebook notification was detected that may require a response.
                     except Exception as e:
                         self.logger.error(f"Failed to create action file: {e}")
                         self.log_action("create_action_file", item.get("url", "?"), "error", str(e))
+                time.sleep(self.check_interval)
             except KeyboardInterrupt:
                 self.logger.info("FacebookWatcher stopped by user.")
                 break
             except Exception as e:
                 self.logger.error(f"Unexpected error: {e}")
                 self.log_action("watcher_loop", "facebook_main", "error", str(e))
-            time.sleep(self.check_interval)
+                time.sleep(self.check_interval)
 
 
 def main():
@@ -287,7 +333,7 @@ def main():
     parser.add_argument(
         "--dry-run", action="store_true",
         default=os.getenv("DRY_RUN", "false").lower() == "true",
-        help="Log intent without launching browser",
+        help="Log intent without making requests",
     )
     parser.add_argument("--interval", type=int, default=300)
     args = parser.parse_args()

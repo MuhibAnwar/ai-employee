@@ -1,0 +1,200 @@
+[
+  {
+    "timestamp": "2026-03-06T18:18:57.731568+00:00",
+    "action_type": "orchestrator_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "Gold Tier orchestrator started | vault=D:\\aa-3\\hi\\ai-employee-bronze\\vault | dry_run=False"
+  },
+  {
+    "timestamp": "2026-03-06T18:19:02.221026+00:00",
+    "action_type": "preflight_failed",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "error",
+    "notes": "GmailWatcher failed preflight dry-run: exit=3221225786\n",
+    "watcher": "GmailWatcher"
+  },
+  {
+    "timestamp": "2026-03-06T18:19:02.287420+00:00",
+    "action_type": "watcher_circuit_open",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "error",
+    "notes": "GmailWatcher: circuit OPEN — alert created at ALERT_GmailWatcher_DOWN.md",
+    "watcher": "GmailWatcher",
+    "alert_file": "ALERT_GmailWatcher_DOWN.md"
+  },
+  {
+    "timestamp": "2026-03-06T18:19:11.395370+00:00",
+    "action_type": "preflight_failed",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "error",
+    "notes": "InstagramWatcher failed preflight dry-run: exit=3221225786\n",
+    "watcher": "InstagramWatcher"
+  },
+  {
+    "timestamp": "2026-03-06T18:19:11.441814+00:00",
+    "action_type": "watcher_circuit_open",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "error",
+    "notes": "InstagramWatcher: circuit OPEN — alert created at ALERT_InstagramWatcher_DOWN.md",
+    "watcher": "InstagramWatcher",
+    "alert_file": "ALERT_InstagramWatcher_DOWN.md"
+  },
+  {
+    "timestamp": "2026-03-06T18:19:14.674829+00:00",
+    "action_type": "preflight_failed",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "error",
+    "notes": "TwitterWatcher failed preflight dry-run: exit=3221225786\n2026-03-06T23:19:14 [INFO] TwitterWatcher: [DRY_RUN] TwitterWatcher started — no API calls will be made.\n2026-03-06T23:19:14 [INFO] TwitterWatcher: [DRY_RUN] Skipping Twitter API call — returning empty list.\n2026-03-06T23:19:14 [INFO] TwitterWatcher: [DRY_RUN] Exiting after one cycle.",
+    "watcher": "TwitterWatcher"
+  },
+  {
+    "timestamp": "2026-03-06T18:19:14.738075+00:00",
+    "action_type": "watcher_circuit_open",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "error",
+    "notes": "TwitterWatcher: circuit OPEN — alert created at ALERT_TwitterWatcher_DOWN.md",
+    "watcher": "TwitterWatcher",
+    "alert_file": "ALERT_TwitterWatcher_DOWN.md"
+  },
+  {
+    "timestamp": "2026-03-06T18:19:14.777443+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "FileSystemWatcher started (PID=9472, restart=#1, circuit=CLOSED)",
+    "watcher": "FileSystemWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-03-06T18:19:14.827386+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "LinkedInWatcher started (PID=8536, restart=#1, circuit=CLOSED)",
+    "watcher": "LinkedInWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-03-06T18:19:14.918671+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "FacebookWatcher started (PID=4568, restart=#1, circuit=CLOSED)",
+    "watcher": "FacebookWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-03-06T18:29:05.555059+00:00",
+    "action_type": "circuit_half_open",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "GmailWatcher: entering HALF_OPEN after 600s",
+    "watcher": "GmailWatcher"
+  },
+  {
+    "timestamp": "2026-03-06T18:29:05.587826+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "GmailWatcher started (PID=9596, restart=#1, circuit=HALF_OPEN)",
+    "watcher": "GmailWatcher",
+    "circuit_state": "HALF_OPEN"
+  },
+  {
+    "timestamp": "2026-03-06T18:29:15.612626+00:00",
+    "action_type": "circuit_half_open",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "InstagramWatcher: entering HALF_OPEN after 600s",
+    "watcher": "InstagramWatcher"
+  },
+  {
+    "timestamp": "2026-03-06T18:29:15.641790+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "InstagramWatcher started (PID=3116, restart=#1, circuit=HALF_OPEN)",
+    "watcher": "InstagramWatcher",
+    "circuit_state": "HALF_OPEN"
+  },
+  {
+    "timestamp": "2026-03-06T18:29:15.663650+00:00",
+    "action_type": "circuit_half_open",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "TwitterWatcher: entering HALF_OPEN after 600s",
+    "watcher": "TwitterWatcher"
+  },
+  {
+    "timestamp": "2026-03-06T18:29:15.693631+00:00",
+    "action_type": "watcher_started",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "TwitterWatcher started (PID=6652, restart=#1, circuit=HALF_OPEN)",
+    "watcher": "TwitterWatcher",
+    "circuit_state": "HALF_OPEN"
+  },
+  {
+    "timestamp": "2026-03-06T18:29:27.421893+00:00",
+    "action_type": "gmail_email_detected",
+    "actor": "GmailWatcher",
+    "source_file": "gmail://message/19cbf975c50cc8ab",
+    "result": "success",
+    "notes": "Action file created: EMAIL_20260306T182927_Red_Bull__Hack_Week___Teen_Coding_Lege.md | Subject: ⚡ Red Bull, Hack Week & Teen Coding Legends"
+  },
+  {
+    "timestamp": "2026-03-06T18:29:27.443364+00:00",
+    "action_type": "gmail_email_detected",
+    "actor": "GmailWatcher",
+    "source_file": "gmail://message/19cbf7a1d6acc26b",
+    "result": "success",
+    "notes": "Action file created: EMAIL_20260306T182927_Winner_Announcement_Update___A_Note_on_Y.md | Subject: Winner Announcement Update + A Note on Your Submission - Gemini 3 Hackathon"
+  },
+  {
+    "timestamp": "2026-03-06T18:30:05.731958+00:00",
+    "action_type": "circuit_closed",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "GmailWatcher: HALF_OPEN test passed — circuit CLOSED",
+    "watcher": "GmailWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-03-06T18:30:15.769019+00:00",
+    "action_type": "circuit_closed",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "InstagramWatcher: HALF_OPEN test passed — circuit CLOSED",
+    "watcher": "InstagramWatcher",
+    "circuit_state": "CLOSED"
+  },
+  {
+    "timestamp": "2026-03-06T18:30:15.784604+00:00",
+    "action_type": "circuit_closed",
+    "actor": "orchestrator",
+    "source_file": "scheduler/orchestrator.py",
+    "result": "success",
+    "notes": "TwitterWatcher: HALF_OPEN test passed — circuit CLOSED",
+    "watcher": "TwitterWatcher",
+    "circuit_state": "CLOSED"
+  }
+]
