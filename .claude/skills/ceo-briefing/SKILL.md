@@ -28,10 +28,17 @@ Generate a concise, executive-level briefing for the start of the work week.
 ### Step 1 — Load data sources
 
 Read the following files:
-- Latest `vault/Accounting/Weekly_Audit_*.md` — primary data source
+- Latest `vault/Accounting/Weekly_Audit_*.md` — primary data source (contains Odoo section)
 - `vault/Business_Goals.md` — revenue targets and project status
 - `vault/Dashboard.md` — current system state
 - Any files in `vault/Pending_Approval/` — actions awaiting human sign-off
+
+If the Weekly_Audit contains an Odoo Financial Summary section, extract:
+- `odoo_revenue_mtd` — total posted invoice revenue this month
+- `odoo_outstanding_count` and `odoo_outstanding_total` — draft invoices not yet posted
+- `odoo_top_client` — client name and their total billed amount
+
+If the Weekly_Audit has no Odoo section (older audit), these fields will be "N/A".
 
 ### Step 2 — Synthesise the briefing
 
@@ -122,7 +129,10 @@ _(or: No bottlenecks identified this week.)_
 | Tasks completed | N |
 | Items pending | N |
 | Watcher alerts | N |
-| Revenue MTD | $X |
+| Revenue MTD (posted) | $X |
+| Outstanding invoices | N invoices — $X |
+| Active clients | N |
+| Top client | Name — $X |
 
 ---
 

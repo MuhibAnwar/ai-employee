@@ -1,5 +1,5 @@
 ---
-last_updated: 2026-03-01T00:00:05Z
+last_updated: 2026-03-21T00:01:00Z
 status: active
 tier: Gold
 ---
@@ -14,49 +14,41 @@ tier: Gold
 |------|-------|
 | AI Employee | Active |
 | Tier | **Gold** |
-| Last Updated | 2026-03-01 (Ralph Wiggum Triage Loop) |
-| Vault Health | ⚠️ Watchers DOWN — orchestrator needs restart |
+| Last Updated | 2026-03-21 00:01 UTC |
+| Vault Health | OK |
 | Silver Tier | ✅ Verified 2026-02-21 |
 | Gold Phase 1 | ✅ Verified 2026-02-21 (Ralph loop, error recovery) |
 | Gold Phase 2 | ✅ Verified 2026-02-22 (6 watchers, all exit 0) |
 | Gold Phase 3 | ✅ Verified 2026-02-22 (social posting, weekly audit, CEO briefing, scheduler) |
 | Gold Phase 4 | ✅ Verified 2026-02-22 (cross-domain triage, unified dashboard, Gold_Tier_Complete.md) |
-| Pipeline Health | ✅ Verified 2026-02-23 (21/22 checks passed) |
+| Odoo MCP | ✅ Verified 2026-03-20 (5 tools live, index.js registered in .mcp.json) |
+| **Gold Tier** | **10/10 COMPLETE** |
 
 ## Watcher Health (6 Sources)
 
 | Watcher | Status | Notes |
 |---------|--------|-------|
-| GmailWatcher | 🔴 DOWN | Circuit OPEN (alert filed). **Auth fixed** — crashed at 15:20 via PM2 kill (1073807364). Restart orchestrator. |
-| FacebookWatcher | 🔴 DOWN | Circuit OPEN (alert filed). Session expired OR PM2 kill. |
-| InstagramWatcher | 🔴 DOWN | Circuit OPEN (alert filed). `news_inbox()` missing from instagrapi. |
-| TwitterWatcher | 🔴 DOWN | Circuit OPEN (alert filed). API credentials not set in `.env`. |
-| LinkedInWatcher | 🔴 DOWN | Circuit OPEN (alert filed). May be PM2 kill — restart orchestrator first. |
-| FileSystemWatcher | 🔴 DOWN | Circuit OPEN (alert filed). May be PM2 kill — restart orchestrator first. |
+| FileSystemWatcher | ✅ HEALTHY | 0 crashes, circuit CLOSED (confirmed 2026-03-19) |
+| GmailWatcher | ✅ HEALTHY | Recovered after 2 DNS crashes on 2026-03-18; circuit CLOSED (2026-03-19) |
+| LinkedInWatcher | ✅ HEALTHY | Recovered from preflight failure 2026-03-14; circuit CLOSED (2026-03-19) |
+| FacebookWatcher | ✅ HEALTHY | 0 crashes, circuit CLOSED (confirmed 2026-03-19) |
+| InstagramWatcher | ✅ HEALTHY | HALF_OPEN test passed 2026-03-18; circuit CLOSED (2026-03-19) |
+| TwitterWatcher | ✅ HEALTHY | 0 crashes, circuit CLOSED (confirmed 2026-03-19) |
 
-**0/6 HEALTHY — See `vault/Plans/PLAN_Watchers_Recovery.md` for fix steps.**
-
-> **Key finding from logs (2026-03-01):** GmailWatcher auth was already fixed (HALF_OPEN test
-> passed at 15:07:57 UTC). All 6 watchers crashed at 15:20 with exit code 1073807364 (PM2
-> CTRL_BREAK kill). The orchestrator may simply need to be restarted via PM2.
+**6/6 HEALTHY** — All circuits CLOSED as of 2026-03-19 daily summary. Historic DOWN alerts in `vault/Needs_Action/` pending cleanup.
 
 ## Inbox
 
-- **Pending items:** 2
+- **Pending items:** 3
   - `test_task.md`
   - `test01.md`
+  - `test02.md`
 
 ## Needs Action by Domain
 
-- **Total:** 6 (all watcher DOWN alerts — active until watchers recover)
-  - System Alerts: 6
-    - `ALERT_GmailWatcher_DOWN.md`
-    - `ALERT_FacebookWatcher_DOWN.md`
-    - `ALERT_InstagramWatcher_DOWN.md`
-    - `ALERT_TwitterWatcher_DOWN.md`
-    - `ALERT_LinkedInWatcher_DOWN.md`
-    - `ALERT_FileSystemWatcher_DOWN.md`
-  - Email: 0
+- **Total:** 20
+  - Email: 14
+  - System Alerts: 6 (`ALERT_FileSystemWatcher_DOWN`, `ALERT_GmailWatcher_DOWN`, `ALERT_LinkedInWatcher_DOWN`, `ALERT_FacebookWatcher_DOWN`, `ALERT_InstagramWatcher_DOWN`, `ALERT_TwitterWatcher_DOWN`)
   - Filesystem: 0
   - LinkedIn: 0
   - Facebook: 0
@@ -74,36 +66,44 @@ tier: Gold
 
 ## Active Plans
 
-- **In progress:** 1
-  - `PLAN_Watchers_Recovery.md` — **URGENT** — step-by-step recovery for all 6 watchers
+- **In progress:** 3
+  - `PLAN_Watchers_Recovery.md` — watcher recovery steps
+  - `PLAN_20260223T194900_full_pipeline_verification.md`
+  - `PLAN_20260221T120000_silver_tier_email_verification.md`
 
 ## Accounting
 
-- **Latest audit:** `vault/Accounting/Weekly_Audit_2026-02-22.md`
-  - Period: 2026-02-15 to 2026-02-22 | Tasks: 8 | Errors: 10 (all diagnosed)
+- **Latest audit:** `vault/Accounting/Weekly_Audit_2026-03-21.md`
+  - Period: 2026-03-14 to 2026-03-21 | Tasks: 9 | Errors: 8 (all recovered) | Odoo: 3 draft invoices PKR 1,250
 
 ## Briefings
 
 - **Latest CEO briefing:** `vault/Briefings/2026-02-22_Monday_CEO_Briefing.md`
+- **Latest Friday briefing:** `vault/Briefings/2026-03-20_Friday_CEO_Briefing.md`
 - **Gold Tier report:** `vault/Briefings/Gold_Tier_Complete.md`
 - **Full Tier Verification:** `vault/Briefings/Full_Tier_Verification_Report.md`
-- **Next CEO briefing:** 2026-03-02 (Monday) — **due tomorrow**
+- **Next CEO briefing:** 2026-03-23 (Monday)
+
+## Odoo ERP (Live)
+
+- **URL:** http://localhost:8069 | Odoo 17.0 — RUNNING
+- **MCP Server:** `odoo` registered in `.mcp.json` (5 tools active)
+- **Revenue MTD:** PKR 0 (no posted invoices)
+- **Outstanding drafts:** 3 invoices — PKR 1,250 (Test Client)
+- **Active customers:** 1
 
 ## Done This Session
 
-- **Completed items (total):** 42
-  - 19 from previous sessions
-  - 23 triaged this session (newsletters, marketing, informational, previously-processed emails)
+- **Completed items (total):** 47
 
 ## Recent Activity
 
-- `2026-03-01T00:00:05Z` — **dashboard_updated** — needs_action=6, pending=2, plans=1, done=42
-- `2026-03-01T00:00:04Z` — **pending_approval_created** — Suspicious immigration email flagged
-- `2026-03-01T00:00:03Z` — **pending_approval_created** — GCP billing closure flagged HIGH
-- `2026-03-01T00:00:02Z` — **plan_created** — PLAN_Watchers_Recovery.md (URGENT)
-- `2026-03-01T00:00:01Z` — **triage_batch** — 23 items → Done, 6 ALERTs remain in Needs_Action
-- `2026-03-01T00:00:00Z` — **ralph_wiggum_loop** — iteration 1 started
+- `2026-03-21T00:00:01Z` — **weekly_audit_generated** — `vault/Accounting/Weekly_Audit_2026-03-21.md` → ✅ Live Odoo data, 9 tasks, 5 flags
+- `2026-03-20T11:30:04Z` — **gold_progress_updated** — `vault/Gold_Progress.md` → Gold Tier 10/10 complete
+- `2026-03-20T11:30:03Z` — **ceo_briefing_generated** — `vault/Briefings/2026-03-20_Friday_CEO_Briefing.md` → ✅ Success
+- `2026-03-20T11:30:02Z` — **weekly_audit_generated** — `vault/Accounting/Weekly_Audit_2026-03-20.md` → ✅ Success
+- `2026-03-20T11:15:01Z` — **mcp_server_registered** — `.mcp.json` → odoo-mcp registered, all 5 tools verified
 
 ---
 
-*Generated by AI Employee v0.3 (Gold Tier) — 2026-03-01T00:00:05Z*
+*Generated by AI Employee v0.3 (Gold Tier) — 2026-03-21T00:01:00Z*

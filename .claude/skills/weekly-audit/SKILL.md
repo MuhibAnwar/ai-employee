@@ -2,10 +2,10 @@
 name: weekly-audit
 description: |
   Reads vault/Done/ files from the past 7 days, reads vault/Logs/ for error counts
-  and watcher uptime, reads vault/Business_Goals.md for targets, and writes
-  vault/Accounting/Weekly_Audit_<date>.md with a structured summary. Run every
-  Sunday night or on demand. Odoo financial data will be added later when disk
-  space is available.
+  and watcher uptime, reads vault/Business_Goals.md for targets, queries Odoo ERP
+  for financial data (monthly summary, outstanding invoices, active clients), and
+  writes vault/Accounting/Weekly_Audit_<date>.md with a structured summary. Run
+  every Sunday night or on demand.
 ---
 
 # Weekly Business Audit
@@ -62,7 +62,25 @@ For each watcher, determine:
 - Status: `HEALTHY` (no circuit trips) | `DEGRADED` (some crashes, circuit closed) | `DOWN` (circuit OPEN)
 - Crash count over the period
 
-### Step 4 — Read vault/Business_Goals.md
+### Step 4 — Query Odoo ERP for financial data
+
+The odoo-mcp server must be running (registered in `.mcp.json`). Call these tools:
+
+1. **`get_monthly_summary`** with `year` and `month` set to the current month.
+   Extract: `revenue`, `expenses`, `net`, `invoice_count`.
+
+2. **`get_invoices`** with no state filter (returns all invoices, default limit 20).
+   From the results, compute:
+   - Outstanding invoices: count and total `amount_total` where `state = "draft"`
+   - Posted (paid/billed) invoices: count and total where `state = "posted"`
+
+3. **`get_partners`** with `type = "customer"`.
+   Extract: total count of active customers.
+   Identify the top client by summing `amount_total` across their posted invoices.
+
+If the odoo-mcp tool is not available (MCP server not connected), note "Odoo data unavailable — MCP server not connected" and continue without it.
+
+### Step 4b — Read vault/Business_Goals.md
 
 Extract:
 - Monthly revenue target and current MTD
@@ -147,19 +165,46 @@ generated_by: claude_code
 
 ---
 
-## 4. Flagged Items Needing Attention
+## 4. Odoo Financial Summary
+
+### Revenue (Month-to-Date)
+
+| Metric | Value |
+|--------|-------|
+| Revenue (posted invoices) | $X |
+| Expenses (vendor invoices) | $X |
+| Net | $X |
+
+### Outstanding Invoices
+
+| # | Invoice | Client | Date | Amount | Status |
+|---|---------|--------|------|--------|--------|
+| 1 | INV/... | Name | YYYY-MM-DD | $X | draft/posted |
+
+- **Total outstanding (draft):** N invoices — $X
+- **Total billed (posted):** N invoices — $X
+
+### Active Clients
+
+- **Total active customers:** N
+- **Top client by revenue:** Name — $X
+
+_(If Odoo MCP unavailable, replace this section with: "Odoo data unavailable — MCP server not connected.")_
+
+---
+
+## 5. Flagged Items Needing Attention
 
 List any of the following (if present):
 - Watchers with circuit breaker OPEN → needs human intervention
 - Pending_Approval items older than 48 hours → may be stale
 - Business goals with current < 50% of target → needs review
 - Errors appearing in logs more than 3 times → recurring issue
-
-_(Note: Odoo financial integration deferred — disk space. Will be added in future update.)_
+- Draft invoices not yet posted → chase for approval
 
 ---
 
-## 5. Audit Log Reference
+## 6. Audit Log Reference
 
 Log files reviewed:
 - vault/Logs/<date>.json (N entries, N errors)
@@ -209,5 +254,5 @@ Dashboard updated.
 
 - `vault/Accounting/` must exist before writing (create if missing)
 - Never overwrite an existing audit file — if it exists, append a timestamp suffix
-- Odoo financial data (invoices, expenses, P&L) will be integrated in a future update when disk space is available
+- Odoo financial data is pulled live via odoo-mcp tools (get_monthly_summary, get_invoices, get_partners)
 - This audit is the source of truth for the Monday CEO Briefing — run it first
