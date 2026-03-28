@@ -1,7 +1,7 @@
 ---
-last_updated: 2026-03-21T00:01:00Z
+last_updated: 2026-03-28T16:45:00Z
 status: active
-tier: Gold
+tier: Platinum
 ---
 
 # AI Employee Dashboard
@@ -13,29 +13,27 @@ tier: Gold
 | Item | Value |
 |------|-------|
 | AI Employee | Active |
-| Tier | **Gold** |
-| Last Updated | 2026-03-21 00:01 UTC |
+| Tier | **Platinum** |
+| Last Updated | 2026-03-28 16:45 UTC |
 | Vault Health | OK |
 | Silver Tier | ✅ Verified 2026-02-21 |
-| Gold Phase 1 | ✅ Verified 2026-02-21 (Ralph loop, error recovery) |
-| Gold Phase 2 | ✅ Verified 2026-02-22 (6 watchers, all exit 0) |
-| Gold Phase 3 | ✅ Verified 2026-02-22 (social posting, weekly audit, CEO briefing, scheduler) |
-| Gold Phase 4 | ✅ Verified 2026-02-22 (cross-domain triage, unified dashboard, Gold_Tier_Complete.md) |
-| Odoo MCP | ✅ Verified 2026-03-20 (5 tools live, index.js registered in .mcp.json) |
-| **Gold Tier** | **10/10 COMPLETE** |
+| Gold Tier | ✅ 10/10 COMPLETE |
+| **Platinum Tier** | ✅ **COMPLETE** — Demo gate passed, 15/15 verified |
+| Odoo MCP | ✅ Verified 2026-03-20 (5 tools live) |
+| Cloud Agent (Codespace) | ✅ **LIVE** — PM2 orchestrator running, 6/6 watchers online |
 
 ## Watcher Health (6 Sources)
 
 | Watcher | Status | Notes |
 |---------|--------|-------|
-| FileSystemWatcher | ✅ HEALTHY | 0 crashes, circuit CLOSED (confirmed 2026-03-19) |
-| GmailWatcher | ✅ HEALTHY | Recovered after 2 DNS crashes on 2026-03-18; circuit CLOSED (2026-03-19) |
-| LinkedInWatcher | ✅ HEALTHY | Recovered from preflight failure 2026-03-14; circuit CLOSED (2026-03-19) |
-| FacebookWatcher | ✅ HEALTHY | 0 crashes, circuit CLOSED (confirmed 2026-03-19) |
-| InstagramWatcher | ✅ HEALTHY | HALF_OPEN test passed 2026-03-18; circuit CLOSED (2026-03-19) |
-| TwitterWatcher | ✅ HEALTHY | 0 crashes, circuit CLOSED (confirmed 2026-03-19) |
+| FileSystemWatcher | ✅ HEALTHY | Started 2026-03-28T16:02:10Z — 0 crashes today |
+| GmailWatcher | ✅ HEALTHY | Started 2026-03-28T16:02:10Z — detected 14 emails today |
+| LinkedInWatcher | ✅ HEALTHY | Started 2026-03-28T16:02:10Z — running in Codespace |
+| FacebookWatcher | ✅ HEALTHY | Started 2026-03-28T16:02:10Z — running in Codespace |
+| InstagramWatcher | ✅ HEALTHY | Started 2026-03-28T16:02:10Z — running in Codespace |
+| TwitterWatcher | ✅ HEALTHY | Started 2026-03-28T16:02:10Z — running in Codespace |
 
-**6/6 HEALTHY** — All circuits CLOSED as of 2026-03-19 daily summary. Historic DOWN alerts in `vault/Needs_Action/` pending cleanup.
+**6/6 HEALTHY** — All watchers started clean via PM2 at 16:02:10Z. Historic DOWN alerts in `vault/Needs_Action/` are pre-Platinum and pending cleanup.
 
 ## Inbox
 
@@ -46,8 +44,8 @@ tier: Gold
 
 ## Needs Action by Domain
 
-- **Total:** 20
-  - Email: 14
+- **Total:** 41
+  - Email: 35
   - System Alerts: 6 (`ALERT_FileSystemWatcher_DOWN`, `ALERT_GmailWatcher_DOWN`, `ALERT_LinkedInWatcher_DOWN`, `ALERT_FacebookWatcher_DOWN`, `ALERT_InstagramWatcher_DOWN`, `ALERT_TwitterWatcher_DOWN`)
   - Filesystem: 0
   - LinkedIn: 0
@@ -66,7 +64,8 @@ tier: Gold
 
 ## Active Plans
 
-- **In progress:** 3
+- **In progress:** 4
+  - `PLAN_20260328T163000_Project_Proposal_Response.md` — URGENT reply to client + proposal (Platinum demo)
   - `PLAN_Watchers_Recovery.md` — watcher recovery steps
   - `PLAN_20260223T194900_full_pipeline_verification.md`
   - `PLAN_20260221T120000_silver_tier_email_verification.md`
@@ -78,11 +77,11 @@ tier: Gold
 
 ## Briefings
 
+- **Platinum verification:** `vault/Briefings/PLATINUM_COMPLETE.md` ✅ 2026-03-28
 - **Latest CEO briefing:** `vault/Briefings/2026-02-22_Monday_CEO_Briefing.md`
 - **Latest Friday briefing:** `vault/Briefings/2026-03-20_Friday_CEO_Briefing.md`
 - **Gold Tier report:** `vault/Briefings/Gold_Tier_Complete.md`
-- **Full Tier Verification:** `vault/Briefings/Full_Tier_Verification_Report.md`
-- **Next CEO briefing:** 2026-03-23 (Monday)
+- **Next CEO briefing:** 2026-03-30 (Monday)
 
 ## Odoo ERP (Live)
 
@@ -90,20 +89,21 @@ tier: Gold
 - **MCP Server:** `odoo` registered in `.mcp.json` (5 tools active)
 - **Revenue MTD:** PKR 0 (no posted invoices)
 - **Outstanding drafts:** 3 invoices — PKR 1,250 (Test Client)
-- **Active customers:** 1
 
 ## Done This Session
 
-- **Completed items (total):** 47
+- **Completed items (total):** 48
 
 ## Recent Activity
 
-- `2026-03-21T00:00:01Z` — **weekly_audit_generated** — `vault/Accounting/Weekly_Audit_2026-03-21.md` → ✅ Live Odoo data, 9 tasks, 5 flags
-- `2026-03-20T11:30:04Z` — **gold_progress_updated** — `vault/Gold_Progress.md` → Gold Tier 10/10 complete
-- `2026-03-20T11:30:03Z` — **ceo_briefing_generated** — `vault/Briefings/2026-03-20_Friday_CEO_Briefing.md` → ✅ Success
-- `2026-03-20T11:30:02Z` — **weekly_audit_generated** — `vault/Accounting/Weekly_Audit_2026-03-20.md` → ✅ Success
-- `2026-03-20T11:15:01Z` — **mcp_server_registered** — `.mcp.json` → odoo-mcp registered, all 5 tools verified
+- `2026-03-28T16:45:00Z` — **platinum_verified** — `PLATINUM_COMPLETE.md` → 15/15 requirements passed ✅
+- `2026-03-28T16:40:00Z` — **approved_action_executed** — `send_email` → client@example.com | Gmail ID: 19d35382067f53cd ✅ **SENT**
+- `2026-03-28T16:30:00Z` — **email_triaged** — `EMAIL_PLATINUM_DEMO.md` → URGENT — draft reply queued in Pending_Approval
+- `2026-03-28T16:02:22Z` — **gmail_email_detected** — `EMAIL_..._Startup_School_Prompt_to_Prototype_kick.md` → GmailWatcher
+- `2026-03-28T16:02:22Z` — **gmail_email_detected** — `EMAIL_..._Important_Update_Session_2_Schedule_Cha.md` → GmailWatcher
+- `2026-03-28T16:02:22Z` — **gmail_email_detected** — `EMAIL_..._New_device_signed_in_to_your_Ramdan_Prom.md` → GmailWatcher
+- `2026-03-21T00:00:01Z` — **weekly_audit_generated** — `vault/Accounting/Weekly_Audit_2026-03-21.md` → Live Odoo data
 
 ---
 
-*Generated by AI Employee v0.3 (Gold Tier) — 2026-03-21T00:01:00Z*
+*Generated by AI Employee v0.4 (Platinum Tier) — 2026-03-28T16:40:00Z*
