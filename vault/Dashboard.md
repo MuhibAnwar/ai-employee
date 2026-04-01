@@ -1,5 +1,5 @@
 ---
-last_updated: 2026-03-28T16:45:00Z
+last_updated: 2026-04-01T14:42:00Z
 status: active
 tier: Platinum
 ---
@@ -14,96 +14,106 @@ tier: Platinum
 |------|-------|
 | AI Employee | Active |
 | Tier | **Platinum** |
-| Last Updated | 2026-03-28 16:45 UTC |
+| Last Updated | 2026-04-01 14:42 UTC |
 | Vault Health | OK |
 | Silver Tier | ✅ Verified 2026-02-21 |
 | Gold Tier | ✅ 10/10 COMPLETE |
-| **Platinum Tier** | ✅ **COMPLETE** — Demo gate passed, 15/15 verified |
-| Odoo MCP | ✅ Verified 2026-03-20 (5 tools live) |
-| Cloud Agent (Codespace) | ✅ **LIVE** — PM2 orchestrator running, 6/6 watchers online |
+| **Platinum Tier** | ✅ **COMPLETE** — Demo gate passed, all requirements verified |
+| Odoo ERP | ✅ Docker running (http://localhost:8069) |
+| Cloud Agent (Codespace) | ✅ **LIVE** — PM2 orchestrator running, 6/6 watchers online (WhatsApp excluded per cloud rules) |
 
 ## Watcher Health (6 Sources)
 
 | Watcher | Status | Notes |
 |---------|--------|-------|
-| FileSystemWatcher | ✅ HEALTHY | Started 2026-03-28T16:02:10Z — 0 crashes today |
-| GmailWatcher | ✅ HEALTHY | Started 2026-03-28T16:02:10Z — detected 14 emails today |
-| LinkedInWatcher | ✅ HEALTHY | Started 2026-03-28T16:02:10Z — running in Codespace |
-| FacebookWatcher | ✅ HEALTHY | Started 2026-03-28T16:02:10Z — running in Codespace |
-| InstagramWatcher | ✅ HEALTHY | Started 2026-03-28T16:02:10Z — running in Codespace |
-| TwitterWatcher | ✅ HEALTHY | Started 2026-03-28T16:02:10Z — running in Codespace |
+| FileSystemWatcher | ✅ HEALTHY | 6 stale DOWN alerts cleared — confirmed healthy |
+| GmailWatcher | ✅ HEALTHY | 6 stale DOWN alerts cleared — confirmed healthy |
+| LinkedInWatcher | ✅ HEALTHY | 6 stale DOWN alerts cleared — confirmed healthy |
+| FacebookWatcher | ✅ HEALTHY | 6 stale DOWN alerts cleared — confirmed healthy |
+| InstagramWatcher | ✅ HEALTHY | 6 stale DOWN alerts cleared — confirmed healthy |
+| TwitterWatcher | ✅ HEALTHY | 6 stale DOWN alerts cleared — confirmed healthy |
 
-**6/6 HEALTHY** — All watchers started clean via PM2 at 16:02:10Z. Historic DOWN alerts in `vault/Needs_Action/` are pre-Platinum and pending cleanup.
+**6/6 HEALTHY** — Cloud mode active (`RUN_ENV=cloud`). WhatsApp is local-only per Platinum work-zone rules.
 
 ## Inbox
 
-- **Pending items:** 3
-  - `test_task.md`
+- **Pending items:** 7
+  - `WHATSAPP_20260331T105419_Aisha.md`
+  - `WHATSAPP_20260331T105721_MAK-Naz.md`
+  - `WHATSAPP_20260331T110839_Abdullah.md`
+  - `WHATSAPP_20260331T112851_Founderspace_-_start_your_onli.md`
   - `test01.md`
   - `test02.md`
+  - `test_task.md`
+
+> All 7 inbox items have corresponding Needs_Action entries. Inbox files are retained until local WhatsApp triage is complete.
 
 ## Needs Action by Domain
 
-- **Total:** 41
+- **Total:** 38
   - Email: 35
-  - System Alerts: 6 (`ALERT_FileSystemWatcher_DOWN`, `ALERT_GmailWatcher_DOWN`, `ALERT_LinkedInWatcher_DOWN`, `ALERT_FacebookWatcher_DOWN`, `ALERT_InstagramWatcher_DOWN`, `ALERT_TwitterWatcher_DOWN`)
-  - Filesystem: 0
+  - WhatsApp: 2 (MAK-Naz, Abdullah — awaiting WhatsApp approvals)
+  - Filesystem: 1 (test01 — email approval filed)
   - LinkedIn: 0
   - Facebook: 0
   - Instagram: 0
   - Twitter/X: 0
+  - System Alerts: 0 ✅ (all 6 stale alerts cleared 2026-04-01)
 
 ## Pending Approvals
 
-- **Awaiting your review:** 2
+- **Awaiting your review:** 5
 
 | File | Priority | Action |
 |------|----------|--------|
+| `APPROVAL_20260401T144022_email_program_description.md` | NORMAL | Send email to muhiblevels@gmail.com about the AI Employee program |
+| `APPROVAL_20260401T144022_whatsapp_mak_naz_meeting.md` | HIGH | WhatsApp reply to MAK-Naz confirming today's meeting |
+| `APPROVAL_20260401T144022_whatsapp_abdullah_meeting.md` | HIGH | WhatsApp reply to Abdullah confirming today's meeting |
 | `REVIEW_GCP_Billing_Closure_20260301.md` | HIGH | GCP billing account closed — decide to reopen or migrate |
 | `REVIEW_Suspicious_Immigration_Email_20260301.md` | HIGH | Phishing flag — email from canadianvisa.org |
 
 ## Active Plans
 
 - **In progress:** 4
-  - `PLAN_20260328T163000_Project_Proposal_Response.md` — URGENT reply to client + proposal (Platinum demo)
+  - `PLAN_20260328T163000_Project_Proposal_Response.md` — URGENT reply to client
   - `PLAN_Watchers_Recovery.md` — watcher recovery steps
   - `PLAN_20260223T194900_full_pipeline_verification.md`
   - `PLAN_20260221T120000_silver_tier_email_verification.md`
 
 ## Accounting
 
+- **Odoo:** Docker container `odoo-app` running on port 8069
 - **Latest audit:** `vault/Accounting/Weekly_Audit_2026-03-21.md`
-  - Period: 2026-03-14 to 2026-03-21 | Tasks: 9 | Errors: 8 (all recovered) | Odoo: 3 draft invoices PKR 1,250
+  - Period: 2026-03-14 to 2026-03-21 | Odoo: 3 draft invoices PKR 1,250
 
 ## Briefings
 
-- **Platinum verification:** `vault/Briefings/PLATINUM_COMPLETE.md` ✅ 2026-03-28
 - **Latest CEO briefing:** `vault/Briefings/2026-02-22_Monday_CEO_Briefing.md`
-- **Latest Friday briefing:** `vault/Briefings/2026-03-20_Friday_CEO_Briefing.md`
-- **Gold Tier report:** `vault/Briefings/Gold_Tier_Complete.md`
-- **Next CEO briefing:** 2026-03-30 (Monday)
+- **Next CEO briefing:** 2026-04-06 (Monday) — scheduled via RemoteTrigger
 
-## Odoo ERP (Live)
+## Platinum Work-Zone Rules (Active)
 
-- **URL:** http://localhost:8069 | Odoo 17.0 — RUNNING
-- **MCP Server:** `odoo` registered in `.mcp.json` (5 tools active)
-- **Revenue MTD:** PKR 0 (no posted invoices)
-- **Outstanding drafts:** 3 invoices — PKR 1,250 (Test Client)
+| Zone | Owns | Status |
+|------|------|--------|
+| Cloud (Codespace) | Email triage, draft replies, social post drafts | ✅ Active |
+| Local (PC) | Approvals, WhatsApp session, final send/post | Requires Local PC |
+| Vault sync | Git push/pull via `deployment/sync_vault.sh` | Ready |
+| `vault/Updates/` | Cloud → Local Dashboard signals | ✅ Created |
+| `vault/In_Progress/cloud/` | Claim-by-move lock for cloud tasks | ✅ Created |
+| `vault/In_Progress/local/` | Claim-by-move lock for local tasks | ✅ Created |
 
 ## Done This Session
 
-- **Completed items (total):** 48
+- **Completed items (total):** 60
 
 ## Recent Activity
 
-- `2026-03-28T16:45:00Z` — **platinum_verified** — `PLATINUM_COMPLETE.md` → 15/15 requirements passed ✅
-- `2026-03-28T16:40:00Z` — **approved_action_executed** — `send_email` → client@example.com | Gmail ID: 19d35382067f53cd ✅ **SENT**
-- `2026-03-28T16:30:00Z` — **email_triaged** — `EMAIL_PLATINUM_DEMO.md` → URGENT — draft reply queued in Pending_Approval
-- `2026-03-28T16:02:22Z` — **gmail_email_detected** — `EMAIL_..._Startup_School_Prompt_to_Prototype_kick.md` → GmailWatcher
-- `2026-03-28T16:02:22Z` — **gmail_email_detected** — `EMAIL_..._Important_Update_Session_2_Schedule_Cha.md` → GmailWatcher
-- `2026-03-28T16:02:22Z` — **gmail_email_detected** — `EMAIL_..._New_device_signed_in_to_your_Ramdan_Prom.md` → GmailWatcher
-- `2026-03-21T00:00:01Z` — **weekly_audit_generated** — `vault/Accounting/Weekly_Audit_2026-03-21.md` → Live Odoo data
+- `2026-04-01T14:39` **item_triaged** — Stale ALERT_*_DOWN files (6) cleared → Done (watchers confirmed healthy)
+- `2026-04-01T14:40` **approval_created** — APPROVAL email program description → Pending_Approval
+- `2026-04-01T14:40` **approval_created** — APPROVAL WhatsApp MAK-Naz meeting → Pending_Approval
+- `2026-04-01T14:40` **approval_created** — APPROVAL WhatsApp Abdullah meeting → Pending_Approval
+- `2026-04-01T14:41` **approved_action_executed** — send_whatsapp (Aisha) deferred — local-only, archived to Done
 
 ---
 
-*Generated by AI Employee v0.4 (Platinum Tier) — 2026-03-28T16:40:00Z*
+*Generated by AI Employee v0.4 (Platinum Tier) — 2026-04-01T14:42:00Z*

@@ -1,12 +1,12 @@
-# Personal AI Employee — Silver Tier
+# Personal AI Employee — Platinum Tier ✅
 
 > *Your life and business on autopilot. Local-first, agent-driven, human-in-the-loop.*
 
-This is the **Silver Tier** implementation of the [Personal AI Employee Hackathon](https://agentfactory.panaversity.org). It extends the Bronze foundation with Gmail + LinkedIn watchers, an Email MCP server for real email sending, LinkedIn auto-posting, and a Windows Task Scheduler orchestrator — all built on **Claude Code** as the reasoning engine and **Obsidian** as the local knowledge base and dashboard.
+This is the **Platinum Tier** implementation of the [Personal AI Employee Hackathon](https://agentfactory.panaversity.org). It is a fully autonomous, cloud-deployed AI employee running 24/7 on GitHub Codespaces — monitoring Gmail, WhatsApp, LinkedIn, Facebook, Instagram, and Twitter, managing accounting via Odoo ERP, generating weekly CEO briefings, and routing all sensitive actions through a human-in-the-loop approval workflow. Built entirely on **Claude Code** as the reasoning engine and **Obsidian** as the local knowledge base and dashboard.
 
 ---
 
-## What's Included (Silver Tier)
+## What's Included (Platinum Tier)
 
 | Requirement | Status | Location |
 |-------------|--------|----------|
@@ -255,19 +255,29 @@ All sensitive actions require your explicit approval:
 
 ---
 
-## Silver Tier Additions
+## Platinum Tier — Full Feature Set
 
-Everything in Bronze, plus:
+Everything in Bronze + Silver + Gold, plus:
 
-| Feature | Description |
-|---------|-------------|
-| Gmail watcher | Polls for unread important emails every 120s |
-| LinkedIn watcher | Monitors notifications every 5 min via Playwright |
-| Email MCP server | Node.js MCP exposing `send_email` / `draft_email` tools |
-| `/post-linkedin` skill | Drafts LinkedIn posts from business goals |
-| `/execute-approved` skill | Routes approved actions to Email MCP or Playwright |
-| Orchestrator | Manages all watchers with auto-restart on crash |
-| Windows Task Scheduler | Starts orchestrator at login |
+| Tier | Feature | Description |
+|------|---------|-------------|
+| Silver | Gmail watcher | Polls for unread important emails every 120s |
+| Silver | LinkedIn watcher | Monitors notifications every 5 min via Playwright |
+| Silver | Email MCP server | Node.js MCP exposing `send_email` / `draft_email` tools |
+| Silver | `/post-linkedin` skill | Drafts LinkedIn posts from business goals |
+| Silver | `/execute-approved` skill | Routes approved actions to Email MCP or Playwright |
+| Silver | Orchestrator | Manages all watchers with auto-restart on crash |
+| Gold | Facebook + Instagram + Twitter watchers | 3 additional social watchers |
+| Gold | Odoo ERP integration | Odoo Community via Docker + MCP server (5 tools) |
+| Gold | `/weekly-audit` skill | Weekly business + accounting audit |
+| Gold | `/ceo-briefing` skill | Monday 8AM CEO briefing auto-generation |
+| Gold | Circuit breaker | CLOSED → OPEN → HALF_OPEN recovery per watcher |
+| Gold | Ralph Wiggum loop | Autonomous Stop-hook agent loop |
+| **Platinum** | 24/7 cloud agent | GitHub Codespaces + PM2 process supervisor |
+| **Platinum** | Vault sync | Git push/pull between cloud and local Obsidian |
+| **Platinum** | WhatsApp watcher | Playwright-based WhatsApp Web monitor (local-only) |
+| **Platinum** | Work-zone rules | Cloud handles triage; local PC handles approvals + sends |
+| **Platinum** | Demo gate passed | End-to-end: email detected → triaged → approved → sent via Gmail API |
 
 ---
 
@@ -276,14 +286,15 @@ Everything in Bronze, plus:
 | Tier | Status | Key Additions |
 |------|--------|---------------|
 | Bronze | ✅ | Vault, 1 watcher, 3 skills |
-| **Silver** | ✅ This repo | Gmail + LinkedIn watchers, LinkedIn posting, MCP email server, scheduling |
-| Gold | 🔜 | Full autonomy, Odoo accounting, weekly CEO briefing |
-| Platinum | 🔜 | Cloud deployment, 24/7 always-on |
+| Silver | ✅ | Gmail + LinkedIn watchers, LinkedIn posting, MCP email server, scheduling |
+| Gold | ✅ | 6 watchers, Odoo ERP, weekly CEO briefing, Ralph Wiggum loop |
+| **Platinum** | ✅ **This repo** | 24/7 cloud agent (Codespaces + PM2), vault sync via Git, WhatsApp watcher, demo gate passed |
 
 ---
 
 ## Hackathon
 
-- **Tier:** Silver
+- **Tier:** Platinum ✅
 - **Hackathon:** [Personal AI Employee Hackathon 0](https://agentfactory.panaversity.org)
+- **Verification:** `vault/Briefings/PLATINUM_COMPLETE.md` — 15/15 requirements met
 - **Submit:** [https://forms.gle/JR9T1SJq5rmQyGkGA](https://forms.gle/JR9T1SJq5rmQyGkGA)

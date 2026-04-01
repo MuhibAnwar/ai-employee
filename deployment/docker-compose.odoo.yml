@@ -1,0 +1,53 @@
+version: "3.8"
+
+# Odoo Community — AI Employee Gold/Platinum Tier
+# Usage:
+#   docker-compose -f deployment/docker-compose.odoo.yml up -d
+#   docker-compose -f deployment/docker-compose.odoo.yml down
+#   docker-compose -f deployment/docker-compose.odoo.yml logs -f odoo
+
+services:
+  db:
+    image: postgres:15
+    container_name: odoo-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: odoo
+      POSTGRES_USER: odoo
+      POSTGRES_PASSWORD: odoo
+    volumes:
+      - odoo-db-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U odoo"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  odoo:
+    image: odoo:17
+    container_name: odoo-app
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "8069:8069"
+    environment:
+      HOST: db
+      USER: odoo
+      PASSWORD: odoo
+    volumes:
+      - odoo-data:/var/lib/odoo
+      - ./odoo-addons:/mnt/extra-addons
+    command: >
+      -- --db_host=db --db_port=5432 --db_user=odoo --db_password=odoo
+    healthcheck:
+      test: ["CMD-SHELL", "curl -sf http://localhost:8069/web/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 10
+      start_period: 60s
+
+volumes:
+  odoo-db-data:
+  odoo-data:

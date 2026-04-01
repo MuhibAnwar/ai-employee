@@ -105,7 +105,19 @@ WATCHERS = [
         "script": "watchers/twitter_watcher.py",
         "extra_args": ["--interval", "300"],
     },
+    {
+        "name": "WhatsAppWatcher",
+        "script": "watchers/whatsapp_watcher.py",
+        "extra_args": ["--interval", "30"],
+        "local_only": True,  # WhatsApp session is never stored in cloud — Platinum rule
+    },
 ]
+
+# Skip local_only watchers when running in Codespace / cloud (RUN_ENV=cloud)
+_IS_CLOUD = os.environ.get("RUN_ENV", "").lower() == "cloud"
+if _IS_CLOUD:
+    WATCHERS = [w for w in WATCHERS if not w.get("local_only")]
+    logger.info("Cloud mode: WhatsApp watcher excluded (local-only)")
 
 # ─────────────────────────────────────────────────────────────────────────────
 # Preflight check
@@ -385,6 +397,12 @@ _SUGGESTED_FIXES: dict[str, str] = {
         "2. Verify `tweepy` is installed: `pip install tweepy`\n"
         "3. Check API rate limits at https://developer.twitter.com/\n"
         "4. Verify your Twitter app has 'Read' permissions enabled"
+    ),
+    "WhatsAppWatcher": (
+        "1. Session may have expired — re-run setup: `python watchers/whatsapp_watcher.py --setup`\n"
+        "2. Verify `playwright` is installed: `pip install playwright && playwright install chromium`\n"
+        "3. Check WHATSAPP_SESSION_PATH in `.env` points to a valid session directory\n"
+        "4. WhatsApp Web selectors may have changed — check watchers/whatsapp_watcher.py"
     ),
 }
 
